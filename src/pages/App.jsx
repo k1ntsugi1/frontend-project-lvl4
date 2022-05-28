@@ -6,7 +6,7 @@ import {
   } from "react-router-dom";
 
 import { ChatPage } from './ChatPage.jsx'
-import { SignIn } from './SignIn.jsx'
+import SignIn  from './SignIn.jsx'
 import { NotFoundPage } from './NotFoundPage.jsx'
 export const App = () => {
     return (

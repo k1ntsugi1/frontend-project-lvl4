@@ -1,0 +1,20 @@
+{
+    "signInForm": {
+        "header": "Войти",
+        "buttonSubmit": "Войти",
+        "placeHolders": {
+            "userName": "Введите имя",
+            "password": "Введите пароль"
+        },
+        "footer": {
+            "hrefToSignUp": "Регистрация",
+            "labelSignUp": "Нет аккаунта?"
+        },
+        "errorsValidating": {
+            "short": "Слишком коротко",
+            "long": "Слишком длинно",   
+            "required": "Обязательное поле"
+        }
+    }
+    
+}

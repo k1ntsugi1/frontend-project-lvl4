@@ -1,0 +1,21 @@
+{
+
+    "signInForm": {
+        "header": "Sign In",
+        "buttonSubmit": "Sign In",
+        "placeHolders": {
+            "userName": "Enter username",
+            "password": "Enter password"
+        },
+        "footer": {
+            "hrefToSignUp": "Registration",
+            "labelSignUp": "No account?"
+        },
+        "errorsValidating": {
+            "short": "Too short",
+             "long": "Too long",   
+            "required": "required field"
+        }
+    }
+
+}
