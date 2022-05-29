@@ -2,12 +2,20 @@
 import React from 'react'
 import { withTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
-import { Button, Form, FormGroup, FormLabel, FormControl, Card } from 'react-bootstrap';
+import { Button, Form, Card } from 'react-bootstrap';
 import * as Yup from 'yup';
-
+import axios from 'axios';
+import routes from '../routes.js';
+import useAuth from '../hooks/index.jsx';
+import {
+    useLocation,
+    useNavigate,
+  } from "react-router-dom";
 
 const SignIn = ({t}) => {
-
+    const auth = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
     Yup.setLocale({
         mixed: {
             required: t("signInForm.errorsValidating.required"),
@@ -19,14 +27,23 @@ const SignIn = ({t}) => {
     })
     
     const signInSchema= Yup.object().shape({
-        name: Yup.string().min(2).max(10).required(),
+        username: Yup.string().min(2).max(10).required(),
         password: Yup.string().min(2).max(10).required(),
     })
 
     const formik = useFormik({
-        initialValues: {userName: "", password: ""},
+        initialValues: {username: "", password: ""},
         validationSchema: signInSchema,
-        onSubmit: values => { console.log(values) }
+        onSubmit: async (values) => { 
+            const { data: token } = await axios.post('/api/v1/login', {
+                username: values.username,
+                password: values.password
+            });
+            localStorage.setItem('userId', token);
+            const preveousPageHref = location.state.from.pathname;
+            console.log(preveousPageHref);
+            navigate(preveousPageHref, { replace: true, state: { from: location.pathname } } )
+        }
     })
     return (
         <div className='container-fluid h-100'>
@@ -35,29 +52,27 @@ const SignIn = ({t}) => {
                 <div className='col d-flex align-items-center justify-content-center'>here will be image</div>
                 <Form className='col' onSubmit={formik.handleSubmit}>
                     <h2>{t("signInForm.header")}</h2>
-                    <FormGroup className="mb-3">
-                        <FormLabel className="sr-only" htmlFor="userName">userName</FormLabel>
-                        <FormControl  id="userName"
-                                      name="userName"
+                    <Form.Group className="mb-3">
+                        <Form.Label className="sr-only" htmlFor="username">username</Form.Label>
+                        <Form.Control id="username"
+                                      name="username"
                                       type="text" 
                                       placeholder={ t("signInForm.placeHolders.userName") } 
                                       onChange={formik.handleChange}
-                                      value={formik.values.userName} />
-                        {formik.touched.userName && formik.errors.userName ? 
-                            (<div>{formik.errors.userName}</div>) : null}
-                    </FormGroup>
-                    <FormGroup className="mb-3">
-                        <FormLabel className="sr-only" htmlFor="password">Password</FormLabel>
-                        <FormControl  id="password"
+                                      value={formik.values.username} />
+                        {formik.errors.username && <Form.Text className='text-danger'>{formik.errors.username}</Form.Text>}
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label className="sr-only" htmlFor="password">Password</Form.Label>
+                        <Form.Control id="password"
                                       name="password"
                                       type="text"
                                       placeholder={ t("signInForm.placeHolders.password") }
                                       onChange={formik.handleChange}
                                       value={formik.values.password}/>
-                        {formik.touched.password && formik.errors.password ? 
-                            (<div>{formik.errors.password}</div>) : null}
-                    </FormGroup>
-                        <Button variant="primary" type="submit">{t("signInForm.buttonSubmit")}</Button>
+                        {formik.errors.password && <Form.Text className='text-danger'>{formik.errors.password}</Form.Text>}
+                    </Form.Group>
+                        <Button variant="primary" type="submit" className={ (formik.errors.username || formik.errors.password) ? 'disabled' : null }>{t("signInForm.buttonSubmit")}</Button>
                     </Form>
                 </Card.Body>
                 <Card.Footer>

@@ -13,8 +13,7 @@ import {
 
 import './i18n/i18n.js';
 
-import { App } from './pages/App.jsx'
-import LangChanger from './components/LangChanger';
+import App from './pages/App.jsx'
 
 
 if (process.env.NODE_ENV !== 'production') {
@@ -22,19 +21,9 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 
-/*
-const header = ReactDOM.createRoot(document.querySelector('.h-100'))
-header.render(
-  <>
-    
-  </>
-)
-*/
-
 const container = ReactDOM.createRoot(document.querySelector('#chat'));
 container.render(
     <BrowserRouter>
-      <LangChanger />
       <App />
     </BrowserRouter>
 )

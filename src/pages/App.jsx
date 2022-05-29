@@ -1,19 +1,84 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
 import {
     Routes,
     Route,
+    Link,
+    useLocation,
+    Navigate
   } from "react-router-dom";
+
+import { withTranslation } from 'react-i18next';
+
+import { Button, Container, NavbarBrand, Navbar } from 'react-bootstrap';
+import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 
 import { ChatPage } from './ChatPage.jsx'
 import SignIn  from './SignIn.jsx'
 import { NotFoundPage } from './NotFoundPage.jsx'
-export const App = () => {
+
+import AuthContext from '../contexts/index.jsx';
+import useAuth from '../hooks/index.jsx';
+
+const AuthProvider = ({children}) => {
+
+    const [loggedIn, setLoggetIn] = useState(false);
+
+    const logIn = () => setLoggetIn(true);
+    const logOut = () => {
+        localStorage.removeItem('userId');
+        setLoggetIn(false);
+    }
+
     return (
-        <Routes>
-            <Route path='/' element={ <ChatPage/> }></Route>
-            <Route path="logic" element={ <SignIn/> }></Route>
-            <Route path="*" element={ <NotFoundPage/> }></Route>
-        </Routes>
+        <AuthContext.Provider value={ {loggedIn, logIn, logOut} }>
+            { children }
+        </AuthContext.Provider>
     )
 }
+
+const PrivatRout = ({children}) => {
+    const auth = useAuth();
+    const location = useLocation()
+
+    return (
+        <>
+            { auth.loggedIn ? children : <Navigate to='/login' state={{ from: location }} /> }
+        </>
+    )
+}
+
+
+
+const App = ({t, i18n}) => {
+    const changeLang = (lang) => () => {
+        i18n.changeLanguage(lang);
+      }
+    return (
+        <AuthProvider>
+            <Navbar bg="light">
+                <Container>
+                    <NavbarBrand as={Link} to="/">Chat</NavbarBrand>
+                    <NavbarCollapse id="changeLang" className='justify-content-end'>
+                        <Button variant="outline-info" onClick={ changeLang('ru') }>Ru</Button>
+                        <Button variant="outline-info" onClick={ changeLang('en') } >En</Button>
+                    </NavbarCollapse>
+                </Container>
+            </Navbar>
+            <div>
+                <Routes>
+                    <Route path='/' element={
+                        <PrivatRout>
+                            <ChatPage/>
+                        </PrivatRout> 
+                        }></Route>
+                    <Route path="/login" element={ <SignIn/> }></Route>
+                    <Route path="*" element={ <NotFoundPage/> }></Route>
+                </Routes>
+            </div >
+        </AuthProvider>
+    )
+}
+
+export default withTranslation()(App)
