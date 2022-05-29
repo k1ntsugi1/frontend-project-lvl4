@@ -18,6 +18,11 @@
             "required": "Обязательное поле"
         }
     },
-    "logOutBtn": "Выйти"
+    "logOutBtn": "Выйти",
+    "undefindPage": {
+        "haveNotFindedPage": "Страница не найдена",
+        "suggestion": "Но вы можете перейти",
+        "linkToMainPage": "на главную страницу"
+    }
     
 }

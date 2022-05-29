@@ -1,7 +1,7 @@
 
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { withTranslation } from 'react-i18next';
-import { useFormik } from 'formik';
+import { Formik, useFormikContext  } from 'formik';
 import { Button, Form, Card } from 'react-bootstrap';
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -11,14 +11,22 @@ import {
     useLocation,
     useNavigate,
   } from "react-router-dom";
+import { useImmer } from "use-immer";
 
-import Popup from 'reactjs-popup';
 
 
 const SignIn = ({t}) => {
     const auth = useAuth();
+
     const location = useLocation();
     const navigate = useNavigate();
+
+    const usernameRef = useRef();
+    const passwordRef = useRef();
+
+    useEffect( () => {
+        usernameRef.current.focus();
+    },[]);
 
     Yup.setLocale({
         mixed: {
@@ -35,77 +43,80 @@ const SignIn = ({t}) => {
         password: Yup.string().min(2).max(10).required(),
     })
 
-    const formik = useFormik({
-        initialValues: {username: "", password: ""},
-        validationSchema: signInSchema,
-        onSubmit: async (values) => {
+    return (
+    	<>
+  	    <Formik
+          initialValues={ {username: "", password: ""} }
+          validationSchema={ signInSchema}
+          onSubmit={ async (values, actions) => {
             const { data: token } = await axios.post(routes['loginPath'](), {
-                username: values.username,
-                password: values.password
+              username: values.username,
+              password: values.password
             });
+            //actions.resetForm({});
             localStorage.setItem('userId', JSON.stringify(token));
             auth.logIn();
-
-            const preveousPageHref = location.state.from.pathname;
-            navigate(preveousPageHref, { replace: true, state: { from: location } } )
-        }
-    })
-    return (
-    <div className='container-fluid h-100'>
-    <div className='row justify-content-center align-content-center h-100'>
-        <div className='col-12 col-md-8 col-xxl-6'>
-            <Card className='shadow-sm'>
-                <Card.Body className='row p-5 m-4'>
-                    <div className='col d-flex align-items-center justify-content-center'>here will be image</div>
-                    <Form className='col' onSubmit={formik.handleSubmit}>
-                        <h1 className='text-center'>{t("signInForm.header")}</h1>
-                        <Form.Group className="mb-3 form-floating">
-                            <Form.Control id="username"
+            console.log(location);
+            const preveousPage = location.state ? location.state.from.pathname : '/';
+            navigate(preveousPage, { replace: true, state: { from: location.pathname } } )
+            }}
+        >
+          {({handleSubmit, isSubmitting, handleChange, values, errors}) => (
+            <div className='row justify-content-center align-content-center h-100'>
+              <div className='col-12 col-md-8 col-xxl-6'>
+                <Card className='shadow-sm'>
+                  <Card.Body className='row p-5'>
+                    <div className='col d-flex align-items-center justify-content-center'>
+											<img src="https://raw.githubusercontent.com/k1ntsugi1/layout-designer-project-lvl1/main/src/assets/images/2.png" className='img-fluid rounded-circle' alt="Enter"/>
+										</div>
+                    <Form noValidate  className='col-12 col-md-6 mt-3 mt-mb-0' onSubmit={handleSubmit}>
+          	          <h1 className='text-center mb-4'>{t("signInForm.header")}</h1>
+            	        <Form.Group className="mb-3 form-floating">
+                        <Form.Control id="username"
                                       name="username"
-                                      type="text" 
-                                      placeholder={ t("signInForm.placeHolders.userName") } 
-                                      onChange={formik.handleChange}
-                                      value={formik.values.username} />
-                            <Form.Label htmlFor="username">{t("signInForm.placeHolders.userName")}</Form.Label>
-                        </Form.Group>
-                        <Form.Group className="mb-3 form-floating">
-                            <Form.Control id="password"
-                                      name="password"
-                                      type="text"
-                                      placeholder={ t("signInForm.placeHolders.password") }
-                                      onChange={formik.handleChange}
-                                      value={formik.values.password}/>
-                            <Form.Label htmlFor="password">{ t("signInForm.placeHolders.password")}</Form.Label>
-                        </Form.Group>
-                        <Popup trigger={
-                                <Button className="w-100" variant="outline-primary" type="submit">{t("signInForm.buttonSubmit")}</Button>
-                               }
-                               position='bottom'
-                               on={['hover', 'focus']}
-                               contentStyle={{ marginTop: '5px',
-                                               padding: "0 5px 0 5px",
-                                               color: 'white',
-                                               textAlign: 'center',
-                                               backgroundColor: '#ff0000',
-                                               borderRadius: '10px',
-                                               opacity: '90%' }}>
-                            {formik.errors.username && <div>{t("signInForm.usernameField")}: { formik.errors.username }</div>} 
-                            {formik.errors.password && <div>{t("signInForm.passwordField")}: { formik.errors.password }</div>}
-                        </Popup>
-                        
-                        </Form>
-                    </Card.Body>
-                    <Card.Footer>
-                        <div className='text-center'>
-                        <span>{t("signInForm.footer.labelSignUp")}</span>{' '}
-                        <a href='#'>{t("signInForm.footer.hrefToSignUp")}</a>
-                        </div>
-                    </Card.Footer>
-            </Card>
-        </div>
-    </div>
-    </div>
-    )
+                              		    type="text" 
+                                      ref={usernameRef}
+          	                          placeholder={ t("signInForm.placeHolders.userName") } 
+                                      onChange={handleChange}
+                                      value={values.username}
+                                      isInvalid={!!errors.username}
+                        />
+              				  <Form.Label htmlFor="username">{t("signInForm.placeHolders.userName")}</Form.Label>
+        		            <Form.Control.Feedback type="invalid" tooltip>
+  	         	            {errors.username}
+                         </Form.Control.Feedback>
+                      </Form.Group>
+                      <Form.Group className="mb-3 form-floating">
+                      	<Form.Control id="password"
+                    								  name="password"
+      						    	              type="text"
+                      	              ref={passwordRef}
+                      	              placeholder={ t("signInForm.placeHolders.password") }
+                      	              onChange={handleChange}
+                      	              value={values.password}
+                      	              isInvalid={!!errors.password}
+                      	/>
+                      	<Form.Label htmlFor="password">{ t("signInForm.placeHolders.password")}</Form.Label>
+                      	<Form.Control.Feedback type="invalid" tooltip>
+                        {errors.password}
+                      	</Form.Control.Feedback>
+                  		</Form.Group>
+                      <Button className="w-100" variant="outline-primary" type="submit" disabled={isSubmitting}>{t("signInForm.buttonSubmit")}</Button>
+                    </Form>
+                  </Card.Body>
+                  <Card.Footer>
+               	   <div className='text-center'>
+      	      	      <span>{t("signInForm.footer.labelSignUp")}</span>{' '}
+        	    	      <a href='#'>{t("signInForm.footer.hrefToSignUp")}</a>
+              	    </div>
+                  </Card.Footer>
+                </Card>
+              </div>        
+          	</div>
+          )}
+        </Formik>
+    </>
+  )
 } 
 
 export default withTranslation()(SignIn);

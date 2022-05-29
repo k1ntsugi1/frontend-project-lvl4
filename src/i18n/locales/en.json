@@ -18,6 +18,10 @@
             "required": "required field"
         }
     },
-    "logOutBtn": "Log out"
-
+    "logOutBtn": "Log out",
+    "undefindPage": {
+        "haveNotFindedPage": "Page have not found",
+        "suggestion": "But you can go to",
+        "linkToMainPage": "main page"
+    }
 }

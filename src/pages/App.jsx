@@ -7,10 +7,10 @@ import {
     Link,
     useLocation,
     Navigate
-  } from "react-router-dom";
+} from "react-router-dom";
 
 import { withTranslation } from 'react-i18next';
-
+import { BtnsChgLng } from '../i18n/BtnsChgLng.jsx';
 import { Button, Container, NavbarBrand, Navbar } from 'react-bootstrap';
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 
@@ -55,38 +55,37 @@ const ButtonLogOut = (props) => {
     const auth = useAuth();
     return (
         auth.loggedIn 
-        ? <Button variant="primary" onClick={auth.logOut}>{t("logOutBtn")}</Button> 
+        ? <Button className="ms-4" variant="outline-success" onClick={auth.logOut}>{t("logOutBtn")}</Button> 
         : null
     )
 }
 
 const App = ({t, i18n}) => {
-    const changeLang = (lang) => () => {
-        i18n.changeLanguage(lang);
-      }
+
     return (
-        <AuthProvider>
-            <Navbar bg="light">
-                <Container>
-                    <NavbarBrand as={Link} to="/">Chat</NavbarBrand>
-                    <NavbarCollapse id="changeLang" className='justify-content-end'>
-                        <Button variant="outline-info" onClick={ changeLang('ru') }>Ru</Button>
-                        <Button variant="outline-info" onClick={ changeLang('en') } >En</Button>
-                        { <ButtonLogOut t={ t }/> }
-                    </NavbarCollapse>
-                </Container>
-            </Navbar>
-            <div className='h-100'>
-                <Routes>
-                    <Route path='/' element={(
-                        <PrivatRout>
-                            <ChatPage/>
-                        </PrivatRout> 
-                    )}/>
-                    <Route path="/login" element={ <SignIn/> }/>
-                    <Route path="*" element={ <NotFoundPage/> }/>
-                </Routes>
-            </div >
+      <AuthProvider>
+        <div className='d-flex flex-column h-100'>
+          <Navbar bg="light" className='shadow-sm'>
+            <Container>
+                <NavbarBrand as={Link} to="/">Chat</NavbarBrand>
+                <NavbarCollapse id="changeLang" className='justify-content-end'>
+                  <BtnsChgLng i18n={i18n}/>
+                </NavbarCollapse>
+                { <ButtonLogOut t={ t }/> }
+            </Container>
+          </Navbar>
+          <div className='container-fluid h-100'>
+            <Routes>
+              <Route path='/' element={(
+                <PrivatRout>
+                  <ChatPage/>
+                </PrivatRout> 
+              )}/>
+              <Route path="/login" element={ <SignIn/> }/>
+              <Route path="*" element={ <NotFoundPage t={t}/> }/>
+            </Routes>
+          </div >
+        </div>  
         </AuthProvider>
     )
 }
