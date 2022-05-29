@@ -1,6 +1,7 @@
 {
-
     "signInForm": {
+        "usernameField": "Username",
+        "passwordField": "Password",
         "header": "Sign In",
         "buttonSubmit": "Sign In",
         "placeHolders": {
@@ -13,9 +14,10 @@
         },
         "errorsValidating": {
             "short": "Too short",
-             "long": "Too long",   
+            "long": "Too long",   
             "required": "required field"
         }
-    }
+    },
+    "logOutBtn": "Log out"
 
 }

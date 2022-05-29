@@ -23,7 +23,9 @@ import useAuth from '../hooks/index.jsx';
 
 const AuthProvider = ({children}) => {
 
-    const [loggedIn, setLoggetIn] = useState(false);
+    const userId = JSON.parse(localStorage.getItem('userId')) ?? false;
+    const startState = (userId && userId.token) ? true : false; 
+    const [loggedIn, setLoggetIn] = useState(startState);
 
     const logIn = () => setLoggetIn(true);
     const logOut = () => {
@@ -41,15 +43,22 @@ const AuthProvider = ({children}) => {
 const PrivatRout = ({children}) => {
     const auth = useAuth();
     const location = useLocation()
-
     return (
-        <>
-            { auth.loggedIn ? children : <Navigate to='/login' state={{ from: location }} /> }
-        </>
+             auth.loggedIn 
+             ? children 
+             : <Navigate to='/login' state={{ from: location }} /> 
     )
 }
 
-
+const ButtonLogOut = (props) => {
+    const { t } = props;
+    const auth = useAuth();
+    return (
+        auth.loggedIn 
+        ? <Button variant="primary" onClick={auth.logOut}>{t("logOutBtn")}</Button> 
+        : null
+    )
+}
 
 const App = ({t, i18n}) => {
     const changeLang = (lang) => () => {
@@ -63,18 +72,19 @@ const App = ({t, i18n}) => {
                     <NavbarCollapse id="changeLang" className='justify-content-end'>
                         <Button variant="outline-info" onClick={ changeLang('ru') }>Ru</Button>
                         <Button variant="outline-info" onClick={ changeLang('en') } >En</Button>
+                        { <ButtonLogOut t={ t }/> }
                     </NavbarCollapse>
                 </Container>
             </Navbar>
-            <div>
+            <div className='h-100'>
                 <Routes>
-                    <Route path='/' element={
+                    <Route path='/' element={(
                         <PrivatRout>
                             <ChatPage/>
                         </PrivatRout> 
-                        }></Route>
-                    <Route path="/login" element={ <SignIn/> }></Route>
-                    <Route path="*" element={ <NotFoundPage/> }></Route>
+                    )}/>
+                    <Route path="/login" element={ <SignIn/> }/>
+                    <Route path="*" element={ <NotFoundPage/> }/>
                 </Routes>
             </div >
         </AuthProvider>

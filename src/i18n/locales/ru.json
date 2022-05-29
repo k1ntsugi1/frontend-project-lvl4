@@ -1,5 +1,7 @@
 {
     "signInForm": {
+        "usernameField": "Имя",
+        "passwordField": "Пароль",
         "header": "Войти",
         "buttonSubmit": "Войти",
         "placeHolders": {
@@ -11,10 +13,11 @@
             "labelSignUp": "Нет аккаунта?"
         },
         "errorsValidating": {
-            "short": "Слишком коротко",
-            "long": "Слишком длинно",   
+            "short": "Слишком короткое/ий",
+            "long": "Слишком длинное/ый",   
             "required": "Обязательное поле"
         }
-    }
+    },
+    "logOutBtn": "Выйти"
     
 }

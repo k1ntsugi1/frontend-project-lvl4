@@ -12,10 +12,14 @@ import {
     useNavigate,
   } from "react-router-dom";
 
+import Popup from 'reactjs-popup';
+
+
 const SignIn = ({t}) => {
     const auth = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
+
     Yup.setLocale({
         mixed: {
             required: t("signInForm.errorsValidating.required"),
@@ -34,55 +38,73 @@ const SignIn = ({t}) => {
     const formik = useFormik({
         initialValues: {username: "", password: ""},
         validationSchema: signInSchema,
-        onSubmit: async (values) => { 
-            const { data: token } = await axios.post('/api/v1/login', {
+        onSubmit: async (values) => {
+            const { data: token } = await axios.post(routes['loginPath'](), {
                 username: values.username,
                 password: values.password
             });
-            localStorage.setItem('userId', token);
+            localStorage.setItem('userId', JSON.stringify(token));
+            auth.logIn();
+
             const preveousPageHref = location.state.from.pathname;
-            console.log(preveousPageHref);
-            navigate(preveousPageHref, { replace: true, state: { from: location.pathname } } )
+            navigate(preveousPageHref, { replace: true, state: { from: location } } )
         }
     })
     return (
-        <div className='container-fluid h-100'>
-            <Card className='h-100 shadow-sm'>
-                <Card.Body className='row justify-content-center align-content-center p-5'>
-                <div className='col d-flex align-items-center justify-content-center'>here will be image</div>
-                <Form className='col' onSubmit={formik.handleSubmit}>
-                    <h2>{t("signInForm.header")}</h2>
-                    <Form.Group className="mb-3">
-                        <Form.Label className="sr-only" htmlFor="username">username</Form.Label>
-                        <Form.Control id="username"
+    <div className='container-fluid h-100'>
+    <div className='row justify-content-center align-content-center h-100'>
+        <div className='col-12 col-md-8 col-xxl-6'>
+            <Card className='shadow-sm'>
+                <Card.Body className='row p-5 m-4'>
+                    <div className='col d-flex align-items-center justify-content-center'>here will be image</div>
+                    <Form className='col' onSubmit={formik.handleSubmit}>
+                        <h1 className='text-center'>{t("signInForm.header")}</h1>
+                        <Form.Group className="mb-3 form-floating">
+                            <Form.Control id="username"
                                       name="username"
                                       type="text" 
                                       placeholder={ t("signInForm.placeHolders.userName") } 
                                       onChange={formik.handleChange}
                                       value={formik.values.username} />
-                        {formik.errors.username && <Form.Text className='text-danger'>{formik.errors.username}</Form.Text>}
-                    </Form.Group>
-                    <Form.Group className="mb-3">
-                        <Form.Label className="sr-only" htmlFor="password">Password</Form.Label>
-                        <Form.Control id="password"
+                            <Form.Label htmlFor="username">{t("signInForm.placeHolders.userName")}</Form.Label>
+                        </Form.Group>
+                        <Form.Group className="mb-3 form-floating">
+                            <Form.Control id="password"
                                       name="password"
                                       type="text"
                                       placeholder={ t("signInForm.placeHolders.password") }
                                       onChange={formik.handleChange}
                                       value={formik.values.password}/>
-                        {formik.errors.password && <Form.Text className='text-danger'>{formik.errors.password}</Form.Text>}
-                    </Form.Group>
-                        <Button variant="primary" type="submit" className={ (formik.errors.username || formik.errors.password) ? 'disabled' : null }>{t("signInForm.buttonSubmit")}</Button>
-                    </Form>
-                </Card.Body>
-                <Card.Footer>
-                    <div className='text-center'>
-                    {t("signInForm.footer.labelSignUp")}
-                    <a href='#'>{t("signInForm.footer.hrefToSignUp")}</a>
-                    </div>
-                </Card.Footer>
+                            <Form.Label htmlFor="password">{ t("signInForm.placeHolders.password")}</Form.Label>
+                        </Form.Group>
+                        <Popup trigger={
+                                <Button className="w-100" variant="outline-primary" type="submit">{t("signInForm.buttonSubmit")}</Button>
+                               }
+                               position='bottom'
+                               on={['hover', 'focus']}
+                               contentStyle={{ marginTop: '5px',
+                                               padding: "0 5px 0 5px",
+                                               color: 'white',
+                                               textAlign: 'center',
+                                               backgroundColor: '#ff0000',
+                                               borderRadius: '10px',
+                                               opacity: '90%' }}>
+                            {formik.errors.username && <div>{t("signInForm.usernameField")}: { formik.errors.username }</div>} 
+                            {formik.errors.password && <div>{t("signInForm.passwordField")}: { formik.errors.password }</div>}
+                        </Popup>
+                        
+                        </Form>
+                    </Card.Body>
+                    <Card.Footer>
+                        <div className='text-center'>
+                        <span>{t("signInForm.footer.labelSignUp")}</span>{' '}
+                        <a href='#'>{t("signInForm.footer.hrefToSignUp")}</a>
+                        </div>
+                    </Card.Footer>
             </Card>
         </div>
+    </div>
+    </div>
     )
 } 
 
