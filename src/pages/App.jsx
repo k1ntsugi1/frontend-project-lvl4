@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
-
+import { Provider } from 'react-redux';
+import store from '../slices/index.js';
 import {
     Routes,
     Route,
@@ -63,7 +64,8 @@ const ButtonLogOut = (props) => {
 const App = ({t, i18n}) => {
 
     return (
-      <AuthProvider>
+      <Provider store={store}>
+        <AuthProvider>
         <div className='d-flex flex-column h-100'>
           <Navbar bg="light" className='shadow-sm'>
             <Container>
@@ -87,6 +89,7 @@ const App = ({t, i18n}) => {
           </div >
         </div>  
         </AuthProvider>
+      </Provider>
     )
 }
 

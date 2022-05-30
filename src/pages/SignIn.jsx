@@ -49,14 +49,13 @@ const SignIn = ({t}) => {
           initialValues={ {username: "", password: ""} }
           validationSchema={ signInSchema}
           onSubmit={ async (values, actions) => {
-            const { data: token } = await axios.post(routes['loginPath'](), {
+            const { data: userId } = await axios.post(routes['loginPath'](), {
               username: values.username,
               password: values.password
             });
             //actions.resetForm({});
-            localStorage.setItem('userId', JSON.stringify(token));
+            localStorage.setItem('userId', JSON.stringify(userId));
             auth.logIn();
-            console.log(location);
             const preveousPage = location.state ? location.state.from.pathname : '/';
             navigate(preveousPage, { replace: true, state: { from: location.pathname } } )
             }}
