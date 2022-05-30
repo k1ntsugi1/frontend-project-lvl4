@@ -23,5 +23,9 @@
         "haveNotFindedPage": "Page have not found",
         "suggestion": "But you can go to",
         "linkToMainPage": "main page"
+    },
+    "chatPage": {
+        "channelsHeader": "Channels",
+        "placeholderInput": "Enter message..."
     }
 }

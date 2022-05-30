@@ -10,7 +10,7 @@ export const BtnsChgLng = ({i18n}) => {
   }
 
   return (
-    <div className="btn-group mr-2" role="group" aria-label="Buttons language changing">
+    <div className="btn-group" role="group" aria-label="Buttons language changing">
       <Popup trigger={
          <Button variant="outline-info" onClick={ changeLang('ru') }>Ru</Button>
       }

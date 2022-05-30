@@ -23,6 +23,10 @@
         "haveNotFindedPage": "Страница не найдена",
         "suggestion": "Но вы можете перейти",
         "linkToMainPage": "на главную страницу"
+    },
+    "chatPage": {
+        "channelsHeader": "Каналы",
+        "placeholderInput": "Введите сообщение..."
     }
     
 }

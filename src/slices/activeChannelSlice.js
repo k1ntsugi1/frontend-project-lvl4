@@ -24,20 +24,21 @@ const activeChannelSlice = createSlice({
     initialState: ({ loading: 'idle', error: null, currentChannelId: null }),
     reducers: {
         setNewId(state, { payload: currentChannelId }) {
-            state.currentChannelId = currentChannelId
+            state.currentChannelId = currentChannelId;
         },
     },
     extraReducers: (builder) => {
         builder
             .addCase(fetchDataCurrentUserByUserId.pending, (state) => {
+                console.log('start')
                 state.loading = 'loading';
                 state.error = null;
             })
             .addCase(fetchDataCurrentUserByUserId.fulfilled, (state, { payload: { currentChannelId } }) => {
                 state.loading = 'idle';
                 state.error = null;
-                console.log(currentChannelId, 'currentChannelId')
-                state.currentChannelId = +currentChannelId
+                console.log('loading')
+                state.currentChannelId = currentChannelId
             })
             .addCase(fetchDataCurrentUserByUserId.rejected, (state, actions) => {
                 state.loading = 'error';

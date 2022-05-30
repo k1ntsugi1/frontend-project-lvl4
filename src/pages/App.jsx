@@ -15,9 +15,10 @@ import { BtnsChgLng } from '../i18n/BtnsChgLng.jsx';
 import { Button, Container, NavbarBrand, Navbar } from 'react-bootstrap';
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 
-import { ChatPage } from './ChatPage.jsx'
-import SignIn  from './SignIn.jsx'
-import { NotFoundPage } from './NotFoundPage.jsx'
+import { ChatPage } from './ChatPage.jsx';
+import SignIn  from './SignIn.jsx';
+import { NotFoundPage } from './NotFoundPage.jsx';
+import Prompt from '../components/Prompt.jsx';
 
 import AuthContext from '../contexts/index.jsx';
 import useAuth from '../hooks/index.jsx';
@@ -71,12 +72,13 @@ const App = ({t, i18n}) => {
             <Container>
                 <NavbarBrand as={Link} to="/">Chat</NavbarBrand>
                 <NavbarCollapse id="changeLang" className='justify-content-end'>
+                  <Prompt />
                   <BtnsChgLng i18n={i18n}/>
                 </NavbarCollapse>
                 { <ButtonLogOut t={ t }/> }
             </Container>
           </Navbar>
-          <div className='container-fluid h-100'>
+          
             <Routes>
               <Route path='/' element={(
                 <PrivatRout>
@@ -87,7 +89,7 @@ const App = ({t, i18n}) => {
               <Route path="*" element={ <NotFoundPage t={t}/> }/>
             </Routes>
           </div >
-        </div>  
+        
         </AuthProvider>
       </Provider>
     )
