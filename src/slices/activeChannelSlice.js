@@ -23,7 +23,7 @@ const activeChannelSlice = createSlice({
     name: 'currentChannel',
     initialState: ({ loading: 'idle', error: null, currentChannelId: null }),
     reducers: {
-        setNewId(state, { payload: currentChannelId }) {
+        setNewActiveChannelId(state, { payload: currentChannelId }) {
             state.currentChannelId = currentChannelId;
         },
     },

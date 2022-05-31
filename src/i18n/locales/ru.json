@@ -35,6 +35,12 @@
         "placeholderInput": "Введите сообщение...",
         "ChangeNameOfChannel": "Add channel",
         "removeChannel": "RemoveChannel"
+    },
+    "modal": {
+        "headerAdding": "Добавить новый канал",
+        "headerChangeName": "Переименовать канал",
+        "send": "Отправить",
+        "cancel": "Отмена"
     }
     
 }

@@ -7,7 +7,7 @@ export const MessageItem = ({message}) => {
     console.log(body, username, 'building message')
     return (
         <div className='text-break mb-2'>
-            <b>{ username }:</b>
+            <b>{ username }: </b>
             <span>{ body }</span>
         </div>
     )

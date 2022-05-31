@@ -12,7 +12,7 @@ export const BodyMessageField = () => {
     const currentActiveChannelId = useSelector( (state) => state.activeChannel.currentChannelId);
     const messages = useSelector(selectorsMessages.selectAll) ?? [];
     const messagesCurrentChannel = getMessagesCurrentChannel(currentActiveChannelId, messages);
-    console.log(messagesCurrentChannel);
+
     return (
         <div className='overflow-auto px-5 flex-grow-1 border rounded'>
             { (messagesCurrentChannel.length > 0) 

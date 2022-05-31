@@ -35,5 +35,11 @@
         "placeholderInput": "Enter message...",
         "ChangeNameOfChannel": "Add channel",
         "removeChannel": "RemoveChannel"
+    },
+    "modal": {
+        "headerAdding": "Add new channel",
+        "headerChangeName": "Change name of channel",
+        "send": "Send",
+        "cancel": "Cancel"
     }
 }

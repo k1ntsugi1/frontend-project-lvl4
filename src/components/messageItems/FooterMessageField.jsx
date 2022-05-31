@@ -10,6 +10,8 @@ import {
     selectorsMessages,
 } from '../../slices/messagesSlice.js';
 
+
+
 const FooterMessageField = ({t}) => {
     const socket = io();
     const [statusNetwork, setStatusNetwork] = useState('ok')
@@ -26,9 +28,8 @@ const FooterMessageField = ({t}) => {
                 socket.status !== 'ok' ? setStatusNetwork('error') : setStatusNetwork('ok');
                 return;
             })
-            socket.on('newMessage', (messageWithId) => {
+            socket.once('newMessage', (messageWithId) => {
                 const { id, message } = messageWithId;
-                console.log(messageWithId)
                 const newMessage = {
                     body: message,
                     channelId: currentActiveChannelId,
@@ -38,13 +39,13 @@ const FooterMessageField = ({t}) => {
                 dispath(actionsMessages.addMessage(newMessage));
                 actions.resetForm( { message: '' } )
             })
-            
         }
     });
 
     useEffect(() => {
         messageRef.current.focus();
     })
+    // Измени на инпут только!
     return (
         <div className='mt-auto sticky-bottom px-5 py-3'>
             <Form noValidate className='p-0 border rounded-2' onSubmit={formik.handleSubmit}>
