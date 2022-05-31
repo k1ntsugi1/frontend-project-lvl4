@@ -1,4 +1,10 @@
 {
+    "navBar": {
+        "changeLang": "Сменить язык",
+        "signedInAs": "Вошли как:",
+        "aboutUs": "О нас",
+        "currentLang": "Русский"
+    },
     "signInForm": {
         "usernameField": "Имя",
         "passwordField": "Пароль",
@@ -26,7 +32,9 @@
     },
     "chatPage": {
         "channelsHeader": "Каналы",
-        "placeholderInput": "Введите сообщение..."
+        "placeholderInput": "Введите сообщение...",
+        "ChangeNameOfChannel": "Add channel",
+        "removeChannel": "RemoveChannel"
     }
     
 }

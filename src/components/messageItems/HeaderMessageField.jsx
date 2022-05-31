@@ -6,16 +6,16 @@ import {
 } from '../../slices/channelsSlice.js';
 
 export const HeaderMessageField = () => {
-    const currentChannelId = useSelector( (state) => state.activeChannel.currentChannelId);
+    const currentActiveChannelId = useSelector( (state) => state.activeChannel.currentChannelId);
     const channels = useSelector(selectorsChannels.selectAll);
-    console.log(channels, 'channels messagefield', currentChannelId)
-    const  currentActiveChannel = channels.filter(({id}) => (id === currentChannelId));
+    // что-то странное творится - через деструктуризацию и фильтер не работае а так работает хмммм
+    const  currentActiveChannel = channels.find(({id}) => (id === currentActiveChannelId)) ?? null;
     
-    //console.log(currentActiveChannel.name, 'currentChannel2');
+    console.log(currentActiveChannel);
 
     return (
         <div className="bg-light mb-2 p-3 shadow-sm small">
-            <h3># { currentActiveChannel.name }</h3>
+            <h3># {currentActiveChannel && currentActiveChannel['name'] }</h3>
         </div>
     )
 }

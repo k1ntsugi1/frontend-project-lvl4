@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import HeaderChannels from './channelsItems/HeaderChannels.jsx'
 import { UnmutableChannel } from './channelsItems/UnmutableChannel.jsx'
-import { MutableChannel } from './channelsItems/MutableChannel.jsx'
+import MutableChannel from './channelsItems/MutableChannel.jsx'
 
 import {  
   actionsChannels,
@@ -17,6 +17,8 @@ import {
   selectorsMessages,
 } from '../slices/messagesSlice.js';
 
+import { getMessagesCurrentChannel } from '../additionalFunction/getMessagesCurrentChannel.js'
+
 const getChannelsByMutableState = (channels) => {
   const unmutableChannels = [];
   const mutableChannels = [];
@@ -27,15 +29,19 @@ const getChannelsByMutableState = (channels) => {
   });
 
   return { unmutableChannels, mutableChannels };
-}
+};
+
+const getVariant = (currentChannelId, currentActiveChannelId, variant) => {
+  return currentChannelId === currentActiveChannelId ? variant : null;
+};
 
 
 export const ChannelsField = () => {
+
+  const currentActiveChannelId = useSelector( (state) => state.activeChannel.currentChannelId);
   const channels = useSelector(selectorsChannels.selectAll);
-  console.log(channels, 'channels');
-  const currentChannelId = useSelector( (state) => state.activeChannel.currentChannelId);
-  const messages = useSelector(selectorsMessages.selectAll)
-  //Отображение Сообщений сделать!
+  const messages = useSelector(selectorsMessages.selectAll) ?? [];
+
   const { unmutableChannels, mutableChannels} = getChannelsByMutableState(channels);
 
     return (
@@ -44,16 +50,17 @@ export const ChannelsField = () => {
         <HeaderChannels />
 
         <Nav as="ul" variant="pills" className='flex-column'>
-
           { unmutableChannels.map((channel) => {
-              const variant = channel.id === currentChannelId ? 'secondary' : null;
-              return <UnmutableChannel  key={channel.id} channel={channel} variant={variant}/>
+              const variant = getVariant(channel.id, currentActiveChannelId,'secondary');
+              const messagesCurrentChannel = getMessagesCurrentChannel(channel.id, messages);
+              return <UnmutableChannel  key={channel.id} dataChannel={ {channel, messagesCounter: messagesCurrentChannel.length} } variant={variant}/>
             }) 
           }
 
           { mutableChannels.map((channel) => {
-              const variant = channel.id === currentChannelId ? 'info' : null;
-              return <MutableChannel  key={channel.id} channel={channel} variant={variant}/>
+              const variant = getVariant(channel.id, currentActiveChannelId,'secondary');
+              const messagesCurrentChannel = getMessagesCurrentChannel(channel.id, messages);
+              return <MutableChannel  key={channel.id} dataChannel={ {channel, messagesCounter: messagesCurrentChannel.length} } variant={variant}/>
             }) 
           }
 

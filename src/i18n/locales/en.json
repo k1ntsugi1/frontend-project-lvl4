@@ -1,4 +1,10 @@
 {
+    "navBar": {
+        "changeLang": "Change Language",
+        "signedInAs": "Signed in as:",
+        "aboutUs": "About us",
+        "currentLang": "English"
+    },
     "signInForm": {
         "usernameField": "Username",
         "passwordField": "Password",
@@ -26,6 +32,8 @@
     },
     "chatPage": {
         "channelsHeader": "Channels",
-        "placeholderInput": "Enter message..."
+        "placeholderInput": "Enter message...",
+        "ChangeNameOfChannel": "Add channel",
+        "removeChannel": "RemoveChannel"
     }
 }

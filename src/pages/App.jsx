@@ -11,14 +11,13 @@ import {
 } from "react-router-dom";
 
 import { withTranslation } from 'react-i18next';
-import { BtnsChgLng } from '../i18n/BtnsChgLng.jsx';
-import { Button, Container, NavbarBrand, Navbar } from 'react-bootstrap';
+import BtnsChgLng from '../i18n/BtnsChgLng.jsx';
+import { Button, Container, NavbarBrand, Navbar, Nav } from 'react-bootstrap';
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 
 import { ChatPage } from './ChatPage.jsx';
 import SignIn  from './SignIn.jsx';
 import { NotFoundPage } from './NotFoundPage.jsx';
-import Prompt from '../components/Prompt.jsx';
 
 import AuthContext from '../contexts/index.jsx';
 import useAuth from '../hooks/index.jsx';
@@ -63,6 +62,8 @@ const ButtonLogOut = (props) => {
 }
 
 const App = ({t, i18n}) => {
+  const userId = JSON.parse(localStorage.getItem('userId')) ?? false;
+  const username = (userId && userId.username) ? userId.username : null; 
 
     return (
       <Provider store={store}>
@@ -71,9 +72,18 @@ const App = ({t, i18n}) => {
           <Navbar bg="light" className='shadow-sm'>
             <Container>
                 <NavbarBrand as={Link} to="/">Chat</NavbarBrand>
+                <Nav className='justify-content-start me-3'>
+                      <Nav.Link href="/about">{t("navBar.aboutUs")}</Nav.Link>
+                </Nav>
+                { username &&
+                  <Navbar.Collapse className="justify-content-start">
+                    <Navbar.Text>
+                      {t('navBar.signedInAs')} {username}
+                    </Navbar.Text>
+                  </Navbar.Collapse>
+                }
                 <NavbarCollapse id="changeLang" className='justify-content-end'>
-                  <Prompt />
-                  <BtnsChgLng i18n={i18n}/>
+                  <BtnsChgLng/>
                 </NavbarCollapse>
                 { <ButtonLogOut t={ t }/> }
             </Container>
@@ -86,6 +96,7 @@ const App = ({t, i18n}) => {
                 </PrivatRout> 
               )}/>
               <Route path="/login" element={ <SignIn/> }/>
+              {/*Добавить страницу о нас*/}
               <Route path="*" element={ <NotFoundPage t={t}/> }/>
             </Routes>
           </div >
