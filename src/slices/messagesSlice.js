@@ -8,7 +8,7 @@ const  messagesSlice = createSlice({
     name: 'messagesChannelsCurrentUser',
     initialState: adapterMessages.getInitialState(),
     reducers: {
-        ////Определить действия
+        addMessage: adapterMessages.addOne,
     },
 
     extraReducers: (builder) => {

@@ -1,7 +1,8 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useFormik  } from 'formik';
-import { useSelector } from 'react-redux';
+import { io } from "socket.io-client";
+import { useSelector, useDispatch } from 'react-redux';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { withTranslation } from 'react-i18next';
 import {  
@@ -10,14 +11,34 @@ import {
 } from '../../slices/messagesSlice.js';
 
 const FooterMessageField = ({t}) => {
+    const socket = io();
+    const [statusNetwork, setStatusNetwork] = useState('ok')
     const messageRef = useRef();
+    const currentActiveChannelId = useSelector( (state) => state.activeChannel.currentChannelId);
+    const dispath = useDispatch()
 
     const formik = useFormik({
         initialValues: {
-            currentMessage: '',
+            message: '',
         },
-        onSubmit: (values) => {
-            console.log(values);
+        onSubmit: (values, actions) => {
+            socket.emit('newMessage', values, (socket) => {
+                socket.status !== 'ok' ? setStatusNetwork('error') : setStatusNetwork('ok');
+                return;
+            })
+            socket.on('newMessage', (messageWithId) => {
+                const { id, message } = messageWithId;
+                console.log(messageWithId)
+                const newMessage = {
+                    body: message,
+                    channelId: currentActiveChannelId,
+                    username: JSON.parse(localStorage.getItem('userId')).username, 
+                    id,
+                }
+                dispath(actionsMessages.addMessage(newMessage));
+                actions.resetForm( { message: '' } )
+            })
+            
         }
     });
 
@@ -26,7 +47,7 @@ const FooterMessageField = ({t}) => {
     })
     return (
         <div className='mt-auto sticky-bottom px-5 py-3'>
-            <Form className='p-0 border rounded-2' onSubmit={formik.handleSubmit}>
+            <Form noValidate className='p-0 border rounded-2' onSubmit={formik.handleSubmit}>
             <InputGroup>
                 <Form.Control id="message"
                               name="message"
@@ -34,9 +55,15 @@ const FooterMessageField = ({t}) => {
                               type="text" 
                               placeholder={t("chatPage.placeholderInput")}
                               onChange={formik.handleChange}
-                              value={formik.currentMessage}
-                              className="border-0 p-0 ps-2" />
-                <Button className='border-0' variant="outline-primary" type="submit">?</Button>
+                              value={formik.values.message}
+                              className="border-0 p-0 ps-2"
+                              isInvalid={statusNetwork === 'error'} />
+                <Button className='border-0' 
+                        variant="outline-primary"
+                        type="submit"
+                        disabled={formik.values.message === '' || formik.isSubmitting}>
+                    ?
+                </Button>
             </InputGroup>
         </Form>
         </div>
