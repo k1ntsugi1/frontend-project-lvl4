@@ -3,4 +3,6 @@ import { createContext } from "react";
 
 const AuthContext = createContext({});
 
-export default AuthContext;
+const ModalContex = createContext({});
+
+export { AuthContext, ModalContex };

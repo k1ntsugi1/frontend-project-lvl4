@@ -19,8 +19,8 @@ import { ChatPage } from './ChatPage.jsx';
 import SignIn  from './SignIn.jsx';
 import { NotFoundPage } from './NotFoundPage.jsx';
 
-import AuthContext from '../contexts/index.jsx';
-import useAuth from '../hooks/index.jsx';
+import { AuthContext } from '../contexts/index.jsx';
+import { useAuth } from '../hooks/index.jsx';
 
 const AuthProvider = ({children}) => {
 

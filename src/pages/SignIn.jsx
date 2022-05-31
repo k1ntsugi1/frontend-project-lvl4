@@ -6,7 +6,7 @@ import { Button, Form, Card } from 'react-bootstrap';
 import * as Yup from 'yup';
 import axios from 'axios';
 import routes from '../routes.js';
-import useAuth from '../hooks/index.jsx';
+import { useAuth } from '../hooks/index.jsx';
 import {
     useLocation,
     useNavigate,

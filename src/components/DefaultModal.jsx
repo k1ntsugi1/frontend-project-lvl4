@@ -2,13 +2,11 @@
 import React, { useState } from "react";
 import { Button, Modal, InputGroup, FormControl  } from 'react-bootstrap';
 import { withTranslation } from "react-i18next";
+import { useModal } from "../hooks/index.jsx";
 
 const DefaultModal = ({t, title}) => {
   const [inputValue, setInputValue] = useState('');
-  const [show, setShow] = useState(true);
-  console.log('start modal')
-  const handleClose = () => setShow(false);
-  
+  const modal = useModal()
   
   const mappingTitle = {
     'addingChannel': () => "modal.headerAdding",
@@ -16,7 +14,7 @@ const DefaultModal = ({t, title}) => {
   };
   
   return (
-    <Modal centered show={show} onHide={handleClose}>
+    <Modal centered show={modal.show} onHide={modal.handleClose}>
 
       <Modal.Header closeButton>
         <Modal.Title>{t(mappingTitle[title]())}</Modal.Title>
@@ -35,11 +33,11 @@ const DefaultModal = ({t, title}) => {
               </InputGroup >
             </Modal.Body>
 
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
+            <Modal.Footer className="p-0">
+              <Button variant="secondary" onClick={modal.handleClose}>
                 {t("modal.cancel")}
               </Button>
-              <Button variant="primary" onClick={handleClose}>
+              <Button variant="primary" onClick={modal.handleClose}>
                 {t("modal.send")}
               </Button>
             </Modal.Footer>
