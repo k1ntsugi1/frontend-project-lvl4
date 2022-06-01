@@ -33,8 +33,8 @@
     "chatPage": {
         "channelsHeader": "Каналы",
         "placeholderInput": "Введите сообщение...",
-        "ChangeNameOfChannel": "Add channel",
-        "removeChannel": "RemoveChannel"
+        "renameChannel": "Переименовать",
+        "removeChannel": "Удалить"
     },
     "modal": {
         "headerAdding": "Добавить новый канал",

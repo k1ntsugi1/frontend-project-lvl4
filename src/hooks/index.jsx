@@ -2,10 +2,12 @@
 
 import { useContext } from "react";
 
-import { AuthContext, ModalContex} from "../contexts";
+import { AuthContext, ModalContex, SocketContex} from "../contexts";
 
 const useAuth = () => useContext(AuthContext);
 
-const useModal = () => useContext(ModalContex)
+const useModal = () => useContext(ModalContex);
 
-export { useAuth, useModal };
+const useSocket = () => useContext(SocketContex);
+
+export { useAuth, useModal,useSocket };

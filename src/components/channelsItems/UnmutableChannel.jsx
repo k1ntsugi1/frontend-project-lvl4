@@ -10,12 +10,14 @@ export const UnmutableChannel = ({dataChannel, variant}) => {
     return (
       <Nav.Item as="li" className='w-100'>
         <Button variant={variant} 
-                className='ps-4 w-100 rounded-0 text-start'
+                className='ps-4 w-100 rounded-0 text-start position-relative'
                 onClick={handlerNewActiveChannel(channel.id, dispatch)}
         >
+            <Badge bg="primary" pill>
+              +{messagesCounter}
+            </Badge>
             <span># {channel.name }</span>
             {' '}
-            <Badge bg="primary" className='rounded-circle'>{messagesCounter}</Badge>
         </Button>
       </Nav.Item>
       )

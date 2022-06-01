@@ -8,7 +8,8 @@ const channelsSlice = createSlice({
     name: 'channelsCurrentUser',
     initialState: adapterChannels.getInitialState(),
     reducers: {
-        ////Определить действия
+        addNewChannel: adapterChannels.addOne,
+        updateNameOfChannel: adapterChannels.updateOne
     },
     extraReducers: (builder) => {
         builder

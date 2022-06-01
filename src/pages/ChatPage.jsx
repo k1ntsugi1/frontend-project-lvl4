@@ -7,19 +7,50 @@ import {
     actionsActiveChannel,
 } from '../slices/activeChannelSlice.js';
 
-import { ModalContex } from '../contexts/index.jsx';
-
+import { ModalContex, SocketContex } from '../contexts/index.jsx';
+import { useSocket } from "../hooks/index.jsx";
 import { ChannelsField } from '../components/ChannelsField.jsx';
 import { MessageField } from '../components/MessageField.jsx';
+import { io } from "socket.io-client";
+import { useImmer } from "use-immer";
 
 
 
 const ModalProvider = ({children}) => {
     
-    const [show, setShow] = useState(false);
-    console.log(show, 'modalProvider')
-    const handleShow = () => setShow(true);
-    const handleClose = () => setShow(false);
+    const [show, setShow] = useImmer({showAddChannelModal: false, showRenameChannelModal: false});
+
+    const handleShow = (action) => () => {
+        const mappingShowing ={
+            'showAddChannelModal': () => {
+                setShow( (state) => {
+                    state.showAddChannelModal = true;
+                });
+            },
+            'showRenameChannelModal': () => {
+                setShow( (state) => {
+                    state.showRenameChannelModal = true;
+                });
+            }
+        }
+        mappingShowing[action]();
+    }
+    
+    const handleClose = (action) => () => {
+        const mappingClosing ={
+            'showAddChannelModal': () => {
+                setShow( (state) => {
+                    state.showAddChannelModal = false;
+                });
+            },
+            'showRenameChannelModal': () => {
+                setShow( (state) => {
+                    state.showRenameChannelModal = false;
+                });
+            }
+        }
+        mappingClosing[action]();
+    };
 
     return (
         <ModalContex.Provider value={ { show, handleShow, handleClose } }>
@@ -29,23 +60,39 @@ const ModalProvider = ({children}) => {
 
 }
 
+const SocketProvider = ({socket, children}) => {
+    return (
+        <SocketContex.Provider value={{ socket }}>
+            {children}
+        </SocketContex.Provider>
+    )
+}
+
 export const ChatPage = () => {
 
     const { token } = JSON.parse(localStorage.getItem('userId'));
     const dispath = useDispatch();
 
+    const [socket, setSocket] = useState(null);
+
+    const handlerSocket = () => {
+        const newSocket = io();
+        return setSocket(newSocket)
+    }
+
     useEffect( () => { 
-            dispath(fetchDataCurrentUserByUserId(token));
-        },[]);
-
-
+        dispath(fetchDataCurrentUserByUserId(token));
+        handlerSocket();
+    },[]);
 
     return (
         <div className="row h-100 my-4 overflow-hidden rounded shadow border border-info">
-            <ModalProvider>
-                <ChannelsField />
-            </ModalProvider>
-            <MessageField/>
+            <SocketProvider socket={socket}>
+                <ModalProvider>
+                    <ChannelsField />
+                </ModalProvider>
+                <MessageField/>
+            </SocketProvider>
         </div>
     )
 }

@@ -41,7 +41,6 @@ const getVariant = (currentChannelId, currentActiveChannelId, variant) => {
 
 
 export const ChannelsField = () => {
-  const dispatch = useDispatch();
   const currentActiveChannelId = useSelector( (state) => state.activeChannel.currentChannelId);
   const channels = useSelector(selectorsChannels.selectAll);
   const messages = useSelector(selectorsMessages.selectAll) ?? [];

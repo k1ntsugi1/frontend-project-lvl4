@@ -1,7 +1,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { useFormik  } from 'formik';
-import { io } from "socket.io-client";
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { withTranslation } from 'react-i18next';
@@ -9,15 +8,18 @@ import {
     actionsMessages,
     selectorsMessages,
 } from '../../slices/messagesSlice.js';
+import { useSocket } from '../../hooks/index.jsx';
 
 
 
 const FooterMessageField = ({t}) => {
-    const socket = io();
+    const { socket } = useSocket();
     const [statusNetwork, setStatusNetwork] = useState('ok')
     const messageRef = useRef();
-    const currentActiveChannelId = useSelector( (state) => state.activeChannel.currentChannelId);
     const dispath = useDispatch()
+    
+    const currentActiveChannelId = useSelector( (state) => state.activeChannel.currentChannelId);
+    
 
     const formik = useFormik({
         initialValues: {

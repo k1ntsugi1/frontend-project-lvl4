@@ -6,16 +6,18 @@ import DefaultModal from '../DefaultModal.jsx';
 import { useModal } from "../../hooks/index.jsx"
 
 const HeaderChannels = ({t}) => {
-    const modal = useModal();
+    const {show, handleShow} = useModal();
 
     return (
       <>
         <div className='d-flex justify-content-between mb-2 ps-4 pe-2'>
           <span>{ t("chatPage.channelsHeader") }</span>
-          <Button variant="outline-info p-0" onClick={modal.handleShow}>+</Button>
+          <Button variant="outline-info p-0" onClick={handleShow('showAddChannelModal')}>+</Button>
         </div>
-         { modal.show 
-           ? <DefaultModal title='addingChannel' /> 
+         { show.showAddChannelModal 
+           ? <DefaultModal impact={{ type: 'showAddChannelModal', value: null }} /> 
+           
+           
            : null }
        </>
     )

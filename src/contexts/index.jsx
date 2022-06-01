@@ -5,4 +5,6 @@ const AuthContext = createContext({});
 
 const ModalContex = createContext({});
 
-export { AuthContext, ModalContex };
+const SocketContex = createContext({})
+
+export { AuthContext, ModalContex, SocketContex };
