@@ -1,6 +1,8 @@
 
 import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
 import { fetchDataCurrentUserByUserId } from './activeChannelSlice.js'
+import { actionsChannels } from "./channelsSlice.js";
+
 
 const adapterMessages = createEntityAdapter();
 
@@ -15,6 +17,17 @@ const  messagesSlice = createSlice({
         builder
             .addCase(fetchDataCurrentUserByUserId.fulfilled, (state, { payload: { messages }}) => {
                 adapterMessages.setAll(state, messages)
+            })
+            .addCase(actionsChannels.removeChannel, (state, { payload: { id }}) => {
+                console.log(state, id, 'messagesSlice');
+                const allMessages = adapterMessages.selectAll();
+                const messageForRemoving = allMessages.flatMap((message) => {
+                    if(message.channelId === id) {
+                        return message.id;
+                    }
+                    return [];
+                });
+                adapterMessages.removeMany(messageForRemoving);
             })
     }
 });

@@ -6,12 +6,13 @@ import { withTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { handlerNewActiveChannel } from '../../additionalFunction/handlers/handlerNewActiveChannel.js';
 import { useModal } from '../../hooks/index.jsx';
-import DefaultModal from '../DefaultModal.jsx';
+import DefaultModal from '../modals/DefaultModal.jsx';
+import RemoveModal from '../modals/RemoveModal.jsx'
 
 export const MutableChannel = ({dataChannel, variant, t}) => {
   const { channel, messagesCounter } = dataChannel;
   const dispatch = useDispatch();
-  const { show, handleShow} = useModal();
+  const { showState, handleShow} = useModal();
 
     return (
       <>
@@ -32,14 +33,18 @@ export const MutableChannel = ({dataChannel, variant, t}) => {
             <Dropdown.Toggle split variant={variant} id="dropdown-split" />
 
             <Dropdown.Menu>
-              <Dropdown.Item as="button" onClick={handleShow('showRenameChannelModal')}>{t("chatPage.renameChannel")}</Dropdown.Item>
-              <Dropdown.Item as="button">{t("chatPage.removeChannel")}</Dropdown.Item>
+              <Dropdown.Item as="button" onClick={handleShow('renameChannelModal')}>{t("chatPage.renameChannel")}</Dropdown.Item>
+              <Dropdown.Item as="button" onClick={handleShow('removeChannelModal')} >{t("chatPage.removeChannel")}</Dropdown.Item>
             </Dropdown.Menu>
 
           </Dropdown>
 
-          { show.showRenameChannelModal 
-           ? <DefaultModal impact={{ type: 'showRenameChannelModal', value: channel }} /> 
+          { showState.renameChannelModal 
+           ? <DefaultModal impact={{ type: 'renameChannelModal', value: channel }} /> 
+           : null }
+           
+          { showState.removeChannelModal 
+           ? <RemoveModal impact={{ type: 'removeChannelModal', value: channel }} /> 
            : null }
 
         </Nav.Item>

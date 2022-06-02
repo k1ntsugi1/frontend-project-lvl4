@@ -18,42 +18,53 @@ import { useImmer } from "use-immer";
 
 const ModalProvider = ({children}) => {
     
-    const [show, setShow] = useImmer({showAddChannelModal: false, showRenameChannelModal: false});
+    const [showState, setShow] = useImmer({addChannelModal: false, renameChannelModal: false, removeChannelModal: false});
 
-    const handleShow = (action) => () => {
-        const mappingShowing ={
-            'showAddChannelModal': () => {
-                setShow( (state) => {
-                    state.showAddChannelModal = true;
+    const handleShow = (typeModal) => () => {
+        const mappingShowing = {
+            'addChannelModal': () => {
+                setShow( (dref) => {
+                    dref.addChannelModal = true;
                 });
             },
-            'showRenameChannelModal': () => {
-                setShow( (state) => {
-                    state.showRenameChannelModal = true;
+            'renameChannelModal': () => {
+                setShow( (dref) => {
+                    dref.renameChannelModal = true;
+                });
+            },
+            'removeChannelModal': () => {
+                setShow( (dref) => {
+                    dref.removeChannelModal = true;
                 });
             }
         }
-        mappingShowing[action]();
+        mappingShowing[typeModal]();
     }
     
-    const handleClose = (action) => () => {
+    const handleClose = (typeModal) => () => {
         const mappingClosing ={
-            'showAddChannelModal': () => {
-                setShow( (state) => {
-                    state.showAddChannelModal = false;
+            'addChannelModal': () => {
+
+                setShow( (dref) => {
+                    dref.addChannelModal = false;
                 });
             },
-            'showRenameChannelModal': () => {
-                setShow( (state) => {
-                    state.showRenameChannelModal = false;
+            'renameChannelModal': () => {
+                setShow( (dref) => {
+                    dref.renameChannelModal = false;
+                });
+            },
+            'removeChannelModal': () => {
+                setShow( (dref) => {
+                    dref.removeChannelModal = false;
                 });
             }
         }
-        mappingClosing[action]();
+        mappingClosing[typeModal]();
     };
 
     return (
-        <ModalContex.Provider value={ { show, handleShow, handleClose } }>
+        <ModalContex.Provider value={ { showState, handleShow, handleClose } }>
             {children}
         </ModalContex.Provider>
     )

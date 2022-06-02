@@ -37,9 +37,17 @@
         "removeChannel": "Remove"
     },
     "modal": {
-        "headerAdding": "Add new channel",
-        "headerChangeName": "Change name of channel",
+        "headerAddChannel": "Add new channel",
+        "headerRenameChannel": "Change name of channel",
+        "headerRemoveChannel": "Remove Channel",
+        "removeBody": "Do you really want to remove this channel?",
         "send": "Send",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "remove": "Remove",
+        "errors": {
+            "required": "Required field",
+            "isNotUniq": "Name have to uniq",
+            "tooLong": "Name of channel have to contain less 10 symbols"
+        }
     }
 }

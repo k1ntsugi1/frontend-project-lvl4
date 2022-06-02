@@ -37,10 +37,18 @@
         "removeChannel": "Удалить"
     },
     "modal": {
-        "headerAdding": "Добавить новый канал",
-        "headerChangeName": "Переименовать канал",
+        "headerAddChannel": "Добавить новый канал",
+        "headerRenameChannel": "Переименовать канал",
+        "headerRemoveChannel": "Удалить канал",
+        "removeBody": "Вы хотите удалить канал?",
         "send": "Отправить",
-        "cancel": "Отмена"
+        "cancel": "Отмена",
+        "remove": "Удалить",
+        "errors": {
+            "required": "Обязательное поле",
+            "isNotUniq": "Название канала должно быть уникальным",
+            "tooLong": "Навание канала должно быть иметь не более 10 символов"
+        }
     }
     
 }
