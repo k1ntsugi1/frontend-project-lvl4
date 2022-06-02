@@ -9,8 +9,8 @@ import {
 
 import { ModalContex, SocketContex } from '../contexts/index.jsx';
 import { useSocket } from "../hooks/index.jsx";
-import { ChannelsField } from '../components/ChannelsField.jsx';
-import { MessageField } from '../components/MessageField.jsx';
+import { ChannelsField } from '../components/channelsField/ChannelsField.jsx';
+import { MessageField } from '../components/messageField/MessageField.jsx';
 import { io } from "socket.io-client";
 import { useImmer } from "use-immer";
 
@@ -81,7 +81,7 @@ const SocketProvider = ({socket, children}) => {
 
 export const ChatPage = () => {
 
-    const { token } = JSON.parse(localStorage.getItem('userId'));
+    const userId = JSON.parse(localStorage.getItem('userId'));
     const dispath = useDispatch();
 
     const [socket, setSocket] = useState(null);
@@ -92,8 +92,10 @@ export const ChatPage = () => {
     }
 
     useEffect( () => { 
-        dispath(fetchDataCurrentUserByUserId(token));
-        handlerSocket();
+        if (userId && userId.token) {
+            dispath(fetchDataCurrentUserByUserId(userId.token));
+            handlerSocket();
+        }
     },[]);
 
     return (

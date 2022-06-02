@@ -7,8 +7,9 @@ import { withTranslation } from 'react-i18next';
 import {  
     actionsMessages,
     selectorsMessages,
-} from '../../slices/messagesSlice.js';
-import { useSocket } from '../../hooks/index.jsx';
+} from '../../../slices/messagesSlice.js';
+
+import { useSocket } from '../../../hooks/index.jsx';
 
 
 

@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 import {  
     actionsMessages,
     selectorsMessages,
-} from '../../slices/messagesSlice.js';
+} from '../../../slices/messagesSlice.js';
 import { MessageItem } from './MessageItem.jsx'
-import { getMessagesCurrentChannel } from '../../additionalFunction/getMessagesCurrentChannel.js'
+import { getMessagesCurrentChannel } from '../../../additionalFunction/getMessagesCurrentChannel.js'
 
 export const BodyMessageField = () => {
     const currentActiveChannelId = useSelector( (state) => state.activeChannel.currentChannelId);

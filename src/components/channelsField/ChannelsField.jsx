@@ -8,20 +8,16 @@ import { UnmutableChannel } from './channelsItems/UnmutableChannel.jsx'
 import MutableChannel from './channelsItems/MutableChannel.jsx'
 
 import {  
-  actionsActiveChannel,
-} from '../slices/activeChannelSlice.js';
-
-import {  
   actionsChannels,
   selectorsChannels,
-} from '../slices/channelsSlice.js';
+} from '../../slices/channelsSlice.js';
 
 import {  
   actionsMessages,
   selectorsMessages,
-} from '../slices/messagesSlice.js';
+} from '../../slices/messagesSlice.js';
 
-import { getMessagesCurrentChannel } from '../additionalFunction/getMessagesCurrentChannel.js'
+import { getMessagesCurrentChannel } from '../../additionalFunction/getMessagesCurrentChannel.js'
 
 const getChannelsByMutableState = (channels) => {
   const unmutableChannels = [];

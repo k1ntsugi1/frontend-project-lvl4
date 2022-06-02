@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button, Nav, Badge  } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { handlerNewActiveChannel } from '../../additionalFunction/handlers/handlerNewActiveChannel.js'
+import { handlerNewActiveChannel } from '../../../additionalFunction/handlers/handlerNewActiveChannel.js'
 
 export const UnmutableChannel = ({dataChannel, variant}) => {
   const { channel, messagesCounter } = dataChannel; 

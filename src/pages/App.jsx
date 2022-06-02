@@ -11,7 +11,7 @@ import {
 } from "react-router-dom";
 
 import { withTranslation } from 'react-i18next';
-import BtnsChgLng from '../i18n/BtnsChgLng.jsx';
+import BtnsChgLng from '../components/BtnsChgLng.jsx';
 import { Button, Container, NavbarBrand, Navbar, Nav } from 'react-bootstrap';
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 

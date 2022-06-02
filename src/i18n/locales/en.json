@@ -19,6 +19,7 @@
             "labelSignUp": "No account?"
         },
         "errorsValidating": {
+            "Unauthorized": "Incorrect name or password",
             "short": "Too short",
             "long": "Too long",   
             "required": "required field"

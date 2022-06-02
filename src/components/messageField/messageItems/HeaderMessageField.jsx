@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import {  
     selectorsChannels,
-} from '../../slices/channelsSlice.js';
+} from '../../../slices/channelsSlice.js';
 
 export const HeaderMessageField = () => {
     const currentActiveChannelId = useSelector( (state) => state.activeChannel.currentChannelId);

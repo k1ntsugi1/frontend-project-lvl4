@@ -4,10 +4,10 @@ import { Button, Nav, Dropdown, Badge  } from 'react-bootstrap';
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { withTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { handlerNewActiveChannel } from '../../additionalFunction/handlers/handlerNewActiveChannel.js';
-import { useModal } from '../../hooks/index.jsx';
-import DefaultModal from '../modals/DefaultModal.jsx';
-import RemoveModal from '../modals/RemoveModal.jsx'
+import { handlerNewActiveChannel } from '../../../additionalFunction/handlers/handlerNewActiveChannel.js';
+import { useModal } from '../../../hooks/index.jsx';
+import DefaultModal from '../../modals/DefaultModal.jsx';
+import RemoveModal from '../../modals/RemoveModal.jsx'
 
 export const MutableChannel = ({dataChannel, variant, t}) => {
   const { channel, messagesCounter } = dataChannel;

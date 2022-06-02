@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import { withTranslation } from 'react-i18next';
 import { Button } from 'react-bootstrap';
-import DefaultModal from '../modals/DefaultModal.jsx';
-import { useModal } from "../../hooks/index.jsx"
+import DefaultModal from '../../modals/DefaultModal.jsx';
+import { useModal } from "../../../hooks/index.jsx"
 
 const HeaderChannels = ({t}) => {
     const {showState, handleShow} = useModal();
