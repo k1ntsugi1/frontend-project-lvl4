@@ -10,7 +10,7 @@ const  messagesSlice = createSlice({
     name: 'messagesChannelsCurrentUser',
     initialState: adapterMessages.getInitialState(),
     reducers: {
-        addMessage: adapterMessages.addOne,
+        addMessage: adapterMessages.addOne, //почему далее при использовании не нужно подставлять state
     },
 
     extraReducers: (builder) => {
@@ -18,21 +18,22 @@ const  messagesSlice = createSlice({
             .addCase(fetchDataCurrentUserByUserId.fulfilled, (state, { payload: { messages }}) => {
                 adapterMessages.setAll(state, messages)
             })
-            .addCase(actionsChannels.removeChannel, (state, { payload: { id }}) => {
-                console.log(state, id, 'messagesSlice');
-                const allMessages = adapterMessages.selectAll();
-                const messageForRemoving = allMessages.flatMap((message) => {
-                    if(message.channelId === id) {
-                        return message.id;
+            .addCase(actionsChannels.removeChannel, (state, { payload: id }) => {
+                const messagesForRemoving = Object.values(state.entities).flatMap((message) => {
+                    if (message.channelId === id) {
+                        return message.id
                     }
                     return [];
                 });
-                adapterMessages.removeMany(messageForRemoving);
+                console.log(messagesForRemoving);
+                adapterMessages.removeMany(state, messagesForRemoving) //почему здесь нужно подставлять state
+                console.log(messagesForRemoving);
+               
             })
     }
 });
 
-export const selectorsMessages = adapterMessages.getSelectors((state) => state.messages);
+export const selectorsMessages = adapterMessages.getSelectors((store) => store.messages);
 
 export const  actionsMessages = messagesSlice.actions;
 

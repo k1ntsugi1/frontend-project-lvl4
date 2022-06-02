@@ -96,7 +96,7 @@ const App = ({t, i18n}) => {
                 </PrivatRout> 
               )}/>
               <Route path="/login" element={ <SignIn/> }/>
-              {/*Добавить страницу о нас*/}
+              <Route path="/signup" element={ null }/>
               <Route path="*" element={ <NotFoundPage t={t}/> }/>
             </Routes>
           </div >

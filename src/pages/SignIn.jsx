@@ -8,8 +8,9 @@ import axios from 'axios';
 import routes from '../routes.js';
 import { useAuth } from '../hooks/index.jsx';
 import {
-    useLocation,
-    useNavigate,
+  Link,
+  useLocation,
+  useNavigate,
   } from "react-router-dom";
 import { useImmer } from "use-immer";
 
@@ -107,7 +108,7 @@ const SignIn = ({t}) => {
                   <Card.Footer>
                	   <div className='text-center'>
       	      	      <span>{t("signInForm.footer.labelSignUp")}</span>{' '}
-        	    	      <a href='#'>{t("signInForm.footer.hrefToSignUp")}</a>
+        	    	      <a as={Link} to="/signup">{t("signInForm.footer.hrefToSignUp")}</a>
               	    </div>
                   </Card.Footer>
                 </Card>
