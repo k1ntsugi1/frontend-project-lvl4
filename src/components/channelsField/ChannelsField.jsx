@@ -39,7 +39,7 @@ const getVariant = (currentChannelId, currentActiveChannelId, variant) => {
 export const ChannelsField = () => {
   const currentActiveChannelId = useSelector( (state) => state.activeChannel.currentChannelId);
   const channels = useSelector(selectorsChannels.selectAll);
-  const messages = useSelector(selectorsMessages.selectAll) ?? [];
+  const messages = useSelector(selectorsMessages.selectAll);
 
   const { unmutableChannels, mutableChannels} = getChannelsByMutableState(channels);
 

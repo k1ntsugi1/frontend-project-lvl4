@@ -11,7 +11,7 @@ export const MessageField = () => {
             <div className='d-flex flex-column h-100'>
                 <HeaderMessageField/>
                 <BodyMessageField/>
-                <FooterMessageField />
+                <FooterMessageField/>
             </div>
         </div>
     )

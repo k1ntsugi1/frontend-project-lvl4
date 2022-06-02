@@ -48,7 +48,7 @@ const FooterMessageField = ({t}) => {
     useEffect(() => {
         messageRef.current.focus();
     })
-    // Измени на инпут только!
+
     return (
         <div className='mt-auto sticky-bottom px-5 py-3'>
             <Form noValidate className='p-0 border rounded-2' onSubmit={formik.handleSubmit}>

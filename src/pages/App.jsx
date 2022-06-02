@@ -17,6 +17,7 @@ import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 
 import { ChatPage } from './ChatPage.jsx';
 import SignIn  from './SignIn.jsx';
+import SignUpPage from '.SignUpPage.jsx';
 import { NotFoundPage } from './NotFoundPage.jsx';
 
 import { AuthContext } from '../contexts/index.jsx';
@@ -96,7 +97,7 @@ const App = ({t, i18n}) => {
                 </PrivatRout> 
               )}/>
               <Route path="/login" element={ <SignIn/> }/>
-              <Route path="/signup" element={ null }/>
+              <Route path="/signup" element={ <SignUpPage /> }/>
               <Route path="*" element={ <NotFoundPage t={t}/> }/>
             </Routes>
           </div >
