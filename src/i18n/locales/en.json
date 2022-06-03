@@ -3,7 +3,10 @@
         "changeLang": "Change Language",
         "signedInAs": "Signed in as:",
         "aboutUs": "About us",
-        "currentLang": "English"
+        "currentLang": "English",
+        "signInBtn": "SignIn",
+        "signUpBtn": "Sign Up",
+        "logOutBtn": "Log out"
     },
     "signInForm": {
         "usernameField": "Username",
@@ -45,7 +48,6 @@
             "Conflict": "User yet was created"
         }
     },
-    "logOutBtn": "Log out",
     "undefindPage": {
         "haveNotFindedPage": "Page have not found",
         "suggestion": "But you can go to",
@@ -72,6 +74,7 @@
         }
     },
     "toastText": {
+        "greeting": "Wellcom to chat",
         "sentancesStart": "Channel",
         "sentancesAddingEnd": "created!",
         "sentancesRenamingEnd": "renamed!",

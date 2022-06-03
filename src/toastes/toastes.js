@@ -2,6 +2,19 @@
 import { toast } from 'react-toastify';
 
 const toastes = {
+    "greeting": (t, usermame) => {
+        return (
+            toast(`🚀 ${t("toastText.greeting")} ${usermame}!`, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                })
+        )
+    },
     'newChannel': (t, name) => {
         return (
             toast(`⭐ ${t("toastText.sentancesStart")} ${name} ${t("toastText.sentancesAddingEnd")}!`, {
@@ -43,7 +56,7 @@ const toastes = {
     },
     "errorNetwork": (t) => {
         return (
-            toast.error(`🦄 ${t("toastText.errorNetwork")}`, {
+            toast.error(`${t("toastText.errorNetwork")}`, {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,

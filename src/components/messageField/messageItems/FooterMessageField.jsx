@@ -23,8 +23,10 @@ const FooterMessageField = ({t}) => {
         onSubmit: (values, actions) => {
             const filteredMessage = filter.clean(values.message)
             socket.emit('newMessage', { message: filteredMessage, channelId: currentActiveChannelId }, (response) => {
-                toastes["errorNetwork"](t);
-                return;
+                if(response.status !== 'ok') {
+                    toastes["errorNetwork"](t);
+                    return;
+                }
             })
             actions.resetForm( { message: '' } )
         }

@@ -7,9 +7,8 @@ export const mappingAction = (objOfProperties) => {
     
     const mapping = {
         'addChannelModal': () => {
-            console.log('add', value, channel)
-          socket.emit('newChannel', { name: value }, (socket) => {
-            if (socket.status !== 'ok') {
+          socket.emit('newChannel', { name: value }, (response) => {
+            if (response.status !== 'ok') {
               toastes["errorNetwork"](t)
               return;
             };
@@ -19,8 +18,8 @@ export const mappingAction = (objOfProperties) => {
     
         'renameChannelModal': () => {
           const { id } = channel;
-          socket.emit('renameChannel', { id, name: value }, (socket) => {
-            if (socket.status !== 'ok') {
+          socket.emit('renameChannel', { id, name: value }, (response) => {
+            if (response.status !== 'ok') {
               toastes["errorNetwork"](t)
               return;
             };
@@ -31,8 +30,8 @@ export const mappingAction = (objOfProperties) => {
         'removeChannelModal': () => {
           const { id } = channel;
           console.log(id, 'firstStep')
-          socket.emit('removeChannel', { id }, (socket) => {
-            if (socket.status !== 'ok') {
+          socket.emit('removeChannel', { id }, (response) => {
+            if (response.status !== 'ok') {
               toastes["errorNetwork"](t)
               return;
             };

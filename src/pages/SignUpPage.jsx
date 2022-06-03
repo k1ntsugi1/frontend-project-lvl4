@@ -20,8 +20,8 @@ import ajaxStore from '../components/entranceField/ajaxStore.js';
 import { getSignUpSchema } from '../components/entranceField/signUpField/signUpSchema.js'
 import { handlerLogin } from '../components/entranceField/handlerLogin.js';
 
-const SignUpPage = ({t}) => {
-
+const SignUpPage = ({t, setNewAdditionalNavBtn}) => {
+  setNewAdditionalNavBtn('signUp');
   const { getStartAjaxState, handlerResponse, handlerRequest  } = ajaxStore;
   const auth = useAuth();
 

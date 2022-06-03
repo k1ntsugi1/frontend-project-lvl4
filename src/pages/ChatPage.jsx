@@ -111,15 +111,17 @@ const handlerSocketListeners = (dispatch, socket, t) => {
 }
 
 
-export const ChatPage = ({t}) => {
-
+export const ChatPage = ({t, setNewAdditionalNavBtn}) => {
+    setNewAdditionalNavBtn('chat');
     const userId = JSON.parse(localStorage.getItem('userId'));
+    const { token, username } = userId;
     const dispatch = useDispatch();
     const { socket } = useSocket()
     useEffect( () => {
         socket.removeAllListeners() 
-        dispatch(fetchDataCurrentUserByUserId(userId.token));
+        dispatch(fetchDataCurrentUserByUserId(token));
         handlerSocketListeners(dispatch, socket, t);
+        toastes['greeting'](t, username);
     }, []);
 
 

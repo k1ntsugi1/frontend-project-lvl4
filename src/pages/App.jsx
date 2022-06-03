@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Routes,
     Route,
@@ -30,54 +30,95 @@ const PrivatRout = ({children}) => {
   )
 }
 
-const ButtonLogOut = (props) => {
-  const { t } = props;
+const SignInAs = ({t}) => {
+  const auth = useAuth();
+  if (!auth.loggedIn) return null;
+  const userId = JSON.parse(localStorage.getItem('userId'));
+  const username = userId.username; 
+  return (
+      <Navbar.Collapse id="signInAs" className="justify-content-start">
+        <Navbar.Text>
+          {t('navBar.signedInAs')} {username}
+        </Navbar.Text>
+      </Navbar.Collapse>
+  )
+}
+
+const LogOutBtn = ({t}) => {
   const auth = useAuth();
   return (
     auth.loggedIn 
-    ? <Button className="ms-4" variant="outline-success" onClick={auth.logOut}>{t("logOutBtn")}</Button> 
+    ? (
+      <Nav className='justify-content-end ms-4 '>
+        <Nav.Item>
+          <Button  variant="outline-success" onClick={auth.logOut}>{t("navBar.logOutBtn")}</Button>
+        </Nav.Item>
+      </Nav>
+      ) 
     : null
+  )
+};
+
+const SignInBtn = ({t}) => {
+  return (
+    <Nav className='justify-content-end ms-3'>
+      <Nav.Item className='btn btn-outline-success'>
+        <Link to="login" className=' text-decoration-none text-reset'>{t("navBar.signInBtn")}</Link>
+      </Nav.Item>
+    </Nav>
+  )
+}
+
+const SignUpBtn = ({t}) => {
+  return (
+    <Nav className='justify-content-end ms-3'>
+      <Nav.Item className='btn btn-outline-success'>
+        <Link to="signup" className='text-decoration-none text-reset'>{t("navBar.signUpBtn")}</Link>
+      </Nav.Item>
+    </Nav>
   )
 }
 
 const App = ({t}) => {
-  const userId = JSON.parse(localStorage.getItem('userId')) ?? false;
-  const username = (userId && userId.username) ? userId.username : null; 
-    return (
-      <div className='d-flex flex-column h-100'>
-        <Navbar bg="light" className='shadow-sm'>
-          <Container>
-            <NavbarBrand as={Link} to="/">Hexlet Chat</NavbarBrand>
-            <Nav className='justify-content-start me-3'>
-              <Nav.Link href="/about">{t("navBar.aboutUs")}</Nav.Link>
-            </Nav>
 
-            { username &&
-              <Navbar.Collapse id="signInAs" className="justify-content-start">
-                <Navbar.Text>
-                  {t('navBar.signedInAs')} {username}
-                </Navbar.Text>
-              </Navbar.Collapse>
-            }
+  const [currentLocation, setNewAdditionalNavBtn] = useState('signin');
 
-            <NavbarCollapse id="changeLang" className='justify-content-end'>
-              <BtnsChgLng/>
-            </NavbarCollapse>
-            { <ButtonLogOut t={ t }/> }
-          </Container>
-        </Navbar>
+  return (
+    <div className='d-flex flex-column h-100'>
+      <Navbar bg="light" className='shadow-sm'>
+        <Container>
           
-        <Routes>
-          <Route path='/' element={(
-            <PrivatRout>
-              <ChatPage/>
-            </PrivatRout> 
-          )}/>
-          <Route path="/login" element={ <SignInPage/> }/>
-          <Route path="/signup" element={ <SignUpPage /> }/>
-          <Route path="*" element={ <NotFoundPage /> }/>
-        </Routes>
-      </div >
+          <NavbarBrand as={Link} to="/">Hexlet Chat</NavbarBrand>
+          <Nav className='justify-content-start me-3'>
+            <Nav.Item className='btn btn-outline-success'>
+              <Link to="about" className='text-decoration-none text-reset'>{t("navBar.aboutUs")}</Link>
+            </Nav.Item>  
+          </Nav>
+
+          { <SignInAs t={t}/>}
+
+          <NavbarCollapse id="changeLang" className='justify-content-end'>
+            <BtnsChgLng/>
+          </NavbarCollapse>
+
+          {(currentLocation === 'signin') && <SignUpBtn t={t}/>}
+          {(currentLocation === 'signUp') && <SignInBtn t={t}/>}
+          {(currentLocation === 'chat') && <LogOutBtn t={t}/>}
+
+        </Container>
+      </Navbar>
+          
+      <Routes>
+        <Route path='/' element={(
+          <PrivatRout>
+            <ChatPage setNewAdditionalNavBtn={setNewAdditionalNavBtn}/>
+          </PrivatRout> 
+        )}/>
+        <Route path="login" element={ <SignInPage setNewAdditionalNavBtn={setNewAdditionalNavBtn}/> }/>
+        <Route path="signup" element={ <SignUpPage setNewAdditionalNavBtn={setNewAdditionalNavBtn}/> }/>
+        <Route path="*" element={ <NotFoundPage setNewAdditionalNavBtn={setNewAdditionalNavBtn}/> }/>
+      </Routes>
+    </div >
     )
 }
 

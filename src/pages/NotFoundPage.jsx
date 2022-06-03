@@ -3,7 +3,8 @@ import React from 'react'
 import { withTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
 
-export const NotFoundPage = ({t}) => {
+export const NotFoundPage = ({t, setNewAdditionalNavBtn}) => {
+    setNewAdditionalNavBtn(null);
     return (
         <div className='position-relative row justify-content-center h-100'>
             <div className='position-absolute top-0 text-muted text-center'>

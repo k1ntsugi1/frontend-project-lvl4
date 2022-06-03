@@ -22,7 +22,8 @@ import { handlerLogin } from '../components/entranceField/handlerLogin.js';
 
 
 
-const SignInPage = ({t}) => {
+const SignInPage = ({t, setNewAdditionalNavBtn}) => {
+    setNewAdditionalNavBtn('signin');
     const { getStartAjaxState, handlerResponse, handlerRequest  } = ajaxStore;
     const auth = useAuth();
 

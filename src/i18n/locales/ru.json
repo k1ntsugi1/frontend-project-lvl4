@@ -3,7 +3,10 @@
         "changeLang": "Сменить язык",
         "signedInAs": "Вошли как:",
         "aboutUs": "О нас",
-        "currentLang": "Русский"
+        "currentLang": "Русский",
+        "signInBtn": "Войти",
+        "signUpBtn": "Регистрация",
+        "logOutBtn": "Выйти"
     },
     "signInForm": {
         "usernameField": "Имя",
@@ -45,7 +48,6 @@
             "Conflict": "Пользователь уже существует"
         }
     },
-    "logOutBtn": "Выйти",
     "undefindPage": {
         "haveNotFindedPage": "Страница не найдена",
         "suggestion": "Но вы можете перейти",
@@ -72,11 +74,12 @@
         }
     },
     "toastText": {
+        "greeting": "Добро пожаловать в чат",
         "sentancesStart": "Канал",
         "sentancesAddingEnd": "создан",
         "sentancesRenamingEnd": "переименован на:",
         "sentancesRemovingEnd": "удален",
-        "errorNetwork": "Что-то с сетью, подождите..."
+        "errorNetwork": "Что-то с интернетом, подождите..."
     }
     
 }
