@@ -1,13 +1,9 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { useFormik  } from 'formik';
-import { useSelector, useDispatch } from 'react-redux';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { withTranslation } from 'react-i18next';
-import {  
-    actionsMessages,
-    selectorsMessages,
-} from '../../../slices/messagesSlice.js';
+import { toast } from 'react-toastify';
 
 import { useSocket } from '../../../hooks/index.jsx';
 
@@ -17,32 +13,17 @@ const FooterMessageField = ({t}) => {
     const { socket } = useSocket();
     const [statusNetwork, setStatusNetwork] = useState('ok')
     const messageRef = useRef();
-    const dispath = useDispatch()
-    
-    const currentActiveChannelId = useSelector( (state) => state.activeChannel.currentChannelId);
-    
-
     const formik = useFormik({
         initialValues: {
             message: '',
         },
         onSubmit: (values, actions) => {
             const filteredMessage = filter.clean(values.message)
-            socket.emit('newMessage', { message: filteredMessage }, (socket) => {
-                socket.status !== 'ok' ? setStatusNetwork('error') : setStatusNetwork('ok');
+            socket.emit('newMessage', { message: filteredMessage }, (response) => {
+                response.status !== 'ok' ? setStatusNetwork('error') : setStatusNetwork('ok');
                 return;
             })
-            socket.once('newMessage', (messageWithId) => {
-                const { id, message } = messageWithId;
-                const newMessage = {
-                    body: message,
-                    channelId: currentActiveChannelId,
-                    username: JSON.parse(localStorage.getItem('userId')).username, 
-                    id,
-                }
-                dispath(actionsMessages.addMessage(newMessage));
-                actions.resetForm( { message: '' } )
-            })
+            actions.resetForm( { message: '' } )
         }
     });
 

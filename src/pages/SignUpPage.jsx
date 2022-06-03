@@ -1,108 +1,48 @@
 
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect } from 'react'
 import { withTranslation } from 'react-i18next';
 import { useFormik  } from 'formik';
-import { Button, Form, Card } from 'react-bootstrap';
-import * as Yup from 'yup';
-import axios from 'axios';
-import routes from '../routes.js';
-import { useAuth } from '../hooks/index.jsx';
+import { useImmer } from 'use-immer';
 import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
+
+import { useAuth } from '../hooks/index.jsx';
+
 import CardField from '../components/entranceField/CardField.jsx';
 import CardBodyField from '../components/entranceField/CardBodyField.jsx';
-import FormSignUpField from '../components/entranceField/signUpField/FormSignUpField.jsx';
-import { useImmer } from 'use-immer';
+import FormSignUpField from '../components/entranceField/signUpField/FormSignUpField.jsx'
+
+import ajaxStore from '../components/entranceField/ajaxStore.js';
+
+import { getSignUpSchema } from '../components/entranceField/signUpField/signUpSchema.js'
+import { handlerLogin } from '../components/entranceField/handlerLogin.js';
 
 const SignUpPage = ({t}) => {
 
+  const { getStartAjaxState, handlerResponse, handlerRequest  } = ajaxStore;
   const auth = useAuth();
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [authStore, updateAuthStore] = useImmer({ 
-    authData: null,
-    authError: null,
-    validateAuthCounter: 0,
-  });
+  const startStateImmer = getStartAjaxState();
+  const signUpSchema = getSignUpSchema(t);
 
-  const handlerResponse = (response, status) => {
-    switch (status) {
-      case 'valid' : {
-        console.log(response.data);
-        updateAuthStore( (draft) => {
-          draft.authData = response.data;
-          draft.authError = null;
-          draft.validateAuthCounter += 1;
-        });
-        break;
-      }
-      case 'invalid': {
-        updateAuthStore( (draft) => {
-          draft.authData = null;
-          draft.authError = response.data.error;
-          draft.validateAuthCounter += 1;
-        });
-        break;
-      }
-      default: {
-        throw new Error(`not available status: ${status}`)
-      }
-    }
-  };
-
-  Yup.setLocale({
-      mixed: {
-          required: t("signUpForm.errorsValidating.required"),
-      },
-      string: {
-          min: t("signUpForm.errorsValidating.short"),
-          max: t("signUpForm.errorsValidating.long"),
-      }
-  });
-
-  const handlerRequest = async (values) => {
-    try {
-      const response = await axios.post(routes['signUpPath'](), {
-        username: values.username,
-        password: values.password
-      });
-      handlerResponse(response, 'valid')
-    } catch (e) {
-      const { response } = e;
-      console.log(response)
-      handlerResponse(response, 'invalid')
-    }
-  };
-  
-  const signUpSchema= Yup.object().shape({
-    username: Yup.string().min(3).max(20).required(),
-    password: Yup.string().min(1).max(6).required(),
-    confirmPassword: Yup.string().oneOf([Yup.ref('password')], t("signUpForm.errorsValidating.confirmPassword"))
-  })
+  const [authStore, updateAuthStore] = useImmer(startStateImmer);
 
   const formik = useFormik({
     initialValues:  { username: "", password: "", confirmPassword: "" },
     validationSchema:  signUpSchema,
-    onSubmit: handlerRequest
-    })
-
-  const handlerLogin = () => {
-    console.log(authStore.authData)
-    localStorage.setItem('userId', JSON.stringify(authStore.authData));
-    auth.logIn();
-    const preveousPage = location.state ? location.state.from.pathname : '/';
-    navigate(preveousPage, { replace: true, state: { from: location.pathname } } )
-  };
+    onSubmit: (values) => handlerRequest(values, 'signUpPath', handlerResponse, updateAuthStore)
+  })
 
   useEffect( () => {
-    console.log(authStore, 'handlerLogin')
-    if (authStore.authData !== null) handlerLogin();
+    if (authStore.authData !== null) handlerLogin(location, navigate, auth, authStore);
   }, [authStore.validateAuthCounter])
+
 
     return (
       <CardField>

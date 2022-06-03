@@ -1,18 +1,19 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useImmer } from "use-immer";
+import { ToastContainer, toast } from 'react-toastify';
 
-import { 
-    fetchDataCurrentUserByUserId,
-    actionsActiveChannel,
-} from '../slices/activeChannelSlice.js';
-import { ToastContainer } from 'react-toastify';
-import { ModalContex, SocketContex } from '../contexts/index.jsx';
+
+import { fetchDataCurrentUserByUserId } from '../slices/activeChannelSlice.js';
+import { actionsChannels } from '../slices/channelsSlice.js';
+import { actionsMessages } from '../slices/messagesSlice.js';
+
+import { ModalContex} from '../contexts/index.jsx';
 import { useSocket } from "../hooks/index.jsx";
+
 import { ChannelsField } from '../components/channelsField/ChannelsField.jsx';
 import { MessageField } from '../components/messageField/MessageField.jsx';
-import { io } from "socket.io-client";
-import { useImmer } from "use-immer";
 
 
 
@@ -44,7 +45,6 @@ const ModalProvider = ({children}) => {
     const handleClose = (typeModal) => () => {
         const mappingClosing ={
             'addChannelModal': () => {
-
                 setShow( (dref) => {
                     dref.addChannelModal = false;
                 });
@@ -71,41 +71,88 @@ const ModalProvider = ({children}) => {
 
 }
 
-const SocketProvider = ({socket, children}) => {
-    return (
-        <SocketContex.Provider value={{ socket }}>
-            {children}
-        </SocketContex.Provider>
-    )
+const handlerSocketListeners = (dispatch, socket, currentActiveChannelId) => {
+
+    socket.on('newMessage', (messageWithId) => {
+        const { id, message } = messageWithId;
+        const newMessage = {
+            body: message,
+            channelId: currentActiveChannelId,
+            username: JSON.parse(localStorage.getItem('userId')).username, 
+            id,
+        }
+        dispatch(actionsMessages.addMessage(newMessage));
+    });
+
+    socket.on('newChannel', (channelWithId) => {
+        const { id, removable, name  } = channelWithId;
+        const newChannel = {
+          id, 
+          name,
+          removable
+        };
+        dispatch(actionsChannels.addNewChannel(newChannel));  
+        toast('⭐ Канал создан!', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
+      });
+      socket.on('renameChannel', (channelWithId) => {
+        const { id, name  } = channelWithId;
+        dispatch(actionsChannels.updateNameOfChannel({id, changes: {name} }));
+        toast('🦄 Канал перименован!', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
+      });
+      socket.on('removeChannel', (channelWithId) => {
+        const { id } = channelWithId;
+        dispatch(actionsChannels.removeChannel( id ));
+        toast('😲 Канал удален!', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
+      } )
 }
 
+
 export const ChatPage = () => {
+    //Обработать!
+    const currentActiveChannelId = useSelector( (store) => store.activeChannel.currentChannelId) ?? 1;
 
     const userId = JSON.parse(localStorage.getItem('userId'));
-    const dispath = useDispatch();
-
-    const [socket, setSocket] = useState(null);
-
-    const handlerSocket = () => {
-        const newSocket = io();
-        return setSocket(newSocket)
-    }
-
+    const dispatch = useDispatch();
+    const { socket } = useSocket()
     useEffect( () => { 
-        if (userId && userId.token) {
-            dispath(fetchDataCurrentUserByUserId(userId.token));
-            handlerSocket();
-        }
-    },[]);
+        dispatch(fetchDataCurrentUserByUserId(userId.token));
+        handlerSocketListeners(dispatch, socket, currentActiveChannelId);
+        return socket.removeAllListeners;
+    }, []);
 
     return (
         <div className="row h-100 my-4 overflow-hidden rounded shadow border border-info">
-            <SocketProvider socket={socket}>
-                <ModalProvider>
-                    <ChannelsField />
-                </ModalProvider>
-                <MessageField/>
-            </SocketProvider>
+
+            <ModalProvider>
+                <ChannelsField />
+            </ModalProvider>
+
+            <MessageField/>
+
             <ToastContainer/>
         </div>
     )

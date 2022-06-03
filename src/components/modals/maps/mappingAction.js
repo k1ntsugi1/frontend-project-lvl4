@@ -21,26 +21,7 @@ export const mappingAction = (objOfProperties) => {
               return;
             };
           });
-    
-          socket.once('newChannel', (channelWithId) => {
-            const { id, removable, name  } = channelWithId;
-            const newChannel = {
-              id, 
-              name,
-              removable
-            };
-            dispatch(actionsChannels.addNewChannel(newChannel));
-            handleClose(type)()
-            toast('⭐ Канал создан!', {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              });
-          })
+          handleClose(type)()
         },
     
         'renameChannelModal': () => {
@@ -51,21 +32,7 @@ export const mappingAction = (objOfProperties) => {
               return;
             };
           });
-    
-          socket.once('renameChannel', (channelWithId) => {
-            const { id, name  } = channelWithId;
-            dispatch(actionsChannels.updateNameOfChannel({id, changes: {name} }));
-            handleClose(type)()
-            toast('🦄 Канал перименован!', {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              });
-          } )
+          handleClose(type)()
         },
 
         'removeChannelModal': () => {
@@ -77,21 +44,7 @@ export const mappingAction = (objOfProperties) => {
               return;
             };
           });
-    
-          socket.once('removeChannel', (channelWithId) => {
-            const { id } = channelWithId;
-            dispatch(actionsChannels.removeChannel( id ));
-            handleClose(type)()
-            toast('😲 Канал удален!', {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              });
-          } )
+        handleClose(type)()
         }
       };
 
