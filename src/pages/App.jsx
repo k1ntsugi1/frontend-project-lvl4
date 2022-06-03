@@ -17,7 +17,7 @@ import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 
 import { ChatPage } from './ChatPage.jsx';
 import SignIn  from './SignIn.jsx';
-import SignUpPage from '.SignUpPage.jsx';
+import SignUpPage from './SignUpPage.jsx';
 import { NotFoundPage } from './NotFoundPage.jsx';
 
 import { AuthContext } from '../contexts/index.jsx';

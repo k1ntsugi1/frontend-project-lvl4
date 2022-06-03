@@ -12,10 +12,11 @@ const FormSignInField = ({t, formik, authError}) => {
         values,
         errors, 
         isSubmitting } = formik;
-    //const { errorUsername, errorPassword, errorNetwork } = errorStore;
+
     useEffect( () => {
         usernameRef.current.focus();
     },[]);
+    
     return (
         <Form noValidate  className='col-12 col-md-6 mt-3 mt-mb-0' onSubmit={handleSubmit}>
           	<h1 className='text-center mb-4'>{t("signInForm.header")}</h1>
@@ -39,7 +40,7 @@ const FormSignInField = ({t, formik, authError}) => {
             <Form.Group className="mb-3 form-floating">
                 <Form.Control id="password"
                     		  name="password"
-      						  type="text"
+      						  type="password"
                       	      placeholder={ t("signInForm.placeHolders.password") }
                       	      onChange={handleChange}
                       	      value={values.password}
@@ -55,7 +56,7 @@ const FormSignInField = ({t, formik, authError}) => {
                     type="submit" 
                     disabled={
                         isSubmitting
-                     || !!errors.password 
+                     || !!errors.username 
                      || !!errors.password 
                     }
             >

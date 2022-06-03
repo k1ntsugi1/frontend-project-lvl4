@@ -6,7 +6,7 @@ import {
     fetchDataCurrentUserByUserId,
     actionsActiveChannel,
 } from '../slices/activeChannelSlice.js';
-
+import { ToastContainer } from 'react-toastify';
 import { ModalContex, SocketContex } from '../contexts/index.jsx';
 import { useSocket } from "../hooks/index.jsx";
 import { ChannelsField } from '../components/channelsField/ChannelsField.jsx';
@@ -106,6 +106,7 @@ export const ChatPage = () => {
                 </ModalProvider>
                 <MessageField/>
             </SocketProvider>
+            <ToastContainer/>
         </div>
     )
 }

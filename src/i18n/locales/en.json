@@ -25,6 +25,26 @@
             "required": "required field"
         }
     },
+    "signUpForm": {
+        "usernameField": "Create name",
+        "passwordField": "Create password",
+        "repeatedPasswordField": "Repeate password",
+        "header": "LogUp",
+        "buttonSubmit": "LogUp",
+        "placeHolders": {
+            "userName": "Create name",
+            "password": "Create password",
+            "confirmPassword": "Repeate password"
+        },
+        "errorsValidating": {
+            "Unauthorized": "Incorrect name or password",
+            "short": "Too short",
+            "long": "Too long",   
+            "required": "required field",
+            "confirmPassword": "passwords don't match",
+            "Conflict": "User yet was created"
+        }
+    },
     "logOutBtn": "Log out",
     "undefindPage": {
         "haveNotFindedPage": "Page have not found",

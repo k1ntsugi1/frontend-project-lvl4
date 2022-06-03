@@ -1,14 +1,17 @@
 
 import { useModal, useSocket } from "../../../hooks/index.jsx";
 import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { injectStyle } from "react-toastify/dist/inject-style";
 import {  
     actionsChannels,
     selectorsChannels,
   } from '../../../slices/channelsSlice.js';
+injectStyle();
 
 export const mappingAction = (objOfProperties) => {
     const { socket, dispatch, handleClose, type, channel, value  } = objOfProperties;
-
+    
     const mapping = {
         'addChannelModal': () => {
             console.log('add', value, channel)
@@ -28,6 +31,15 @@ export const mappingAction = (objOfProperties) => {
             };
             dispatch(actionsChannels.addNewChannel(newChannel));
             handleClose(type)()
+            toast('⭐ Канал создан!', {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              });
           })
         },
     
@@ -44,24 +56,41 @@ export const mappingAction = (objOfProperties) => {
             const { id, name  } = channelWithId;
             dispatch(actionsChannels.updateNameOfChannel({id, changes: {name} }));
             handleClose(type)()
+            toast('🦄 Канал перименован!', {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              });
           } )
         },
 
         'removeChannelModal': () => {
           const { id } = channel;
           console.log(id, 'firstStep')
-          socket.emit('renameChannel', { id }, (socket) => {
+          socket.emit('removeChannel', { id }, (socket) => {
             if (socket.status !== 'ok') {
               console.log('error Заглушка');
               return;
             };
           });
     
-          socket.once('renameChannel', (channelWithId) => {
+          socket.once('removeChannel', (channelWithId) => {
             const { id } = channelWithId;
-            console.log(id, 'secondStep')
             dispatch(actionsChannels.removeChannel( id ));
             handleClose(type)()
+            toast('😲 Канал удален!', {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              });
           } )
         }
       };

@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { withTranslation } from 'react-i18next';
 import { Formik, useFormik  } from 'formik';
-import { Button, Form, Card } from 'react-bootstrap';
+
 import * as Yup from 'yup';
 import axios from 'axios';
 import routes from '../routes.js';
@@ -11,9 +11,10 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import CardBodySignInfield from '../components/signInField/CardBodySignInField.jsx';
-import CardFooterSignInField from '../components/signInField/CardFooterSignInField.jsx';
-import FormSignInField from '../components/signInField/FormSignInField.jsx';
+import CardField from '../components/entranceField/CardField.jsx';
+import CardBodyField from '../components/entranceField/CardBodyField.jsx';
+import CardFooterSignInField from '../components/entranceField/signInField/CardFooterSignInField.jsx'
+import FormSignInField from '../components/entranceField/signInField/FormSignInField.jsx';
 import { useImmer } from 'use-immer';
 
 
@@ -103,20 +104,12 @@ const SignIn = ({t}) => {
     }, [authStore.validateAuthCounter])
 
     return (
-    	<>
-        <div className='container-fluid h-100'>
-          <div className='row justify-content-center align-content-center h-100'>
-            <div className='col-12 col-md-8 col-xxl-6'>
-              <Card className='shadow-sm'>
-                <CardBodySignInfield>
-                 <FormSignInField formik={formik} authError={authStore.authError}/>   
-                </CardBodySignInfield>
-                <CardFooterSignInField />
-              </Card>
-            </div>        
-          </div>
-        </div>  
-      </>
+    	<CardField>
+        <CardBodyField imagePath="https://raw.githubusercontent.com/k1ntsugi1/layout-designer-project-lvl1/main/src/assets/images/2.png">
+          <FormSignInField formik={formik} authError={authStore.authError}/>   
+        </CardBodyField>
+        <CardFooterSignInField />
+      </CardField>
   )
 } 
 

@@ -11,7 +11,7 @@ import {
 
 import { useSocket } from '../../../hooks/index.jsx';
 
-
+let filter = require("leo-profanity");
 
 const FooterMessageField = ({t}) => {
     const { socket } = useSocket();
@@ -27,7 +27,8 @@ const FooterMessageField = ({t}) => {
             message: '',
         },
         onSubmit: (values, actions) => {
-            socket.emit('newMessage', values, (socket) => {
+            const filteredMessage = filter.clean(values.message)
+            socket.emit('newMessage', { message: filteredMessage }, (socket) => {
                 socket.status !== 'ok' ? setStatusNetwork('error') : setStatusNetwork('ok');
                 return;
             })
