@@ -11,7 +11,6 @@ import { getMessagesCurrentChannel } from '../../../additionalFunction/getMessag
 export const BodyMessageField = () => {
     const currentActiveChannelId = useSelector( (state) => state.activeChannel.currentChannelId);
     const messages = useSelector(selectorsMessages.selectAll);
-    console.log(messages, 'messagesCurrentChannel')
     const messagesCurrentChannel = getMessagesCurrentChannel(currentActiveChannelId, messages);
 
     return (

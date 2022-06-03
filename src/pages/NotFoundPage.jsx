@@ -1,5 +1,6 @@
 
 import React from 'react'
+import { withTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
 
 export const NotFoundPage = ({t}) => {
@@ -15,3 +16,5 @@ export const NotFoundPage = ({t}) => {
         </div>
     )
 }
+
+export default withTranslation()(NotFoundPage)

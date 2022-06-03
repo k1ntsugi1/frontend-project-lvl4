@@ -11,10 +11,9 @@ export const RemoveModal = ({t, impact}) => {
     const { type, value: channel } = impact;
     const { showState, handleClose } = useModal();
     const { socket } = useSocket();
-    const dispatch = useDispatch();
 
     const handlerRemovingChannel = () => {
-      mappingAction({type, channel, socket, dispatch, handleClose, value: null});
+      mappingAction({type, channel, socket, t, handleClose, value: null});
     };
 
     return (

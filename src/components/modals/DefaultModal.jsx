@@ -19,7 +19,6 @@ import {
 const DefaultModal = ({t, impact}) => {
   const { showState, handleClose } = useModal();
   const { socket } = useSocket();
-  const dispatch = useDispatch();
 
   const inputRef = useRef()
   const channels = useSelector(selectorsChannels.selectAll)
@@ -63,10 +62,9 @@ const DefaultModal = ({t, impact}) => {
   })
 
   useEffect( () => {
-    if(errorStore.errorValue === null && errorStore.containError === false ) mappingAction({type, channel, socket, dispatch, handleClose, value: inputValue})
+    if(errorStore.errorValue === null && errorStore.containError === false ) mappingAction({type, channel, socket, t, handleClose, value: inputValue})
   }, [errorStore.validatedCount])
 
-  // валидация на доставку собщений о каналах
   return (
     <Modal centered show={showState[type]} onHide={handleClose(type)}>
 

@@ -70,6 +70,13 @@
             "isNotUniq": "Название канала должно быть уникальным",
             "tooLong": "Навание канала должно быть иметь не более 10 символов"
         }
+    },
+    "toastText": {
+        "sentancesStart": "Канал",
+        "sentancesAddingEnd": "создан",
+        "sentancesRenamingEnd": "переименован на:",
+        "sentancesRemovingEnd": "удален",
+        "errorNetwork": "Что-то с сетью, подождите..."
     }
     
 }

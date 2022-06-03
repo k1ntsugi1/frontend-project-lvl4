@@ -1,8 +1,8 @@
 
 import React, { useEffect} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useImmer } from "use-immer";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer} from 'react-toastify';
 
 
 import { fetchDataCurrentUserByUserId } from '../slices/activeChannelSlice.js';
@@ -14,7 +14,9 @@ import { useSocket } from "../hooks/index.jsx";
 
 import { ChannelsField } from '../components/channelsField/ChannelsField.jsx';
 import { MessageField } from '../components/messageField/MessageField.jsx';
+import { withTranslation } from "react-i18next";
 
+import toastes from "../toastes/toastes.js";
 
 
 const ModalProvider = ({children}) => {
@@ -71,13 +73,13 @@ const ModalProvider = ({children}) => {
 
 }
 
-const handlerSocketListeners = (dispatch, socket, currentActiveChannelId) => {
+const handlerSocketListeners = (dispatch, socket, t) => {
 
     socket.on('newMessage', (messageWithId) => {
-        const { id, message } = messageWithId;
+        const { id, message, channelId } = messageWithId;
         const newMessage = {
             body: message,
-            channelId: currentActiveChannelId,
+            channelId,
             username: JSON.parse(localStorage.getItem('userId')).username, 
             id,
         }
@@ -92,57 +94,34 @@ const handlerSocketListeners = (dispatch, socket, currentActiveChannelId) => {
           removable
         };
         dispatch(actionsChannels.addNewChannel(newChannel));  
-        toast('⭐ Канал создан!', {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          });
+        toastes['newChannel'](t, name);
       });
+
       socket.on('renameChannel', (channelWithId) => {
         const { id, name  } = channelWithId;
         dispatch(actionsChannels.updateNameOfChannel({id, changes: {name} }));
-        toast('🦄 Канал перименован!', {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          });
+        toastes['renameChannel'](t, name);
       });
+
       socket.on('removeChannel', (channelWithId) => {
         const { id } = channelWithId;
         dispatch(actionsChannels.removeChannel( id ));
-        toast('😲 Канал удален!', {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          });
+        toastes['removeChannel'](t);
       } )
 }
 
 
-export const ChatPage = () => {
-    //Обработать!
-    const currentActiveChannelId = useSelector( (store) => store.activeChannel.currentChannelId) ?? 1;
+export const ChatPage = ({t}) => {
 
     const userId = JSON.parse(localStorage.getItem('userId'));
     const dispatch = useDispatch();
     const { socket } = useSocket()
-    useEffect( () => { 
+    useEffect( () => {
+        socket.removeAllListeners() 
         dispatch(fetchDataCurrentUserByUserId(userId.token));
-        handlerSocketListeners(dispatch, socket, currentActiveChannelId);
-        return socket.removeAllListeners;
+        handlerSocketListeners(dispatch, socket, t);
     }, []);
+
 
     return (
         <div className="row h-100 my-4 overflow-hidden rounded shadow border border-info">
@@ -157,3 +136,5 @@ export const ChatPage = () => {
         </div>
     )
 }
+
+export default withTranslation()(ChatPage)

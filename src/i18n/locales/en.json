@@ -70,5 +70,12 @@
             "isNotUniq": "Name have to uniq",
             "tooLong": "Name of channel have to contain less 10 symbols"
         }
+    },
+    "toastText": {
+        "sentancesStart": "Channel",
+        "sentancesAddingEnd": "created!",
+        "sentancesRenamingEnd": "renamed!",
+        "sentancesRemovingEnd": "removed!",
+        "errorNetwork": "Something wrong with network, wait ..."
     }
 }

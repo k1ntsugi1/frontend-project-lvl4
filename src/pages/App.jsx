@@ -15,8 +15,8 @@ import BtnsChgLng from '../components/BtnsChgLng.jsx';
 
 import SignInPage  from './SignInPage.jsx';
 import SignUpPage from './SignUpPage.jsx';
-import { ChatPage } from './ChatPage.jsx';
-import { NotFoundPage } from './NotFoundPage.jsx';
+import ChatPage from './ChatPage.jsx';
+import NotFoundPage from './NotFoundPage.jsx';
 
 import { useAuth } from '../hooks/index.jsx';
 
@@ -43,7 +43,6 @@ const ButtonLogOut = (props) => {
 const App = ({t}) => {
   const userId = JSON.parse(localStorage.getItem('userId')) ?? false;
   const username = (userId && userId.username) ? userId.username : null; 
-  console.log(userId, 'userId/App');
     return (
       <div className='d-flex flex-column h-100'>
         <Navbar bg="light" className='shadow-sm'>
@@ -76,7 +75,7 @@ const App = ({t}) => {
           )}/>
           <Route path="/login" element={ <SignInPage/> }/>
           <Route path="/signup" element={ <SignUpPage /> }/>
-          <Route path="*" element={ <NotFoundPage t={t}/> }/>
+          <Route path="*" element={ <NotFoundPage /> }/>
         </Routes>
       </div >
     )
