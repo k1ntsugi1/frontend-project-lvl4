@@ -15,7 +15,7 @@ const channelsSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchDataCurrentUserByUserId.fulfilled, (state, { payload: { channels }}) => {
-                adapterChannels.upsertMany(state, channels)
+                adapterChannels.setMany(state, channels)
             })
     }
 });

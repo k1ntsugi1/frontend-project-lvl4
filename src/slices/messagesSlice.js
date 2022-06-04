@@ -16,7 +16,7 @@ const  messagesSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchDataCurrentUserByUserId.fulfilled, (state, { payload: { messages }}) => {
-                adapterMessages.upsertMany(state, messages)
+                adapterMessages.setMany(state, messages)
             })
             .addCase(actionsChannels.removeChannel, (state, { payload: id }) => {
                 const messagesForRemoving = Object.values(state.entities).flatMap((message) => {
