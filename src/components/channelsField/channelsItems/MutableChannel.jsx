@@ -23,7 +23,7 @@ export const MutableChannel = ({dataChannel, variant, t}) => {
                     className='ps-4 w-100 rounded-0 text-start position-relative '
                     onClick={handlerNewActiveChannel(channel.id, dispatch)}
             >
-            <Badge bg="primary" pill>
+            <Badge bg="primary" pill className='position-adsolute'>
               +{messagesCounter}
             </Badge>
                 <span># {channel.name }</span>

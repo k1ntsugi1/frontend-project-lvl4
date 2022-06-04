@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { Button, Nav, Badge  } from 'react-bootstrap';
+import { Button, Nav} from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
+import Popup from 'reactjs-popup';
 import { handlerNewActiveChannel } from '../../../additionalFunction/handlers/handlerNewActiveChannel.js'
 
 export const UnmutableChannel = ({dataChannel, variant}) => {
@@ -10,12 +11,13 @@ export const UnmutableChannel = ({dataChannel, variant}) => {
     return (
       <Nav.Item as="li" className='w-100'>
         <Button variant={variant} 
-                className='ps-4 w-100 rounded-0 text-start position-relative'
+                className='ps-4 w-100 rounded-3 text-start position-relative'
                 onClick={handlerNewActiveChannel(channel.id, dispatch)}
         >
-            <Badge bg="primary" pill>
+            <span class=" positiona-absolute start-0 top-0 badge rounded-pill bg-info">
               +{messagesCounter}
-            </Badge>
+              <span class="visually-hidden">unread messages</span>
+            </span>
             <span># {channel.name }</span>
             {' '}
         </Button>

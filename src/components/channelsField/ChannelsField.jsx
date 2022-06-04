@@ -7,15 +7,9 @@ import HeaderChannels from './channelsItems/HeaderChannels.jsx'
 import { UnmutableChannel } from './channelsItems/UnmutableChannel.jsx'
 import MutableChannel from './channelsItems/MutableChannel.jsx'
 
-import {  
-  actionsChannels,
-  selectorsChannels,
-} from '../../slices/channelsSlice.js';
+import {  selectorsChannels } from '../../slices/channelsSlice.js';
 
-import {  
-  actionsMessages,
-  selectorsMessages,
-} from '../../slices/messagesSlice.js';
+import { selectorsMessages } from '../../slices/messagesSlice.js';
 
 import { getMessagesCurrentChannel } from '../../additionalFunction/getMessagesCurrentChannel.js'
 
@@ -48,7 +42,7 @@ export const ChannelsField = () => {
 
         <HeaderChannels />
 
-        <Nav as="ul" variant="pills" className='flex-column'>
+        <Nav as="ul" variant="pills" className='flex-column px-2'>
           { unmutableChannels.map((channel) => {
               const variant = getVariant(channel.id, currentActiveChannelId,'secondary');
               const messagesCurrentChannel = getMessagesCurrentChannel(channel.id, messages);
