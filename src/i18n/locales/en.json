@@ -79,6 +79,7 @@
         "sentancesAddingEnd": "created!",
         "sentancesRenamingEnd": "renamed!",
         "sentancesRemovingEnd": "removed!",
-        "errorNetwork": "Something wrong with network, wait ..."
+        "errorNetwork": "Something wrong with network, wait ...",
+        "badWord": "Don't swear!"
     }
 }

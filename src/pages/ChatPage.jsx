@@ -9,7 +9,7 @@ import { fetchDataCurrentUserByUserId } from '../slices/activeChannelSlice.js';
 import { actionsChannels } from '../slices/channelsSlice.js';
 import { actionsMessages } from '../slices/messagesSlice.js';
 
-import { ModalContex} from '../contexts/index.jsx';
+import { ModalContext} from '../contexts/index.jsx';
 import { useSocket } from "../hooks/index.jsx";
 
 import { ChannelsField } from '../components/channelsField/ChannelsField.jsx';
@@ -66,9 +66,9 @@ const ModalProvider = ({children}) => {
     };
 
     return (
-        <ModalContex.Provider value={ { showState, handleShow, handleClose } }>
+        <ModalContext.Provider value={ { showState, handleShow, handleClose } }>
             {children}
-        </ModalContex.Provider>
+        </ModalContext.Provider>
     )
 
 }

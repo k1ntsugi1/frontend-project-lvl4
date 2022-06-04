@@ -15,15 +15,15 @@ import { injectStyle } from "react-toastify/dist/inject-style";
 
 import store from './slices/index.js';
 
-import { AuthContext } from './contexts/index.jsx';
-import { SocketContex } from './contexts/index.jsx';
+import { AuthContext, SocketContext, BadWordsContext } from './contexts/index.jsx';
 
 import App from './pages/App.jsx'
 
 import translationRU from './i18n/locales/ru.json';
 import translationEN from './i18n/locales/en.json';
 
-
+const filterBadWords = require("leo-profanity");
+const words = require("naughty-words");
 
 if (process.env.NODE_ENV !== 'production') {
   localStorage.debug = 'chat:*';
@@ -50,6 +50,10 @@ i18n.use(initReactI18next)
 
 const socket = io();
 
+
+const ruBadWords = words.ru;
+filterBadWords.add(ruBadWords)
+
 injectStyle();
 
 const AuthProvider = ({children}) => {
@@ -72,9 +76,17 @@ const AuthProvider = ({children}) => {
 
 const SocketProvider = ({socket, children}) => {
   return (
-      <SocketContex.Provider value={{ socket }}>
+      <SocketContext.Provider value={{ socket }}>
           {children}
-      </SocketContex.Provider>
+      </SocketContext.Provider>
+  )
+}
+
+const BadWordsProvider = ({filterBadWords, children}) => {
+  return (
+      <BadWordsContext.Provider value={{ filterBadWords }}>
+          {children}
+      </BadWordsContext.Provider>
   )
 }
 
@@ -83,11 +95,13 @@ const container = ReactDOM.createRoot(document.querySelector('#chat'));
 container.render(
     <BrowserRouter>
       <Provider store={store}>
-        <AuthProvider>
-          <SocketProvider socket={socket}>
-            <App />
-          </SocketProvider>
-        </AuthProvider>
+        <SocketProvider socket={socket}>
+          <BadWordsProvider filterBadWords={filterBadWords}>
+            <AuthProvider>
+              <App />
+            </AuthProvider>
+          </BadWordsProvider>
+        </SocketProvider>
       </Provider>
     </BrowserRouter>
 )

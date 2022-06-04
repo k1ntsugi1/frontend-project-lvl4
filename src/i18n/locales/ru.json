@@ -79,7 +79,8 @@
         "sentancesAddingEnd": "создан",
         "sentancesRenamingEnd": "переименован на:",
         "sentancesRemovingEnd": "удален",
-        "errorNetwork": "Что-то с интернетом, подождите..."
+        "errorNetwork": "Что-то с интернетом, подождите...",
+        "badWord": "Не ругайся!"
     }
     
 }

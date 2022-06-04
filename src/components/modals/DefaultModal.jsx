@@ -1,25 +1,24 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Modal, InputGroup, Form  } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector} from 'react-redux';
 import { withTranslation } from "react-i18next";
-import { useModal, useSocket } from "../../hooks/index.jsx";
 import { useImmer } from "use-immer";
+import _ from 'lodash';
+
+import { useModal, useSocket, useBadWords } from "../../hooks/index.jsx";
+
 import mappingTitle from '../modals/maps/mappingTitle.js'
 import { mappingAction } from '../modals/maps/mappingAction.js'
 
-import _ from 'lodash';
-import {  
-  actionsChannels,
-  selectorsChannels,
-} from '../../slices/channelsSlice.js';
+import { selectorsChannels } from '../../slices/channelsSlice.js';
 
 
 
 const DefaultModal = ({t, impact}) => {
   const { showState, handleClose } = useModal();
   const { socket } = useSocket();
-
+  const { filterBadWords } = useBadWords()
   const inputRef = useRef()
   const channels = useSelector(selectorsChannels.selectAll)
 
@@ -62,7 +61,7 @@ const DefaultModal = ({t, impact}) => {
   })
 
   useEffect( () => {
-    if(errorStore.errorValue === null && errorStore.containError === false ) mappingAction({type, channel, socket, t, handleClose, value: inputValue})
+    if(errorStore.errorValue === null && errorStore.containError === false ) mappingAction({type, channel, socket, t, handleClose, value: inputValue, filterBadWords})
   }, [errorStore.validatedCount])
 
   return (

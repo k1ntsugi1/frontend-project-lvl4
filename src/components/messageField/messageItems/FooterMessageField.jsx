@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef} from 'react';
 import { useFormik  } from 'formik';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { withTranslation } from 'react-i18next';
@@ -7,12 +7,11 @@ import { withTranslation } from 'react-i18next';
 import toastes from '../../../toastes/toastes.js';
 import { useSelector } from "react-redux";
 
-import { useSocket } from '../../../hooks/index.jsx';
-
-let filter = require("leo-profanity");
+import { useSocket, useBadWords } from '../../../hooks/index.jsx';
 
 const FooterMessageField = ({t}) => {
     const { socket } = useSocket();
+    const { filterBadWords } = useBadWords()
     const messageRef = useRef();
     const currentActiveChannelId = useSelector( (store) => store.activeChannel.currentChannelId);
     
@@ -21,11 +20,13 @@ const FooterMessageField = ({t}) => {
             message: '',
         },
         onSubmit: (values, actions) => {
-            const filteredMessage = filter.clean(values.message)
+            const filteredMessage = filterBadWords.clean(values.message)
+            if(filterBadWords.check(values.message)) toastes["badWord"](t)
+
             socket.emit('newMessage', { message: filteredMessage, channelId: currentActiveChannelId }, (response) => {
                 if(response.status !== 'ok') {
                     toastes["errorNetwork"](t);
-                    return;
+                    //return;
                 }
             })
             actions.resetForm( { message: '' } )

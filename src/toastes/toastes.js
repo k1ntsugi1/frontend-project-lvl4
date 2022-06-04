@@ -15,6 +15,19 @@ const toastes = {
                 })
         )
     },
+    "badWord": (t) => {
+        return (
+            toast(`💩 ${t("toastText.badWord")}!`, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            })
+        )
+    },
     'newChannel': (t, name) => {
         return (
             toast(`⭐ ${t("toastText.sentancesStart")} ${name} ${t("toastText.sentancesAddingEnd")}!`, {

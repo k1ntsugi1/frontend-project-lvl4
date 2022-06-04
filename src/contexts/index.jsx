@@ -3,8 +3,10 @@ import { createContext } from "react";
 
 const AuthContext = createContext({});
 
-const ModalContex = createContext({});
+const ModalContext = createContext({});
 
-const SocketContex = createContext({})
+const SocketContext = createContext({});
 
-export { AuthContext, ModalContex, SocketContex };
+const BadWordsContext = createContext({});
+
+export { AuthContext, ModalContext, SocketContext, BadWordsContext };
