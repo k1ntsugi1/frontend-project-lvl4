@@ -1,10 +1,18 @@
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { withTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 
-export const NotFoundPage = ({t, setNewAdditionalNavBtn}) => {
-    setNewAdditionalNavBtn(null);
+import { actionsUiNavBar } from "../slices/UiNavbarSlice.js";
+
+export const NotFoundPage = ({t}) => {
+
+    const dispatch = useDispatch()
+
+    useEffect( () => {
+        dispatch(actionsUiNavBar.setNewActivePage({newActivePage: null}))
+    }, [])
     return (
         <div className='position-relative row justify-content-center h-100'>
             <div className='position-absolute top-0 text-muted text-center'>

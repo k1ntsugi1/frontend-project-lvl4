@@ -1,6 +1,6 @@
 
 import React, { useEffect} from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useImmer } from "use-immer";
 import { ToastContainer} from 'react-toastify';
 
@@ -8,6 +8,7 @@ import { ToastContainer} from 'react-toastify';
 import { fetchDataCurrentUserByUserId } from '../slices/activeChannelSlice.js';
 import { actionsChannels } from '../slices/channelsSlice.js';
 import { actionsMessages } from '../slices/messagesSlice.js';
+import { actionsUiNavBar } from "../slices/UiNavbarSlice.js";
 
 import { ModalContext} from '../contexts/index.jsx';
 import { useSocket } from "../hooks/index.jsx";
@@ -76,11 +77,11 @@ const ModalProvider = ({children}) => {
 const handlerSocketListeners = (dispatch, socket, t) => {
 
     socket.on('newMessage', (messageWithId) => {
-        const { id, message, channelId } = messageWithId;
+        const { id, body, channelId, username } = messageWithId;
         const newMessage = {
-            body: message,
+            body,
             channelId,
-            username: JSON.parse(localStorage.getItem('userId')).username, 
+            username, 
             id,
         }
         dispatch(actionsMessages.addMessage(newMessage));
@@ -111,18 +112,23 @@ const handlerSocketListeners = (dispatch, socket, t) => {
 }
 
 
-export const ChatPage = ({t, setNewAdditionalNavBtn}) => {
-    setNewAdditionalNavBtn('chat');
+export const ChatPage = ({t}) => {
+
     const userId = JSON.parse(localStorage.getItem('userId'));
     const { token, username } = userId;
     const dispatch = useDispatch();
-    const { socket } = useSocket()
+    const { socket } = useSocket();
+    
     useEffect( () => {
         socket.removeAllListeners() 
         dispatch(fetchDataCurrentUserByUserId(token));
         handlerSocketListeners(dispatch, socket, t);
         toastes['greeting'](t, username);
     }, []);
+
+    useEffect( () => {
+        dispatch(actionsUiNavBar.setNewActivePage({newActivePage: 'chat'}))
+    }, [])
 
 
     return (

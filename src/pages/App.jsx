@@ -19,6 +19,7 @@ import ChatPage from './ChatPage.jsx';
 import NotFoundPage from './NotFoundPage.jsx';
 
 import { useAuth } from '../hooks/index.jsx';
+import { useSelector } from 'react-redux';
 
 const PrivatRout = ({children}) => {
   const auth = useAuth();
@@ -80,8 +81,8 @@ const SignUpBtn = ({t}) => {
 }
 
 const App = ({t}) => {
-
-  const [currentLocation, setNewAdditionalNavBtn] = useState('signin');
+  const currentActivePage = useSelector( (store) => store.uiNavBar.currentActivePage );
+  console.log(currentActivePage)
 
   return (
     <div className='d-flex flex-column h-100'>
@@ -101,9 +102,9 @@ const App = ({t}) => {
             <BtnsChgLng/>
           </NavbarCollapse>
 
-          {(currentLocation === 'signin') && <SignUpBtn t={t}/>}
-          {(currentLocation === 'signUp') && <SignInBtn t={t}/>}
-          {(currentLocation === 'chat') && <LogOutBtn t={t}/>}
+          {(currentActivePage === 'signin') && <SignUpBtn t={t}/>}
+          {(currentActivePage === 'signup') && <SignInBtn t={t}/>}
+          {(currentActivePage === 'chat') && <LogOutBtn t={t}/>}
 
         </Container>
       </Navbar>
@@ -111,12 +112,12 @@ const App = ({t}) => {
       <Routes>
         <Route path='/' element={(
           <PrivatRout>
-            <ChatPage setNewAdditionalNavBtn={setNewAdditionalNavBtn}/>
+            <ChatPage />
           </PrivatRout> 
         )}/>
-        <Route path="login" element={ <SignInPage setNewAdditionalNavBtn={setNewAdditionalNavBtn}/> }/>
-        <Route path="signup" element={ <SignUpPage setNewAdditionalNavBtn={setNewAdditionalNavBtn}/> }/>
-        <Route path="*" element={ <NotFoundPage setNewAdditionalNavBtn={setNewAdditionalNavBtn}/> }/>
+        <Route path="login" element={ <SignInPage /> }/>
+        <Route path="signup" element={ <SignUpPage /> }/>
+        <Route path="*" element={ <NotFoundPage /> }/>
       </Routes>
     </div >
     )

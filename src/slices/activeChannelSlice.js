@@ -1,5 +1,5 @@
 
-import { createAsyncThunk, createSlice, createEntityAdapter } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { actionsChannels } from "./channelsSlice.js";
 import routes from "../routes.js";
@@ -20,7 +20,7 @@ export const fetchDataCurrentUserByUserId = createAsyncThunk(
 
 const activeChannelSlice = createSlice({
     name: 'currentChannel',
-    initialState: ({ loading: 'idle', error: null, currentChannelId: null }),
+    initialState: ({ loading: 'idle', error: null, currentChannelId: 1 }),
     reducers: {
         setNewActiveChannelId(state, { payload: currentChannelId }) {
             state.currentChannelId = currentChannelId;
@@ -35,7 +35,7 @@ const activeChannelSlice = createSlice({
             .addCase(fetchDataCurrentUserByUserId.fulfilled, (state, { payload: { currentChannelId } }) => {
                 state.loading = 'idle';
                 state.error = null;
-                state.currentChannelId = currentChannelId
+                //state.currentChannelId = currentChannelId
             })
             .addCase(fetchDataCurrentUserByUserId.rejected, (state, actions) => {
                 state.loading = 'error';

@@ -11,12 +11,13 @@ const HeaderMessageField = ({t}) => {
     const currentActiveChannel = useSelector( (state) => selectorsChannels.selectById(state,currentActiveChannelId ) ) ?? null
 
     const messages = useSelector(selectorsMessages.selectAll);
-    const messagesCurrentChannel = getMessagesCurrentChannel(currentActiveChannelId ?? 1, messages )
+    let messagesCurrentChannel = [];
+    if (currentActiveChannel) messagesCurrentChannel = getMessagesCurrentChannel(currentActiveChannelId, messages)
 
     return (
         <div className="bg-light mb-3 p-3 shadow-sm small">
             <h3># {currentActiveChannel && currentActiveChannel['name'] }</h3>
-            <span>{messagesCurrentChannel.length} {t("messagesField.messages")}</span>
+            <span>{messagesCurrentChannel.length > 0 ? messagesCurrentChannel.length : 0} {t("messagesField.messages")}</span>
         </div>
     )
 }

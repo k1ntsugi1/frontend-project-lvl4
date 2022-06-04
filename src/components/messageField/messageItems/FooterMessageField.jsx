@@ -23,7 +23,9 @@ const FooterMessageField = ({t}) => {
             const filteredMessage = filterBadWords.clean(values.message)
             if(filterBadWords.check(values.message)) toastes["badWord"](t)
 
-            socket.emit('newMessage', { message: filteredMessage, channelId: currentActiveChannelId }, (response) => {
+            socket.emit('newMessage', { body: filteredMessage, 
+                                        channelId: currentActiveChannelId,
+                                        username: JSON.parse(localStorage.getItem('userId')).username }, (response) => {
                 if(response.status !== 'ok') {
                     toastes["errorNetwork"](t);
                     //return;

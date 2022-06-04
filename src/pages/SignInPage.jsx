@@ -7,6 +7,7 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 
 import { useAuth } from '../hooks/index.jsx';
 
@@ -20,13 +21,14 @@ import ajaxStore from '../components/entranceField/ajaxStore.js';
 import { getSignInSchema } from '../components/entranceField/signInField/signInSchema.js';
 import { handlerLogin } from '../components/entranceField/handlerLogin.js';
 
+import { actionsUiNavBar } from "../slices/UiNavbarSlice.js";
 
 
-const SignInPage = ({t, setNewAdditionalNavBtn}) => {
-    setNewAdditionalNavBtn('signin');
+const SignInPage = ({t}) => {
+  
     const { getStartAjaxState, handlerResponse, handlerRequest  } = ajaxStore;
     const auth = useAuth();
-
+    const dispatch = useDispatch();
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -43,7 +45,11 @@ const SignInPage = ({t, setNewAdditionalNavBtn}) => {
 
     useEffect( () => {
       if (authStore.authData !== null) handlerLogin(location, navigate, auth, authStore);
-    }, [authStore.validateAuthCounter])
+    }, [authStore.validateAuthCounter]);
+
+    useEffect( () => {
+      dispatch(actionsUiNavBar.setNewActivePage({newActivePage: 'signin'}))
+    }, [])
 
     return (
     	<CardField>

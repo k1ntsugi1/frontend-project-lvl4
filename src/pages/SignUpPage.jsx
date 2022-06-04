@@ -1,5 +1,4 @@
 
-
 import React, { useEffect } from 'react'
 import { withTranslation } from 'react-i18next';
 import { useFormik  } from 'formik';
@@ -8,6 +7,7 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 
 import { useAuth } from '../hooks/index.jsx';
 
@@ -20,11 +20,13 @@ import ajaxStore from '../components/entranceField/ajaxStore.js';
 import { getSignUpSchema } from '../components/entranceField/signUpField/signUpSchema.js'
 import { handlerLogin } from '../components/entranceField/handlerLogin.js';
 
-const SignUpPage = ({t, setNewAdditionalNavBtn}) => {
-  setNewAdditionalNavBtn('signUp');
+import { actionsUiNavBar } from "../slices/UiNavbarSlice.js";
+
+const SignUpPage = ({t}) => {
+  
   const { getStartAjaxState, handlerResponse, handlerRequest  } = ajaxStore;
   const auth = useAuth();
-
+  const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -43,6 +45,9 @@ const SignUpPage = ({t, setNewAdditionalNavBtn}) => {
     if (authStore.authData !== null) handlerLogin(location, navigate, auth, authStore);
   }, [authStore.validateAuthCounter])
 
+  useEffect( () => {
+    dispatch(actionsUiNavBar.setNewActivePage({newActivePage: 'signup'}))
+  }, [])
 
     return (
       <CardField>
