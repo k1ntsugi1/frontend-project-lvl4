@@ -31,8 +31,13 @@
     scrollbar-color: #0dcaf0 #F5F5F5;
   }
 
-  .myBadge {
-    position: absolute;
-    top: 50%;
-    left: -10%;
-  }
+.myPopUp {
+  margin-top: '2px';
+  margin-left: '2px';
+  padding: "2px";
+  color: '#00022f';
+  text-align: 'center';
+  background-color: '#e8e8e8';
+  border-radius: '10px';
+  opacity: '90%';
+}

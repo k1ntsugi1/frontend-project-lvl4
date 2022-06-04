@@ -81,6 +81,9 @@
         "sentancesRemovingEnd": "удален",
         "errorNetwork": "Что-то с интернетом, подождите...",
         "badWord": "Не ругайся!"
+    },
+    "messagesField": {
+        "messages": "сообщений"
     }
     
 }

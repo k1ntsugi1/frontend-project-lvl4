@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Button, Nav, Dropdown, Badge  } from 'react-bootstrap';
+import { Button, Nav, Dropdown} from 'react-bootstrap';
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { withTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
@@ -8,6 +8,8 @@ import { handlerNewActiveChannel } from '../../../additionalFunction/handlers/ha
 import { useModal } from '../../../hooks/index.jsx';
 import DefaultModal from '../../modals/DefaultModal.jsx';
 import RemoveModal from '../../modals/RemoveModal.jsx'
+import Popup from 'reactjs-popup';
+
 
 export const MutableChannel = ({dataChannel, variant, t}) => {
   const { channel, messagesCounter } = dataChannel;
@@ -18,17 +20,28 @@ export const MutableChannel = ({dataChannel, variant, t}) => {
       <>
         <Nav.Item as="li" className='w-100'>
           <Dropdown as={ButtonGroup} className="w-100">
-
+          <Popup trigger={
             <Button variant={variant} 
-                    className='ps-4 w-100 rounded-0 text-start position-relative '
+                    className='ps-3 w-100 rounded-3 text-start position-relative '
                     onClick={handlerNewActiveChannel(channel.id, dispatch)}
             >
-            <Badge bg="primary" pill className='position-adsolute'>
-              +{messagesCounter}
-            </Badge>
                 <span># {channel.name }</span>
-
-            </Button>
+            </Button>                      
+            }
+                position='left'
+                on={['hover', 'focus']}
+                contentStyle={ 
+                  {marginRight: '8px',
+                   padding: "2px",
+                   color: '#00022f',
+                   textAlign: 'center',
+                   backgroundColor: '#e8e8e8',
+                   borderRadius: '10px',
+                   opacity: '90%'}
+               }
+          >
+           <span>+{messagesCounter}</span>             
+        </Popup>
 
             <Dropdown.Toggle split variant={variant} id="dropdown-split" />
 

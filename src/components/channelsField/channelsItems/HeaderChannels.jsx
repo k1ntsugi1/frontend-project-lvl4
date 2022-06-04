@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { withTranslation } from 'react-i18next';
 import { Button } from 'react-bootstrap';
 import DefaultModal from '../../modals/DefaultModal.jsx';

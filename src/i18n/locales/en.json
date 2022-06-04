@@ -81,5 +81,8 @@
         "sentancesRemovingEnd": "removed!",
         "errorNetwork": "Something wrong with network, wait ...",
         "badWord": "Don't swear!"
+    },
+    "messagesField": {
+        "messages": "messages"
     }
 }
