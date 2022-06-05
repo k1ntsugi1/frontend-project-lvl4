@@ -41,7 +41,7 @@ const FooterMessageField = ({t}) => {
 
     return (
         <div className='mt-auto sticky-bottom px-5 py-3'>
-            <Form noValidate className='p-0 border rounded-2' onSubmit={formik.handleSubmit}>
+            <Form noValidate className='p-1 border rounded-pill' onSubmit={formik.handleSubmit}>
             <InputGroup>
                 <Form.Control id="message"
                               name="message"
@@ -50,10 +50,10 @@ const FooterMessageField = ({t}) => {
                               placeholder={t("chatPage.placeholderInput")}
                               onChange={formik.handleChange}
                               value={formik.values.message}
-                              className="border-0 p-0 ps-2"
+                              className="border-0 rounded-pill"
                  />
-                <Button className=' btn-group-vertical' 
-                        variant="outline-info"
+                <Button className='border-0 btn-group-vertical text-info'
+                        variant="" 
                         type="submit"
                         disabled={formik.values.message === '' || formik.isSubmitting}
                 >
