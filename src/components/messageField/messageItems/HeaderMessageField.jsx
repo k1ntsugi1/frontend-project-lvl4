@@ -1,10 +1,12 @@
 
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { withTranslation } from 'react-i18next';
+
 import { selectorsMessages } from '../../../slices/messagesSlice.js'; 
 import { selectorsChannels } from '../../../slices/channelsSlice.js';
 import { getMessagesCurrentChannel } from '../../../additionalFunction/getMessagesCurrentChannel.js';
-import { withTranslation } from 'react-i18next';
+
 
 const HeaderMessageField = ({t}) => {
     const currentActiveChannelId = useSelector( (state) => state.activeChannel.currentChannelId);

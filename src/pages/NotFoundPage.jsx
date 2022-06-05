@@ -4,7 +4,7 @@ import { withTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 
-import { actionsUiNavBar } from "../slices/UiNavbarSlice.js";
+import { actionsUiNavBar } from "../slices/uiNavbarSlice.js";
 
 export const NotFoundPage = ({t}) => {
 

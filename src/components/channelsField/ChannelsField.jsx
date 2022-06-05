@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Nav } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import HeaderChannels from './channelsItems/HeaderChannels.jsx'
 import { UnmutableChannel } from './channelsItems/UnmutableChannel.jsx'
@@ -12,6 +12,7 @@ import {  selectorsChannels } from '../../slices/channelsSlice.js';
 import { selectorsMessages } from '../../slices/messagesSlice.js';
 
 import { getMessagesCurrentChannel } from '../../additionalFunction/getMessagesCurrentChannel.js'
+
 
 const getChannelsByMutableState = (channels) => {
   const unmutableChannels = [];

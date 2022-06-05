@@ -1,6 +1,7 @@
 
 
 import React from 'react';
+
 import HeaderMessageField from './messageItems/HeaderMessageField.jsx';
 import { BodyMessageField } from './messageItems/BodyMessageField.jsx'
 import FooterMessageField from './messageItems/FooterMessageField.jsx'

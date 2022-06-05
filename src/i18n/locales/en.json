@@ -31,7 +31,7 @@
     "signUpForm": {
         "usernameField": "Create a name",
         "passwordField": "Create a password",
-        "repeatedPasswordField": "Confirm the password",
+        "confirmPasswordField": "Confirm the password",
         "header": "Sign Up",
         "buttonSubmit": "Sign Up",
         "placeHolders": {

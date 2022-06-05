@@ -16,7 +16,6 @@ export const fetchDataCurrentUserByUserId = createAsyncThunk(
     }
 );
 
-//const adapterActiveChannel = createEntityAdapter()
 
 const activeChannelSlice = createSlice({
     name: 'currentChannel',
@@ -51,7 +50,6 @@ const activeChannelSlice = createSlice({
     }
 })
 
-//export const selectorsActiveChannel = adapterActiveChannel.getSelectors(state => state.activeChannel );
 
 export const actionsActiveChannel = activeChannelSlice.actions;
 

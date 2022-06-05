@@ -1,8 +1,7 @@
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { withTranslation } from 'react-i18next';
 import { Form, Button} from 'react-bootstrap';
-import { useRef, useEffect } from 'react';
 
 const FormSignInField = ({t, formik, authError}) => {
     const usernameRef = useRef();

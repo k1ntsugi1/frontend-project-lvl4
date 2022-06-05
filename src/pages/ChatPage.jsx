@@ -1,78 +1,21 @@
 
 import React, { useEffect} from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useImmer } from "use-immer";
+import { useDispatch} from "react-redux";
 import { ToastContainer} from 'react-toastify';
-
+import { withTranslation } from "react-i18next";
+import toastes from "../toastes/toastes.js";
 
 import { fetchDataCurrentUserByUserId } from '../slices/activeChannelSlice.js';
 import { actionsChannels } from '../slices/channelsSlice.js';
 import { actionsMessages } from '../slices/messagesSlice.js';
-import { actionsUiNavBar } from "../slices/UiNavbarSlice.js";
+import { actionsUiNavBar } from "../slices/uiNavbarSlice.js";
 
-import { ModalContext} from '../contexts/index.jsx';
 import { useSocket } from "../hooks/index.jsx";
 
 import { ChannelsField } from '../components/channelsField/ChannelsField.jsx';
 import { MessageField } from '../components/messageField/MessageField.jsx';
-import { withTranslation } from "react-i18next";
-
-import toastes from "../toastes/toastes.js";
 
 
-const ModalProvider = ({children}) => {
-    
-    const [showState, setShow] = useImmer({addChannelModal: false, renameChannelModal: false, removeChannelModal: false});
-
-    const handleShow = (typeModal) => () => {
-        const mappingShowing = {
-            'addChannelModal': () => {
-                setShow( (dref) => {
-                    dref.addChannelModal = true;
-                });
-            },
-            'renameChannelModal': () => {
-                setShow( (dref) => {
-                    dref.renameChannelModal = true;
-                });
-            },
-            'removeChannelModal': () => {
-                setShow( (dref) => {
-                    dref.removeChannelModal = true;
-                });
-            }
-        }
-        mappingShowing[typeModal]();
-    }
-    
-    const handleClose = (typeModal) => () => {
-        const mappingClosing ={
-            'addChannelModal': () => {
-                setShow( (dref) => {
-                    dref.addChannelModal = false;
-                });
-            },
-            'renameChannelModal': () => {
-                setShow( (dref) => {
-                    dref.renameChannelModal = false;
-                });
-            },
-            'removeChannelModal': () => {
-                setShow( (dref) => {
-                    dref.removeChannelModal = false;
-                });
-            }
-        }
-        mappingClosing[typeModal]();
-    };
-
-    return (
-        <ModalContext.Provider value={ { showState, handleShow, handleClose } }>
-            {children}
-        </ModalContext.Provider>
-    )
-
-}
 
 const handlerSocketListeners = (dispatch, socket, t) => {
 
@@ -133,13 +76,8 @@ export const ChatPage = ({t}) => {
 
     return (
         <div className="row h-100 my-4 overflow-hidden rounded shadow border border-info">
-
-            <ModalProvider>
-                <ChannelsField />
-            </ModalProvider>
-
+            <ChannelsField />
             <MessageField/>
-
             <ToastContainer/>
         </div>
     )

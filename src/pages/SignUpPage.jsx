@@ -20,7 +20,7 @@ import ajaxStore from '../components/entranceField/ajaxStore.js';
 import { getSignUpSchema } from '../components/entranceField/signUpField/signUpSchema.js'
 import { handlerLogin } from '../components/entranceField/handlerLogin.js';
 
-import { actionsUiNavBar } from "../slices/UiNavbarSlice.js";
+import { actionsUiNavBar } from "../slices/uiNavbarSlice.js";
 
 const SignUpPage = ({t}) => {
   

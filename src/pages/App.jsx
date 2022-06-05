@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import {
     Routes,
     Route,
@@ -7,8 +7,7 @@ import {
     useLocation,
     Navigate
 } from "react-router-dom";
-import { Button, Container, NavbarBrand, Navbar, Nav } from 'react-bootstrap';
-import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
+import { Button, Container, Navbar, Nav } from 'react-bootstrap';
 import { withTranslation } from 'react-i18next';
 
 import BtnsChgLng from '../components/BtnsChgLng.jsx';

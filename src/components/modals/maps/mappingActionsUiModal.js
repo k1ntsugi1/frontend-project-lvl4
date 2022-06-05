@@ -2,13 +2,13 @@
 
 import toastes from "../../../toastes/toastes.js";
 
-export const mappingAction = (objOfProperties) => {
-    const { socket, t, handleClose, type, channel, value, filterBadWords  } = objOfProperties;
+export const mappingActionsUiModal = (objOfProperties) => {
+    const { socket, t, dispatch,  handleClose, type, channel, value, filterBadWords  } = objOfProperties;
 
     const isBadWord = (string) => {
       if(filterBadWords.check(string)) {
         toastes["badWord"](t);
-        handleClose(type)()
+        dispatch(handleClose({typeModal: type}))
         return true;
       };
       return false
@@ -21,7 +21,7 @@ export const mappingAction = (objOfProperties) => {
           socket.emit('newChannel', { name: value }, (response) => {
             if (response.status !== 'ok') toastes["errorNetwork"](t);
           });
-          handleClose(type)()
+          dispatch(handleClose({typeModal:type}))
         },
     
         'renameChannelModal': () => {
@@ -30,7 +30,7 @@ export const mappingAction = (objOfProperties) => {
           socket.emit('renameChannel', { id, name: value }, (response) => {
             if (response.status !== 'ok') toastes["errorNetwork"](t);
           });
-          handleClose(type)()
+          dispatch(handleClose({typeModal:type}))
         },
 
         'removeChannelModal': () => {
@@ -39,7 +39,7 @@ export const mappingAction = (objOfProperties) => {
           socket.emit('removeChannel', { id }, (response) => {
             if (response.status !== 'ok') toastes["errorNetwork"](t);
           });
-        handleClose(type)()
+          dispatch(handleClose({typeModal:type}))
         }
       };
 

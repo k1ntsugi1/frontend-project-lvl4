@@ -1,6 +1,7 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
+
 import {  selectorsMessages } from '../../../slices/messagesSlice.js';
 import { MessageItem } from './MessageItem.jsx'
 import { getMessagesCurrentChannel } from '../../../additionalFunction/getMessagesCurrentChannel.js'

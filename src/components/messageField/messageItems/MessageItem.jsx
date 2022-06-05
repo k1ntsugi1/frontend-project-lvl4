@@ -1,7 +1,6 @@
 
 import React from 'react';
 
-
 export const MessageItem = ({message}) => {
     const { body, username } = message;
     console.log(body, username, 'building message')

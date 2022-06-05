@@ -1,11 +1,11 @@
 
 import React, { useEffect, useRef} from 'react';
 import { useFormik  } from 'formik';
+import { useSelector } from "react-redux";
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { withTranslation } from 'react-i18next';
 
 import toastes from '../../../toastes/toastes.js';
-import { useSelector } from "react-redux";
 
 import { useSocket, useBadWords } from '../../../hooks/index.jsx';
 

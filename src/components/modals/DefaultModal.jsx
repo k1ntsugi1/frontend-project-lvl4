@@ -1,26 +1,27 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Modal, InputGroup, Form  } from 'react-bootstrap';
-import { useSelector} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import { withTranslation } from "react-i18next";
 import { useImmer } from "use-immer";
 import _ from 'lodash';
 
-import { useModal, useSocket, useBadWords } from "../../hooks/index.jsx";
+import { useSocket, useBadWords } from "../../hooks/index.jsx";
 
 import mappingTitle from '../modals/maps/mappingTitle.js'
-import { mappingAction } from '../modals/maps/mappingAction.js'
+import { mappingActionsUiModal } from './maps/mappingActionsUiModal.js'
 
 import { selectorsChannels } from '../../slices/channelsSlice.js';
-
+import { actionsUiModal } from "../../slices/uiModalSlice.js";
 
 
 const DefaultModal = ({t, impact}) => {
-  const { showState, handleClose } = useModal();
   const { socket } = useSocket();
   const { filterBadWords } = useBadWords()
   const inputRef = useRef()
   const channels = useSelector(selectorsChannels.selectAll)
+  const dispatch = useDispatch();
+  const stateModal = useSelector( (store) => store.uiModal )
 
   const { type, value: channel  } = impact;
 
@@ -49,7 +50,7 @@ const DefaultModal = ({t, impact}) => {
  const validate = () => {
   if ( inputValue === '' ) return handleErrorValue(t("modal.errors.required"));
  
-  if ( inputValue.length > 10 ) return handleErrorValue(t("modal.errors.tooLong"));
+  //if ( inputValue.length > 10 ) return handleErrorValue(t("modal.errors.tooLong"));
 
   const isUniq = _.find(channels, (channel) => channel.name === inputValue ) ? false : true;
   if (!isUniq ) return handleErrorValue(t("modal.errors.isNotUniq"));
@@ -61,11 +62,11 @@ const DefaultModal = ({t, impact}) => {
   })
 
   useEffect( () => {
-    if(errorStore.errorValue === null && errorStore.containError === false ) mappingAction({type, channel, socket, t, handleClose, value: inputValue, filterBadWords})
+    if(errorStore.errorValue === null && errorStore.containError === false ) mappingActionsUiModal({type, channel, dispatch, socket, t, handleClose: actionsUiModal.removeModal, value: inputValue, filterBadWords})
   }, [errorStore.validatedCount])
 
   return (
-    <Modal centered show={showState[type]} onHide={handleClose(type)}>
+    <Modal centered show={stateModal[type]} onHide={() => dispatch(actionsUiModal.removeModal({typeModal:type}))}>
 
       <Modal.Header closeButton>
         <Modal.Title>{t(mappingTitle[type]())}</Modal.Title>
@@ -90,7 +91,7 @@ const DefaultModal = ({t, impact}) => {
             </Modal.Body>
 
             <Modal.Footer className="p-0">
-              <Button variant="secondary" onClick={handleClose(type)}>
+              <Button variant="secondary" onClick={() => dispatch(actionsUiModal.removeModal({typeModal:type}))}>
                 {t("modal.cancel")}
               </Button>
               <Button variant="primary"  onClick={validate}>

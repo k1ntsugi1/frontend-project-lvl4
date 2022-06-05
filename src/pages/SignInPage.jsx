@@ -21,7 +21,7 @@ import ajaxStore from '../components/entranceField/ajaxStore.js';
 import { getSignInSchema } from '../components/entranceField/signInField/signInSchema.js';
 import { handlerLogin } from '../components/entranceField/handlerLogin.js';
 
-import { actionsUiNavBar } from "../slices/UiNavbarSlice.js";
+import { actionsUiNavBar } from "../slices/uiNavbarSlice.js";
 
 
 const SignInPage = ({t}) => {
