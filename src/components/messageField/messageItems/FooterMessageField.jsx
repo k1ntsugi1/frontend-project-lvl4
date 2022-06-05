@@ -47,12 +47,12 @@ const FooterMessageField = ({t}) => {
                               name="message"
                               ref={messageRef}
                               type="text" 
-                              placeholder={t("chatPage.placeholderInput")}
+                              placeholder={t("chatPage.channelsField.placeholderInput")}
                               onChange={formik.handleChange}
                               value={formik.values.message}
                               className="border-0 rounded-pill"
                  />
-                <Button className='border-0 btn-group-vertical text-info'
+                <Button className='border-0 rounded-pill btn-group-vertical text-info '
                         variant="" 
                         type="submit"
                         disabled={formik.values.message === '' || formik.isSubmitting}

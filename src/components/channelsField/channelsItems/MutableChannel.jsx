@@ -22,7 +22,7 @@ export const MutableChannel = ({dataChannel, variant, t}) => {
           <Dropdown as={ButtonGroup} className="w-100">
           <Popup trigger={
             <Button variant={variant} 
-                    className='ps-3 w-100 border-left rounded-3 text-start position-relative '
+                    className='ps-3 w-100 rounded-start text-start position-relative '
                     onClick={handlerNewActiveChannel(channel.id, dispatch)}
             >
                 <span># {channel.name }</span>
@@ -43,11 +43,11 @@ export const MutableChannel = ({dataChannel, variant, t}) => {
            <span>+{messagesCounter}</span>             
         </Popup>
 
-            <Dropdown.Toggle split variant={variant} id="dropdown-split" />
+            <Dropdown.Toggle split variant={variant} id="dropdown-split" className='rounded-end' />
 
             <Dropdown.Menu>
-              <Dropdown.Item as="button" onClick={handleShow('renameChannelModal')}>{t("chatPage.renameChannel")}</Dropdown.Item>
-              <Dropdown.Item as="button" onClick={handleShow('removeChannelModal')} >{t("chatPage.removeChannel")}</Dropdown.Item>
+              <Dropdown.Item as="button" onClick={handleShow('renameChannelModal')}>{t("chatPage.channelsField.renameChannel")}</Dropdown.Item>
+              <Dropdown.Item as="button" onClick={handleShow('removeChannelModal')} >{t("chatPage.channelsField.removeChannel")}</Dropdown.Item>
             </Dropdown.Menu>
 
           </Dropdown>

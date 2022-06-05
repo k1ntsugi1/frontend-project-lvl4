@@ -54,10 +54,20 @@
         "linkToMainPage": "на главную страницу"
     },
     "chatPage": {
-        "channelsHeader": "Каналы",
-        "placeholderInput": "Введите сообщение...",
-        "renameChannel": "Переименовать",
-        "removeChannel": "Удалить"
+        "channelsField": {
+            "channelsHeader": "Каналы",
+            "placeholderInput": "Введите сообщение...",
+            "addChannel": "Добавить канал",
+            "renameChannel": "Переименовать",
+            "removeChannel": "Удалить"
+        },
+        "messagesField": {
+            "messages_one": " сообщениe",
+            "messages_few": " сообщения",
+            "messages_many": " сообщений",
+            "messages_other": " сообщений"
+    
+        }
     },
     "modal": {
         "headerAddChannel": "Добавить новый канал",
@@ -81,9 +91,5 @@
         "sentancesRemovingEnd": "удален",
         "errorNetwork": "Что-то с интернетом, подождите...",
         "badWord": "Не ругайся!"
-    },
-    "messagesField": {
-        "messages": "сообщений"
     }
-    
 }

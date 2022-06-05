@@ -13,7 +13,7 @@ export const UnmutableChannel = ({dataChannel, variant}) => {
       <Nav.Item as="li" className='w-100'>
         <Popup trigger={
                   <Button variant={variant} 
-                          className='ps-3 w-100 rounded-3 text-start position-relative'
+                          className='ps-3 w-100 rounded text-start position-relative'
                           onClick={handlerNewActiveChannel(channel.id, dispatch)}
                   >
                     <span># {channel.name }</span>

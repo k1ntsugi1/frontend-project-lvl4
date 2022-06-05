@@ -2,12 +2,9 @@
     margin-left: 5px;
     margin-right: 10px;
     float: left;
-    background: #fff;
+    background: #FFFFFF;
     overflow-y: scroll;
     margin-bottom: 25px;
-}
-  .force-overflow {
-    min-height: 450px;
 }
 
 .scrollbar-info::-webkit-scrollbar-track {
@@ -16,7 +13,7 @@
   }
   
   .scrollbar-info::-webkit-scrollbar {
-    width: 12px;
+    width: 10px;
     background-color: #FFFFFF;
   }
   
@@ -29,13 +26,34 @@
     scrollbar-color: #0dcaf0 #FFFFFF;
   }
 
-.myPopUp {
-  margin-top: '2px';
-  margin-left: '2px';
-  padding: "2px";
-  color: '#00022f';
-  text-align: 'center';
-  background-color: '#e8e8e8';
-  border-radius: '10px';
-  opacity: '90%';
+.scrollbar2 {
+    margin-right: 2px;
+    float: left;
+    background: #f8f9fa;
+    overflow-y: scroll;
+    margin-bottom: 25px;
+}
+
+
+.scrollbar-channel::-webkit-scrollbar-track {
+    background-color: #f8f9fa;
+    border: 0;
+  }
+  
+  .scrollbar-channel::-webkit-scrollbar {
+    width: 8px;
+    background-color: #f8f9fa;
+  }
+  
+  .scrollbar-channel::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #0dcaf0;
+  }
+  
+  .scrollbar-channel {
+    scrollbar-color: #0dcaf0 #f8f9fa;
+  }
+
+.h-90 {
+  height: 90%;
 }

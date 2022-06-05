@@ -18,15 +18,20 @@ const BtnsChgLng = ({t, i18n}) => {
               <Dropdown.Item as="button" onClick={ changeLang('en') }>English</Dropdown.Item>
             </NavDropdown >
             }  
-                position='bottom right'
+                position='bottom left'
                 on={['hover', 'focus']}
-                contentStyle={{ marginTop: '2px',
-                                padding: "2px",
-                                color: '#00022f',
-                                textAlign: 'center',
-                                backgroundColor: '#e8e8e8',
-                                borderRadius: '10px',
-                                opacity: '90%' }}>
+                contentStyle={
+                  { 
+                    margin: '0 0 0 9px',
+                    padding: "2px 5px 2px 5px",
+                    color: '#FFFFFF',
+                    fontWeight: 400,
+                    textAlign: 'center',
+                    backgroundColor: '#198754',
+                    borderRadius: '10px',
+                  }
+                            }
+        >
           <span>{t("navBar.changeLang")}</span> 
         </Popup>
   )

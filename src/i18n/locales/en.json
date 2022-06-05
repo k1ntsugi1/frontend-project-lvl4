@@ -54,10 +54,19 @@
         "linkToMainPage": "main page"
     },
     "chatPage": {
-        "channelsHeader": "Channels",
-        "placeholderInput": "Enter message...",
-        "renameChannel": "Rename",
-        "removeChannel": "Remove"
+        "channelsField": {
+            "channelsHeader": "Channels",
+            "placeholderInput": "Enter message...",
+            "addChannel": "Add new channel",
+            "renameChannel": "Rename",
+            "removeChannel": "Remove"
+        },
+        "messagesField": {
+            "messages_one": " message",
+            "messages_few": " messages",
+            "messages_many": " messages",
+            "messages_other": " messages"
+        }
     },
     "modal": {
         "headerAddChannel": "Add new channel",
@@ -81,8 +90,5 @@
         "sentancesRemovingEnd": "removed!",
         "errorNetwork": "Something wrong with network, wait ...",
         "badWord": "Don't swear!"
-    },
-    "messagesField": {
-        "messages": "messages"
     }
 }

@@ -17,7 +17,13 @@ const HeaderMessageField = ({t}) => {
     return (
         <div className="bg-light mb-3 p-3 shadow-sm small">
             <h3># {currentActiveChannel && currentActiveChannel['name'] }</h3>
-            <span>{messagesCurrentChannel.length > 0 ? messagesCurrentChannel.length : 0} {t("messagesField.messages")}</span>
+            <span>
+            {
+                messagesCurrentChannel.length > 0 
+                ? messagesCurrentChannel.length 
+                : 0
+            } 
+            {t("chatPage.messagesField.messages", {count: messagesCurrentChannel.length })}</span>
         </div>
     )
 }
