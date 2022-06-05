@@ -1,8 +1,8 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
-const UiNavBarSlice = createSlice({
-    name: 'UiNavBar',
+const uiNavbarSlice = createSlice({
+    name: 'UiNavbar',
     initialState: ({ currentActivePage: 'signin' }),
     reducers: {
         setNewActivePage(state, { payload: { newActivePage } }) {
@@ -12,6 +12,6 @@ const UiNavBarSlice = createSlice({
 })
 
 
-export const actionsUiNavBar = UiNavBarSlice.actions;
+export const actionsUiNavBar = uiNavbarSlice.actions;
 
-export default UiNavBarSlice.reducer;
+export default uiNavbarSlice.reducer;
