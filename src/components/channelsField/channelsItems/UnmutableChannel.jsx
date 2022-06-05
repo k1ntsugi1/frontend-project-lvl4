@@ -10,7 +10,7 @@ export const UnmutableChannel = ({dataChannel, variant}) => {
   const { channel, messagesCounter } = dataChannel; 
   const dispatch = useDispatch();
     return (
-      <Nav.Item as="li" className='w-100'>
+      <Nav.Item as="li" className='w-100 position-relative'>
         <Popup trigger={
                   <Button variant={variant} 
                           className='ps-3 w-100 rounded text-start position-relative'
@@ -22,13 +22,20 @@ export const UnmutableChannel = ({dataChannel, variant}) => {
                position='left'
                on={['hover', 'focus']}
                contentStyle={ 
-                 {marginRight: '8px',
-                  padding: "2px",
-                  color: '#00022f',
+                 {
+                  marginRight: '8px',
+                  display: 'inline-block',
+                  padding: '0.35em 0.65em',
+                  fontSize: '0.75em',
+                  fontWeight: '700',
+                  borderRadius: '50rem',
+                  lineHeight: '1',
+                  color: '#FFFFFF',
                   textAlign: 'center',
-                  backgroundColor: '#e8e8e8',
-                  borderRadius: '10px',
-                  opacity: '90%'}
+                  whiteSpace: 'nowrap',
+                  verticalAlign: 'baseline',
+                  backgroundColor: '#198754'
+                }
                }
           >
            <span>+{messagesCounter}</span>             

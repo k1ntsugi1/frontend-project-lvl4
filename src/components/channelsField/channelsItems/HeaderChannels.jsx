@@ -11,11 +11,11 @@ const HeaderChannels = ({t}) => {
 
     return (
       <>
-        <div className='d-flex justify-content-between mb-2 ps-4 pe-2'>
+        <div className='d-flex justify-content-between mb-3 ps-4 pe-2'>
           <span>{ t("chatPage.channelsField.channelsHeader") }</span>
           <Popup trigger={
                   <Button variant="" 
-                          className="btn-group-vertical p-0 border-0 text-info" 
+                          className="btn-group-vertical p-0 border-0 text-success" 
                           onClick={handleShow('addChannelModal')}
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="currentColor">

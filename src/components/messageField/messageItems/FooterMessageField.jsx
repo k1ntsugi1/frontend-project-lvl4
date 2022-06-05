@@ -52,7 +52,7 @@ const FooterMessageField = ({t}) => {
                               value={formik.values.message}
                               className="border-0 rounded-pill"
                  />
-                <Button className='border-0 rounded-pill btn-group-vertical text-info '
+                <Button className='border-0 rounded-pill btn-group-vertical text-success '
                         variant="" 
                         type="submit"
                         disabled={formik.values.message === '' || formik.isSubmitting}

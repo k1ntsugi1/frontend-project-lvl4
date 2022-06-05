@@ -14,7 +14,7 @@ const BtnsChgLng = ({t, i18n}) => {
   return (
         <Popup trigger={
             <NavDropdown  id="dropdownLangButtons" title={t("navBar.currentLang")} className="ms-2">
-              <Dropdown.Item as="button" onClick={ changeLang('ru') }>Русский</Dropdown.Item>
+              <Dropdown.Item as="button"  onClick={ changeLang('ru') }>Русский</Dropdown.Item>
               <Dropdown.Item as="button" onClick={ changeLang('en') }>English</Dropdown.Item>
             </NavDropdown >
             }  
