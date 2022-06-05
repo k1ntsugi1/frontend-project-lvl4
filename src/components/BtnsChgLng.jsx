@@ -2,7 +2,7 @@
 import React from 'react'
 import Popup from 'reactjs-popup';
 import { withTranslation } from 'react-i18next';
-import { Button, Dropdown  } from 'react-bootstrap';
+import { NavDropdown , Dropdown, Nav  } from 'react-bootstrap';
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 const BtnsChgLng = ({t, i18n}) => {
@@ -12,11 +12,12 @@ const BtnsChgLng = ({t, i18n}) => {
   }
 
   return (
-      <Dropdown as={ButtonGroup}>
-
         <Popup trigger={
-                  <Button variant='outline-info'>{t("navBar.currentLang")}</Button>
-                }
+            <NavDropdown  id="dropdownLangButtons" title={t("navBar.currentLang")} className="ms-2">
+              <Dropdown.Item as="button" onClick={ changeLang('ru') }>Русский</Dropdown.Item>
+              <Dropdown.Item as="button" onClick={ changeLang('en') }>English</Dropdown.Item>
+            </NavDropdown >
+            }  
                 position='bottom right'
                 on={['hover', 'focus']}
                 contentStyle={{ marginTop: '2px',
@@ -26,15 +27,8 @@ const BtnsChgLng = ({t, i18n}) => {
                                 backgroundColor: '#e8e8e8',
                                 borderRadius: '10px',
                                 opacity: '90%' }}>
-          <span>{t("navBar.changeLang")}</span>             
+          <span>{t("navBar.changeLang")}</span> 
         </Popup>
-        <Dropdown.Toggle split variant="outline-info" id="dropdown-split" />
-
-        <Dropdown.Menu>
-          <Dropdown.Item as="button" onClick={ changeLang('ru') }>Русский</Dropdown.Item>
-          <Dropdown.Item as="button" onClick={ changeLang('en') }>English</Dropdown.Item>
-        </Dropdown.Menu>
-        </Dropdown>
   )
 }
 

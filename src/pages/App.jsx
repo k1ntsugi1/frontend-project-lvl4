@@ -37,11 +37,9 @@ const SignInAs = ({t}) => {
   const userId = JSON.parse(localStorage.getItem('userId'));
   const username = userId.username; 
   return (
-      <Navbar.Collapse id="signInAs" className="justify-content-start">
-        <Navbar.Text>
-          {t('navBar.signedInAs')} {username}
-        </Navbar.Text>
-      </Navbar.Collapse>
+      <Navbar.Text>
+        {t('navBar.signedInAs')} {username}
+      </Navbar.Text>
   )
 }
 
@@ -50,11 +48,9 @@ const LogOutBtn = ({t}) => {
   return (
     auth.loggedIn 
     ? (
-      <Nav className='justify-content-end ms-4 '>
-        <Nav.Item>
-          <Button  variant="outline-success" onClick={auth.logOut}>{t("navBar.logOutBtn")}</Button>
+        <Nav.Item className='ms-4'>
+          <Button variant="outline-success" onClick={auth.logOut}>{t("navBar.logOutBtn")}</Button>
         </Nav.Item>
-      </Nav>
       ) 
     : null
   )
@@ -62,50 +58,42 @@ const LogOutBtn = ({t}) => {
 
 const SignInBtn = ({t}) => {
   return (
-    <Nav className='justify-content-end ms-3'>
-      <Nav.Item className='btn btn-outline-success'>
+      <Nav.Item className='btn btn-outline-success ms-4'>
         <Link to="login" className=' text-decoration-none text-reset'>{t("navBar.signInBtn")}</Link>
       </Nav.Item>
-    </Nav>
   )
 }
 
 const SignUpBtn = ({t}) => {
   return (
-    <Nav className='justify-content-end ms-3'>
-      <Nav.Item className='btn btn-outline-success'>
+      <Nav.Item className='btn btn-outline-success ms-4'>
         <Link to="signup" className='text-decoration-none text-reset'>{t("navBar.signUpBtn")}</Link>
       </Nav.Item>
-    </Nav>
   )
 }
 
 const App = ({t}) => {
   const currentActivePage = useSelector( (store) => store.uiNavBar.currentActivePage );
-  console.log(currentActivePage)
 
   return (
     <div className='d-flex flex-column h-100'>
       <Navbar bg="light" className='shadow-sm'>
         <Container>
-          
-          <NavbarBrand as={Link} to="/">Hexlet Chat</NavbarBrand>
-          <Nav className='justify-content-start me-3'>
-            <Nav.Item className='btn btn-outline-success'>
-              <Link to="about" className='text-decoration-none text-reset'>{t("navBar.aboutUs")}</Link>
-            </Nav.Item>  
+          <Navbar.Brand as={Link} to="/">Hexlet Chat</Navbar.Brand>
+
+          <Nav className="me-auto">
+            <Link to="about" className='d-flex align-self-center text-decoration-none text-reset'>{t("navBar.aboutUs")}</Link>
+            <BtnsChgLng/>
           </Nav>
 
-          { <SignInAs t={t}/>}
+          { <SignInAs t={t}/> }
 
-          <NavbarCollapse id="changeLang" className='justify-content-end'>
-            <BtnsChgLng/>
-          </NavbarCollapse>
-
-          {(currentActivePage === 'signin') && <SignUpBtn t={t}/>}
-          {(currentActivePage === 'signup') && <SignInBtn t={t}/>}
-          {(currentActivePage === 'chat') && <LogOutBtn t={t}/>}
-
+          <Nav>
+            {(currentActivePage === 'signin') && <SignUpBtn t={t}/>}
+            {(currentActivePage === 'signup') && <SignInBtn t={t}/>}
+            {(currentActivePage === 'chat') && <LogOutBtn t={t}/>}
+          </Nav>
+          
         </Container>
       </Navbar>
           
