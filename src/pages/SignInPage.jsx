@@ -40,6 +40,8 @@ const SignInPage = ({t}) => {
     const formik = useFormik({
       initialValues:  { username: "", password: "" },
       validationSchema:  signInSchema,
+      validateOnChange: false,
+      validateOnBlur: false,
       onSubmit: (values) => handlerRequest(values, 'loginPath', handlerResponse, updateAuthStore)
     })
 

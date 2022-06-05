@@ -21,23 +21,24 @@ const FormSignUpField = ({t, formik, authError}) => {
         <Form noValidate  className='col-12 col-md-6 mt-3 mt-mb-0' onSubmit={handleSubmit}>
           	<h1 className='text-center mb-4'>{t("signUpForm.header")}</h1>
 
-            <Form.Group className="mb-3 form-floating">
+            <Form.Group className="mb-4 form-floating">
                 <Form.Control id="username"
                               name="username"
                               type="text" 
                               ref={usernameRef}
-                              placeholder={ t("signUpForm.placeHolders.userName") } 
+                              placeholder={ t("signUpForm.placeHolders.username") } 
                               onChange={handleChange}
                               value={values.username}
                               isInvalid={!!errors.username }
+                              className="rounded-3"
                 />
-                <Form.Label htmlFor="username">{t("signUpForm.placeHolders.userName")}</Form.Label>
+                <Form.Label htmlFor="username">{t("signUpForm.usernameField")}</Form.Label>
         		<Form.Control.Feedback type="invalid" tooltip>
   	         	    {errors.username}
                 </Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group className="mb-3 form-floating">
+            <Form.Group className="mb-4 form-floating">
                 <Form.Control id="password"
                     		  name="password"
       						  type="password"
@@ -45,36 +46,35 @@ const FormSignUpField = ({t, formik, authError}) => {
                       	      onChange={handleChange}
                       	      value={values.password}
                       	      isInvalid={!!errors.password}
+                              className="rounded-3"
                 />
-                <Form.Label htmlFor="password">{ t("signUpForm.placeHolders.password")}</Form.Label>
+                <Form.Label htmlFor="password">{ t("signUpForm.passwordField")}</Form.Label>
                 <Form.Control.Feedback type="invalid" tooltip>
                     {errors.password}
                 </Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group className="mb-3 form-floating">
+            <Form.Group className="mb-4 form-floating">
                 <Form.Control id="confirmPassword"
                     		  name="confirmPassword"
       						  type="password"
-                      	      placeholder={ t("signUpForm.placeHolders.repeatedPassword") }
+                      	      placeholder={ t("signUpForm.placeHolders.confirmPassword") }
                       	      onChange={handleChange}
                       	      value={values.confirmPassword}
                       	      isInvalid={!!errors.confirmPassword || !!authError}
+                              className="rounded-3"
                 />
-                <Form.Label htmlFor="password">{ t("signUpForm.placeHolders.confirmPassword")}</Form.Label>
+                <Form.Label htmlFor="password">{ t("signUpForm.confirmPasswordField")}</Form.Label>
                 <Form.Control.Feedback type="invalid" tooltip>
                     {errors.confirmPassword || t(`signUpForm.errorsValidating.${authError}`)}
                 </Form.Control.Feedback>
             </Form.Group>
 
             <Button className="w-100" 
-                    variant="outline-primary" 
+                    variant="outline-success" 
                     type="submit" 
                     disabled={
                         isSubmitting
-                     || !!errors.username 
-                     || !!errors.password
-                     || !!errors.confirmPassword 
                     }
             >
                 {t("signUpForm.buttonSubmit")}

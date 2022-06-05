@@ -1,62 +1,62 @@
 {
     "navBar": {
-        "changeLang": "Change Language",
-        "signedInAs": "Signed in as:",
+        "changeLang": "Change the language",
+        "signedInAs": "Logget in as:",
         "aboutUs": "About us",
         "currentLang": "English",
-        "signInBtn": "SignIn",
+        "signInBtn": "Log in",
         "signUpBtn": "Sign Up",
         "logOutBtn": "Log out"
     },
     "signInForm": {
         "usernameField": "Username",
         "passwordField": "Password",
-        "header": "Sign In",
-        "buttonSubmit": "Sign In",
+        "header": "Log in",
+        "buttonSubmit": "Log in",
         "placeHolders": {
             "userName": "Enter username",
             "password": "Enter password"
         },
         "footer": {
             "hrefToSignUp": "Registration",
-            "labelSignUp": "No account?"
+            "labelSignUp": "Don't have account?"
         },
         "errorsValidating": {
-            "Unauthorized": "Incorrect name or password",
-            "short": "Too short",
-            "long": "Too long",   
-            "required": "required field"
+            "lengthName": "Must contain between 3 and 20 symbols",
+            "lengthPassword": "Must contain at least 6 symbols",
+            "Unauthorized": "Name or password is wrong",
+            "required": "Required field"
         }
     },
     "signUpForm": {
-        "usernameField": "Create name",
-        "passwordField": "Create password",
-        "repeatedPasswordField": "Repeate password",
-        "header": "LogUp",
-        "buttonSubmit": "LogUp",
+        "usernameField": "Create a name",
+        "passwordField": "Create a password",
+        "repeatedPasswordField": "Confirm the password",
+        "header": "Sign Up",
+        "buttonSubmit": "Sign Up",
         "placeHolders": {
-            "userName": "Create name",
-            "password": "Create password",
-            "confirmPassword": "Repeate password"
+            "userName": "Create a name",
+            "password": "Create a password",
+            "confirmPassword": "Repeate the password"
         },
         "errorsValidating": {
-            "Unauthorized": "Incorrect name or password",
-            "short": "Too short",
-            "long": "Too long",   
-            "required": "required field",
-            "confirmPassword": "passwords don't match",
-            "Conflict": "User yet was created"
+            "lengthName": "Must contain between 3 and 20 symbols",
+            "lengthPassword": "Must contain at least 6 symbols",
+            "Unauthorized": "Name or password is wrong",
+            "required": "Required field",
+            "confirmPassword": "passwords are different",
+            "Conflict": "User already been established"
         }
     },
     "undefindPage": {
-        "haveNotFindedPage": "Page have not found",
+        "haveNotFindedPage": "Page not found",
         "suggestion": "But you can go to",
         "linkToMainPage": "main page"
     },
     "chatPage": {
         "channelsField": {
             "channelsHeader": "Channels",
-            "placeholderInput": "Enter message...",
+            "placeholderInput": "Enter a message...",
             "addChannel": "Add new channel",
             "renameChannel": "Rename",
             "removeChannel": "Remove"
@@ -70,16 +70,16 @@
     },
     "modal": {
         "headerAddChannel": "Add new channel",
-        "headerRenameChannel": "Change name of channel",
-        "headerRemoveChannel": "Remove Channel",
+        "headerRenameChannel": "Change the name of channel",
+        "headerRemoveChannel": "Remove the Channel",
         "removeBody": "Do you really want to remove this channel?",
         "send": "Send",
         "cancel": "Cancel",
         "remove": "Remove",
         "errors": {
             "required": "Required field",
-            "isNotUniq": "Name have to uniq",
-            "tooLong": "Name of channel have to contain less 10 symbols"
+            "isNotUniq": "Name is not unique",
+            "tooLong": "Name of channel have to contain a less 10 symbols"
         }
     },
     "toastText": {

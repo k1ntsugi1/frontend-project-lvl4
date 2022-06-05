@@ -9,42 +9,42 @@
         "logOutBtn": "Выйти"
     },
     "signInForm": {
-        "usernameField": "Имя",
+        "usernameField": "Ваш ник",
         "passwordField": "Пароль",
-        "header": "Войти",
+        "header": "Вход",
         "buttonSubmit": "Войти",
         "placeHolders": {
-            "userName": "Введите имя",
-            "password": "Введите пароль"
+            "username": "Ваш ник",
+            "password": "Пароль"
         },
         "footer": {
             "hrefToSignUp": "Регистрация",
             "labelSignUp": "Нет аккаунта?"
         },
         "errorsValidating": {
-            "short": "Слишком короткое/ий",
-            "Unauthorized": "Не правильные имя или пароль",
-            "long": "Слишком длинное/ый",   
+            "lengthName": "От 3 до 20 символов",
+            "lengthPassword": "Не менее 6 символов",
+            "Unauthorized": "Неверные имя пользователя или пароль", 
             "required": "Обязательное поле"
         }
     },
     "signUpForm": {
-        "usernameField": "Создайтей имя",
-        "passwordField": "Создайте пароль",
-        "repeatedPasswordField": "Повторите пароль",
+        "usernameField": "Имя пользователя",
+        "passwordField": "Пароль",
+        "confirmPasswordField": "Подтвердите пароль",
         "header": "Регистрация",
         "buttonSubmit": "Зарегистрироваться",
         "placeHolders": {
-            "userName": "Создайте имя",
-            "password": "Создайте пароль",
-            "confirmPassword": "Повторите пароль"
+            "username": "Имя пользователя",
+            "password": "Пароль",
+            "confirmPassword": "Подтвердите пароль"
         },
         "errorsValidating": {
-            "short": "Слишком короткое/ий",
-            "Unauthorized": "Не правильные имя или пароль",
-            "long": "Слишком длинное/ый",   
+            "lengthName": "От 3 до 20 символов",
+            "lengthPassword": "Не менее 6 символов",
+            "Unauthorized": "Не правильные имя или пароль",  
             "required": "Обязательное поле",
-            "confirmPassword": "Пароли не совпадают",
+            "confirmPassword": "Пароли должны совпадать",
             "Conflict": "Пользователь уже существует"
         }
     },
@@ -89,7 +89,7 @@
         "sentancesAddingEnd": "создан",
         "sentancesRenamingEnd": "переименован на:",
         "sentancesRemovingEnd": "удален",
-        "errorNetwork": "Что-то с интернетом, подождите...",
+        "errorNetwork": "Ошибка соединения",
         "badWord": "Не ругайся!"
     }
 }

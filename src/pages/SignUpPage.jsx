@@ -38,6 +38,8 @@ const SignUpPage = ({t}) => {
   const formik = useFormik({
     initialValues:  { username: "", password: "", confirmPassword: "" },
     validationSchema:  signUpSchema,
+    validateOnChange: false,
+    validateOnBlur: false,
     onSubmit: (values) => handlerRequest(values, 'signUpPath', handlerResponse, updateAuthStore)
   })
 

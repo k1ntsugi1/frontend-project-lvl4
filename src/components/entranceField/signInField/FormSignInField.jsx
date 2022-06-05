@@ -21,23 +21,24 @@ const FormSignInField = ({t, formik, authError}) => {
         <Form noValidate  className='col-12 col-md-6 mt-3 mt-mb-0' onSubmit={handleSubmit}>
           	<h1 className='text-center mb-4'>{t("signInForm.header")}</h1>
 
-            <Form.Group className="mb-3 form-floating">
+            <Form.Group className="mb-4 form-floating">
                 <Form.Control id="username"
                               name="username"
                               type="text" 
                               ref={usernameRef}
-                              placeholder={ t("signInForm.placeHolders.userName") } 
+                              placeholder={ t("signInForm.placeHolders.username") } 
                               onChange={handleChange}
                               value={values.username}
                               isInvalid={!!errors.username }
+                              className="rounded-3"
                 />
-                <Form.Label htmlFor="username">{t("signInForm.placeHolders.userName")}</Form.Label>
+                <Form.Label htmlFor="username">{t("signInForm.usernameField")}</Form.Label>
         		<Form.Control.Feedback type="invalid" tooltip>
   	         	    {errors.username}
                 </Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group className="mb-3 form-floating">
+            <Form.Group className="mb-4 form-floating">
                 <Form.Control id="password"
                     		  name="password"
       						  type="password"
@@ -45,19 +46,18 @@ const FormSignInField = ({t, formik, authError}) => {
                       	      onChange={handleChange}
                       	      value={values.password}
                       	      isInvalid={!!errors.password || !!authError}
+                              className="rounded-3"
                 />
-                <Form.Label htmlFor="password">{ t("signInForm.placeHolders.password")}</Form.Label>
+                <Form.Label htmlFor="password">{ t("signInForm.passwordField")}</Form.Label>
                 <Form.Control.Feedback type="invalid" tooltip>
                     {errors.password || t(`signInForm.errorsValidating.${authError}`)}
                 </Form.Control.Feedback>
             </Form.Group>
             <Button className="w-100" 
-                    variant="outline-primary" 
+                    variant="outline-success" 
                     type="submit" 
                     disabled={
                         isSubmitting
-                     || !!errors.username 
-                     || !!errors.password 
                     }
             >
                 {t("signInForm.buttonSubmit")}
