@@ -23,7 +23,6 @@ export const UnmutableChannel = ({dataChannel, variant}) => {
                on={['hover', 'focus']}
                contentStyle={ 
                  {
-                  marginRight: '8px',
                   display: 'inline-block',
                   padding: '0.35em 0.65em',
                   fontSize: '0.75em',

@@ -33,7 +33,6 @@ export const MutableChannel = ({dataChannel, variant, t}) => {
                 on={['hover', 'focus']}
                 contentStyle={ 
                   {
-                    marginRight: '5px',
                     display: 'inline-block',
                     padding: '0.35em 0.65em',
                     fontSize: '0.75em',

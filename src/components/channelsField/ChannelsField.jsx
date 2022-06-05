@@ -44,7 +44,7 @@ export const ChannelsField = () => {
       <div className='scrollbar2 scrollbar-channel h-90 m-0 w-100' >
         <Nav as="ul" variant="pills" className='flex-column px-2'>
           { unmutableChannels.map((channel) => {
-              const variant = getVariant(channel.id, currentActiveChannelId,'secondary');
+              const variant = getVariant(channel.id, currentActiveChannelId,'success');
               const messagesCurrentChannel = getMessagesCurrentChannel(channel.id, messages);
               return <UnmutableChannel  key={channel.id} 
                                         dataChannel={ {channel, messagesCounter: messagesCurrentChannel.length} } 
@@ -54,7 +54,7 @@ export const ChannelsField = () => {
           }
 
           { mutableChannels.map((channel) => {
-              const variant = getVariant(channel.id, currentActiveChannelId,'secondary');
+              const variant = getVariant(channel.id, currentActiveChannelId,'success');
               const messagesCurrentChannel = getMessagesCurrentChannel(channel.id, messages);
               return <MutableChannel  key={channel.id} 
                                       dataChannel={ {channel, messagesCounter: messagesCurrentChannel.length} } 
