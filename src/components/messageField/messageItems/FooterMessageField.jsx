@@ -22,11 +22,12 @@ const FooterMessageField = ({t}) => {
         onSubmit: (values, actions) => {
             const filteredMessage = filterBadWords.clean(values.message)
             if(filterBadWords.check(values.message)) toastes["badWord"](t)
-
             socket.emit('newMessage', { body: filteredMessage, 
                                         channelId: currentActiveChannelId,
                                         username: JSON.parse(localStorage.getItem('userId')).username }, (response) => {
-                if(response.status !== 'ok') {
+                    console.log(response)
+                    if(response.status !== "ok") {
+                    console.log('error', response)
                     toastes["errorNetwork"](t);
                     //return;
                 }

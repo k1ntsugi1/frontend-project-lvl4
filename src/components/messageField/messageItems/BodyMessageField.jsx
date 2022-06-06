@@ -10,7 +10,6 @@ export const BodyMessageField = () => {
     const currentActiveChannelId = useSelector( (store) => store.dataChannels.currentChannelId);
     const messages = useSelector(selectorsMessages.selectAll);
     const messagesCurrentChannel = getMessagesCurrentChannel(currentActiveChannelId, messages);
-    console.log(messagesCurrentChannel, 'body messages');
     return (
         <div className='px-5 pb-0 mb-0 flex-grow-1 rounded scrollbar scrollbar-primary'>
             { (messagesCurrentChannel.length > 0) 
