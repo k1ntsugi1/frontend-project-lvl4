@@ -19,6 +19,7 @@ export const mappingActionsUiModal = (objOfProperties) => {
           if(isBadWord(value)) return;
 
           socket.emit('newChannel', { name: value }, (response) => {
+            console.log(response)
             if (response.status !== 'ok') toastes["errorNetwork"](t);
           });
           dispatch(handleClose({typeModal:type}))
