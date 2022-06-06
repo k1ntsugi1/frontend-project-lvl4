@@ -11,7 +11,7 @@ import { useSocket, useBadWords } from "../../hooks/index.jsx";
 import mappingTitle from '../modals/maps/mappingTitle.js'
 import { mappingActionsUiModal } from './maps/mappingActionsUiModal.js'
 
-import { selectorsChannels } from '../../slices/channelsSlice.js';
+import { selectorsChannels } from '../../slices/dataChannelsSlice.js';
 import { actionsUiModal } from "../../slices/uiModalSlice.js";
 
 

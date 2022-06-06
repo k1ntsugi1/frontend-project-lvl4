@@ -24,7 +24,7 @@ export const MessageItem = ({message}) => {
             <span className={classNamesFlexContainer}>
                 <b className='text-dark flex-shrink-0 align-self-center'>{username}</b>
                 <b className='flex-shrink-0 align-self-center px-1'> : </b>
-                <span className={classNamesMessageField} style={ { 'max-width': '50%' } }>{ body }</span>
+                <span className={classNamesMessageField} style={ { 'maxWidth': '50%' } }>{ body }</span>
             </span>
         </div>
     )

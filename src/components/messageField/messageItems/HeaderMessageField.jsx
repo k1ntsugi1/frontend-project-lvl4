@@ -3,14 +3,14 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { withTranslation } from 'react-i18next';
 
-import { selectorsMessages } from '../../../slices/messagesSlice.js'; 
-import { selectorsChannels } from '../../../slices/channelsSlice.js';
+import { selectorsMessages } from '../../../slices/dataMessagesSlice.js'; 
+import { selectorsChannels } from '../../../slices/dataChannelsSlice.js';
 import { getMessagesCurrentChannel } from '../../../additionalFunction/getMessagesCurrentChannel.js';
 
 
 const HeaderMessageField = ({t}) => {
-    const currentActiveChannelId = useSelector( (state) => state.activeChannel.currentChannelId);
-    const currentActiveChannel = useSelector( (state) => selectorsChannels.selectById(state,currentActiveChannelId ) ) ?? null
+    const currentActiveChannelId = useSelector( (store) => store.dataChannels.currentChannelId);
+    const currentActiveChannel = useSelector( (store) => selectorsChannels.selectById(store, currentActiveChannelId ) ) ?? null
 
     const messages = useSelector(selectorsMessages.selectAll);
     let messagesCurrentChannel = [];

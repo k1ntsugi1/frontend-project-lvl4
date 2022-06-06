@@ -1,13 +1,13 @@
 
 import React, { useEffect} from "react";
-import { useDispatch} from "react-redux";
+import { batch, useDispatch} from "react-redux";
 import { ToastContainer} from 'react-toastify';
 import { withTranslation } from "react-i18next";
 import toastes from "../toastes/toastes.js";
 
-import { fetchDataCurrentUserByUserId } from '../slices/activeChannelSlice.js';
-import { actionsChannels } from '../slices/channelsSlice.js';
-import { actionsMessages } from '../slices/messagesSlice.js';
+import { fetchDataCurrentUserByUserId } from '../slices/dataChannelsSlice.js';
+import { actionsChannels } from '../slices/dataChannelsSlice.js';
+import { actionsMessages } from '../slices/dataMessagesSlice.js';
 import { actionsUiNavBar } from "../slices/uiNavbarSlice.js";
 
 import { useSocket } from "../hooks/index.jsx";
@@ -37,7 +37,11 @@ const handlerSocketListeners = (dispatch, socket, t) => {
           name,
           removable
         };
-        dispatch(actionsChannels.addNewChannel(newChannel));  
+        batch( ()=> {
+            dispatch(actionsChannels.addNewChannel(newChannel)); 
+            dispatch(actionsChannels.setNewActiveChannelId({ newId: newChannel.id, typePreviousAct: 'addChannel' })); 
+        } )
+         
         toastes['newChannel'](t, name);
       });
 
@@ -49,7 +53,11 @@ const handlerSocketListeners = (dispatch, socket, t) => {
 
       socket.on('removeChannel', (channelWithId) => {
         const { id } = channelWithId;
-        dispatch(actionsChannels.removeChannel( id ));
+        batch( () => {
+            dispatch(actionsChannels.removeChannel( id ));
+            dispatch(actionsChannels.setNewActiveChannelId( { newId: id, typePreviousAct: 'removeChannel' } ));
+        } )
+        
         toastes['removeChannel'](t);
       } )
 }

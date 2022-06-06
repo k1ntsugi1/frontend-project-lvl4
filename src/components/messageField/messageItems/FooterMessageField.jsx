@@ -13,7 +13,7 @@ const FooterMessageField = ({t}) => {
     const { socket } = useSocket();
     const { filterBadWords } = useBadWords()
     const messageRef = useRef();
-    const currentActiveChannelId = useSelector( (store) => store.activeChannel.currentChannelId);
+    const currentActiveChannelId = useSelector( (store) => store.dataChannels.currentChannelId);
     
     const formik = useFormik({
         initialValues: {

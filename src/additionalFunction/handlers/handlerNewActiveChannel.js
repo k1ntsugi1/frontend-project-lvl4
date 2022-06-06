@@ -1,8 +1,8 @@
 
 import {  
-    actionsActiveChannel,
-  } from '../../slices/activeChannelSlice.js';
+    actionsChannels,
+  } from '../../slices/dataChannelsSlice.js';
 
 export  const handlerNewActiveChannel = (id, dispatch) => () => {
-    dispatch(actionsActiveChannel.setNewActiveChannelId(id));
+    dispatch(actionsChannels.setNewActiveChannelId({ newId: id, typePreviousAct: 'clickOnChannel' }));
   } 

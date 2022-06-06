@@ -1,7 +1,7 @@
 
 import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
-import { fetchDataCurrentUserByUserId } from './activeChannelSlice.js'
-import { actionsChannels } from "./channelsSlice.js";
+import { fetchDataCurrentUserByUserId } from './dataChannelsSlice.js'
+import { actionsChannels } from "./dataChannelsSlice.js";
 
 
 const adapterMessages = createEntityAdapter();
@@ -25,15 +25,13 @@ const  messagesSlice = createSlice({
                     }
                     return [];
                 });
-                console.log(messagesForRemoving);
                 adapterMessages.removeMany(state, messagesForRemoving) //почему здесь нужно подставлять state
-                console.log(messagesForRemoving);
                
             })
     }
 });
 
-export const selectorsMessages = adapterMessages.getSelectors((store) => store.messages);
+export const selectorsMessages = adapterMessages.getSelectors((store) => store.dataMessages);
 
 export const  actionsMessages = messagesSlice.actions;
 

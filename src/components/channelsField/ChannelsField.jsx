@@ -7,9 +7,9 @@ import HeaderChannels from './channelsItems/HeaderChannels.jsx'
 import { UnmutableChannel } from './channelsItems/UnmutableChannel.jsx'
 import MutableChannel from './channelsItems/MutableChannel.jsx'
 
-import {  selectorsChannels } from '../../slices/channelsSlice.js';
+import {  selectorsChannels } from '../../slices/dataChannelsSlice.js';
 
-import { selectorsMessages } from '../../slices/messagesSlice.js';
+import { selectorsMessages } from '../../slices/dataMessagesSlice.js';
 
 import { getMessagesCurrentChannel } from '../../additionalFunction/getMessagesCurrentChannel.js'
 
@@ -32,7 +32,7 @@ const getVariant = (currentChannelId, currentActiveChannelId, variant) => {
 
 
 export const ChannelsField = () => {
-  const currentActiveChannelId = useSelector( (state) => state.activeChannel.currentChannelId);
+  const currentActiveChannelId = useSelector( (store) => store.dataChannels.currentChannelId);
   const channels = useSelector(selectorsChannels.selectAll);
   const messages = useSelector(selectorsMessages.selectAll);
 

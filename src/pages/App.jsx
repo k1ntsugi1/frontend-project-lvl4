@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import { Button, Container, Navbar, Nav } from 'react-bootstrap';
 import { withTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 import BtnsChgLng from '../components/BtnsChgLng.jsx';
 
@@ -18,7 +19,7 @@ import ChatPage from './ChatPage.jsx';
 import NotFoundPage from './NotFoundPage.jsx';
 
 import { useAuth } from '../hooks/index.jsx';
-import { useSelector } from 'react-redux';
+
 
 const PrivatRout = ({children}) => {
   const auth = useAuth();
