@@ -7,23 +7,25 @@
     margin-bottom: 25px;
 }
 
-.scrollbar-info::-webkit-scrollbar-track {
+.scrollbar-primary::-webkit-scrollbar-track {
     background-color: #FFFFFF;
+    border-radius: 10px;
     border: 0;
   }
   
-  .scrollbar-info::-webkit-scrollbar {
+  .scrollbar-primary::-webkit-scrollbar {
     width: 10px;
     background-color: #FFFFFF;
   }
   
-  .scrollbar-info::-webkit-scrollbar-thumb {
+  .scrollbar-primary::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: #0dcaf0;
+    -webkit-box-shadow: -25px 0px 41px 7px rgba(0, 120, 255, 1);
+    background-color: #6495ed;
   }
   
-  .scrollbar-info {
-    scrollbar-color: #0dcaf0 #FFFFFF;
+  .scrollbar-primary {
+    scrollbar-color: #FFFFFF #FFFFFF;
   }
 
 .scrollbar2 {
@@ -35,25 +37,30 @@
 }
 
 
-.scrollbar-channel::-webkit-scrollbar-track {
+.scrollbar-success::-webkit-scrollbar-track {
     background-color: #f8f9fa;
+    border-radius: 10px;
     border: 0;
   }
   
-  .scrollbar-channel::-webkit-scrollbar {
+  .scrollbar-success::-webkit-scrollbar {
     width: 8px;
     background-color: #f8f9fa;
   }
   
-  .scrollbar-channel::-webkit-scrollbar-thumb {
+  .scrollbar-success::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: #0dcaf0;
+    background-color: #009000;
   }
   
-  .scrollbar-channel {
-    scrollbar-color: #0dcaf0 #f8f9fa;
+  .scrollbar-success {
+    scrollbar-color: #f8f9fa #f8f9fa;
   }
 
 .h-90 {
   height: 90%;
+}
+
+.blue-light {
+  background-color: #1e90ff;
 }

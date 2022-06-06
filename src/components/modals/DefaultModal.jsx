@@ -94,7 +94,7 @@ const DefaultModal = ({t, impact}) => {
               <Button variant="secondary" onClick={() => dispatch(actionsUiModal.removeModal({typeModal:type}))}>
                 {t("modal.cancel")}
               </Button>
-              <Button variant="primary"  onClick={validate}>
+              <Button variant="success"  onClick={validate}>
                 {t("modal.send")}
               </Button>
             </Modal.Footer>
