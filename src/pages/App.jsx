@@ -78,7 +78,7 @@ const App = ({t}) => {
 
   return (
     <div className='d-flex flex-column h-100'>
-      <Navbar bg="light" className='shadow-sm'>
+      <Navbar bg="light" className='shadow-sm rounded-3'>
         <Container>
           <Navbar.Brand as={Link} to="/">Hexlet Chat</Navbar.Brand>
 
