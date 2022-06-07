@@ -33,7 +33,7 @@ export const UnmutableChannel = ({dataChannel, variant}) => {
                   textAlign: 'center',
                   whiteSpace: 'nowrap',
                   verticalAlign: 'baseline',
-                  backgroundColor: '#0d6efd'
+                  backgroundColor: '#4fb190'
                 }
                }
           >

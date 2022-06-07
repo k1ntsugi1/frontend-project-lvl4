@@ -47,7 +47,7 @@ export const MutableChannel = ({dataChannel, variant, t}) => {
                     textAlign: 'center',
                     whiteSpace: 'nowrap',
                     verticalAlign: 'baseline',
-                    backgroundColor: '#0d6efd'
+                    backgroundColor: '#4fb190'
                 }
                }
           >

@@ -4,6 +4,7 @@ import 'regenerator-runtime/runtime.js';
 
 import '../assets/application.scss';
 import '../assets/myStyles.css'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import React , { useState} from 'react';
 import * as ReactDOM from 'react-dom/client';

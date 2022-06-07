@@ -28,8 +28,8 @@ body {
   
   .scrollbar-primary::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: -25px 0px 41px 7px rgba(0, 120, 255, 1);
-    background-color: #6495ed;
+    -webkit-box-shadow: -25px 0px 41px 7px rgba(0, 158, 158, 1);
+    background-color: #009e9e;
   }
   
   .scrollbar-primary {
@@ -58,7 +58,7 @@ body {
   
   .scrollbar-success::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: #59daae;
+    background-color: #00bdbd;
   }
   
   .scrollbar-success {
@@ -69,8 +69,8 @@ body {
   height: 90%;
 }
 
-.blue-light {
-  background-color: #1e90ff;
+.green-light {
+  background-color: #4fb190;
 }
 
 
@@ -115,4 +115,12 @@ body {
 
 .link-success {
   color: #59daae;
+}
+
+.bg-primary {
+  background-color:#00bdbd !important;
+}
+
+.popup-arrow {
+  display: none;
 }

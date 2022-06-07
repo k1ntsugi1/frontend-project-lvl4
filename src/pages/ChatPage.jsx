@@ -1,8 +1,9 @@
 
 import React, { useEffect } from "react";
-import { batch, useDispatch} from "react-redux";
+import { batch, useDispatch, useSelector} from "react-redux";
 import { ToastContainer} from 'react-toastify';
 import { withTranslation } from "react-i18next";
+import { ThreeDots } from  'react-loader-spinner'
 import toastes from "../toastes/toastes.js";
 
 import { fetchDataCurrentUserByUserId } from '../slices/dataChannelsSlice.js';
@@ -69,7 +70,8 @@ export const ChatPage = ({t}) => {
     const { token, username } = userId;
     const dispatch = useDispatch();
     const { socket } = useSocket();
-    
+    const spinnerStatus = useSelector( (store) => store.uiSpinner.status);
+
     useEffect( () => {
         socket.removeAllListeners() 
         dispatch(fetchDataCurrentUserByUserId(token));
@@ -83,11 +85,25 @@ export const ChatPage = ({t}) => {
 
 
     return (
-        <div className="row h-100 my-4 overflow-hidden rounded shadow border border-info">
-            <ChannelsField />
-            <MessageField/>
-            <ToastContainer draggablePercent={30}/>
-        </div>
+        spinnerStatus === "pending" 
+        ? (
+            <div className="position-absolute top-50 start-50">
+                <ThreeDots
+                    height="70"
+                    width="70"
+                    color='#e8e8f8'
+                    ariaLabel='loading'
+                />
+            </div>
+            )
+        : (
+            <div className="row h-100 my-4 overflow-hidden rounded shadow border border-info">
+                <ChannelsField />
+                <MessageField/>
+                <ToastContainer draggablePercent={30}/>
+            </div>
+        )
+         
     )
 }
 
