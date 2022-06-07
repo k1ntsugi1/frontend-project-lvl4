@@ -17,6 +17,7 @@ import SignInPage  from './SignInPage.jsx';
 import SignUpPage from './SignUpPage.jsx';
 import ChatPage from './ChatPage.jsx';
 import NotFoundPage from './NotFoundPage.jsx';
+import AboutAuthor from './AboutAuthor.jsx';
 
 import { useAuth } from '../hooks/index.jsx';
 
@@ -82,15 +83,15 @@ const App = ({t}) => {
           <Navbar.Brand as={Link} to="/">Hexlet Chat</Navbar.Brand>
 
           <Nav className="me-auto">
-            <Link to="about" className='d-flex align-self-center text-decoration-none text-reset'>{t("navBar.aboutUs")}</Link>
+            <Link to="about" className='d-flex align-self-center text-decoration-none text-reset'>{t("navBar.aboutAuthor")}</Link>
             <BtnsChgLng/>
           </Nav>
 
           { <SignInAs t={t}/> }
 
           <Nav>
-            {(currentActivePage === 'signin') && <SignUpBtn t={t}/>}
-            {(currentActivePage === 'signup') && <SignInBtn t={t}/>}
+            {(currentActivePage === 'signin' ) && <SignUpBtn t={t}/>}
+            {(currentActivePage === 'signup'|| currentActivePage === 'about') && <SignInBtn t={t}/>}
             {(currentActivePage === 'chat') && <LogOutBtn t={t}/>}
           </Nav>
           
@@ -105,6 +106,7 @@ const App = ({t}) => {
         )}/>
         <Route path="login" element={ <SignInPage /> }/>
         <Route path="signup" element={ <SignUpPage /> }/>
+        <Route path="about" element={ <AboutAuthor /> }/>
         <Route path="*" element={ <NotFoundPage /> }/>
       </Routes>
     </div >

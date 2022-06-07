@@ -9,7 +9,7 @@ const CardFooterSignInField = ({t}) => {
     <Card.Footer>
         <div className='text-center'>
            <span>{t("signInForm.footer.labelSignUp")}</span>{' '}
-           <Link to="/signup">{t("signInForm.footer.hrefToSignUp")}</Link>
+           <Link to="/signup" className='link-success'>{t("signInForm.footer.hrefToSignUp")}</Link>
        </div>
    </Card.Footer>
     )

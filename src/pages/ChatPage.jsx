@@ -1,5 +1,5 @@
 
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import { batch, useDispatch} from "react-redux";
 import { ToastContainer} from 'react-toastify';
 import { withTranslation } from "react-i18next";
