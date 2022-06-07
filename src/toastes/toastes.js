@@ -5,7 +5,7 @@ const toastes = {
     "greeting": (t, usermame) => {
         return (
             toast(`🚀 ${t("toastText.greeting")} ${usermame}!`, {
-                position: "top-right",
+                position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -18,7 +18,7 @@ const toastes = {
     "badWord": (t) => {
         return (
             toast(`💩 ${t("toastText.badWord")}!`, {
-                position: "top-right",
+                position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -31,7 +31,7 @@ const toastes = {
     'newChannel': (t, name) => {
         return (
             toast(`⭐ ${t("toastText.sentancesStart")} ${name} ${t("toastText.sentancesAddingEnd")}!`, {
-                position: "top-right",
+                position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -44,7 +44,7 @@ const toastes = {
     'renameChannel': (t, name) => {
         return  (
             toast(`🦄 ${t("toastText.sentancesStart")} ${t("toastText.sentancesRenamingEnd")} ${name}!`, {
-                position: "top-right",
+                position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -57,7 +57,7 @@ const toastes = {
     'removeChannel': (t) => {
         return (
             toast(`😲 ${t("toastText.sentancesStart")} ${t("toastText.sentancesRemovingEnd")}!`, {
-                position: "top-right",
+                position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -70,7 +70,7 @@ const toastes = {
     "errorNetwork": (t) => {
         return (
             toast.error(`${t("toastText.errorNetwork")}`, {
-                position: "top-right",
+                position: "top-center",
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,

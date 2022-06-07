@@ -13,8 +13,14 @@ const BtnsChgLng = ({t, i18n}) => {
   return (
         <Popup trigger={
             <NavDropdown  id="dropdownLangButtons" title={t("navBar.currentLang")} className="ms-2">
-              <Dropdown.Item as="button"  onClick={ changeLang('ru') }>Русский</Dropdown.Item>
-              <Dropdown.Item as="button" onClick={ changeLang('en') }>English</Dropdown.Item>
+              <Dropdown.Item as="button"  onClick={ changeLang('ru') } className="text-start">
+                <img src="https://cdn.icon-icons.com/icons2/45/PNG/64/russiaflag_flags_rusi_9144.png" width="20px" alt="fl-ru"/>
+                {' '}Русский
+              </Dropdown.Item>
+              <Dropdown.Item as="button" onClick={ changeLang('en') } className="text-start">
+              <img src="https://cdn.icon-icons.com/icons2/2087/PNG/512/united_kingdom_icon_127821.png" width="20px" alt="fl-en"/>
+                {' '}English
+              </Dropdown.Item>
             </NavDropdown >
             }  
                 position='bottom left'
