@@ -5,7 +5,7 @@ import { useDispatch} from "react-redux";
 import { actionsUiNavBar } from "../slices/uiNavbarSlice.js";
 import cn from 'classnames';
 
-const AboutAuthor = ({t}) => {
+const AboutAuthorPage = ({t}) => {
     const classNamesP = cn('px-3', 'lh-base');
     const classnamesContacts = cn('fw-bold');
     const dispatch = useDispatch();
@@ -52,4 +52,4 @@ const AboutAuthor = ({t}) => {
     )
 }
 
-export default withTranslation()(AboutAuthor)
+export default withTranslation()(AboutAuthorPage)

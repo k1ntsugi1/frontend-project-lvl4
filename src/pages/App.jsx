@@ -17,7 +17,7 @@ import SignInPage  from './SignInPage.jsx';
 import SignUpPage from './SignUpPage.jsx';
 import ChatPage from './ChatPage.jsx';
 import NotFoundPage from './NotFoundPage.jsx';
-import AboutAuthor from './AboutAuthor.jsx';
+import AboutAuthorPage from './AboutAuthorPage.jsx';
 
 import { useAuth } from '../hooks/index.jsx';
 
@@ -91,8 +91,8 @@ const App = ({t}) => {
 
           <Nav>
             {(currentActivePage === 'signin' ) && <SignUpBtn t={t}/>}
-            {(currentActivePage === 'signup'|| currentActivePage === 'about') && <SignInBtn t={t}/>}
-            {(currentActivePage === 'chat') && <LogOutBtn t={t}/>}
+            {(currentActivePage === 'signup') && <SignInBtn t={t}/>}
+            {(currentActivePage === 'chat' ) && <LogOutBtn t={t}/>}
           </Nav>
           
         </Container>
@@ -106,7 +106,7 @@ const App = ({t}) => {
         )}/>
         <Route path="login" element={ <SignInPage /> }/>
         <Route path="signup" element={ <SignUpPage /> }/>
-        <Route path="about" element={ <AboutAuthor /> }/>
+        <Route path="about" element={ <AboutAuthorPage /> }/>
         <Route path="*" element={ <NotFoundPage /> }/>
       </Routes>
     </div >
