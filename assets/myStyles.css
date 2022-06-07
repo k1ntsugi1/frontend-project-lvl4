@@ -58,7 +58,7 @@ body {
   
   .scrollbar-success::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: #009000;
+    background-color: #59daae;
   }
   
   .scrollbar-success {
@@ -71,4 +71,48 @@ body {
 
 .blue-light {
   background-color: #1e90ff;
+}
+
+
+.btn-success {
+  border-color: #59daae;
+  background-color: #59daae;
+  color: white;
+}
+
+.btn-success:hover,
+
+.btn-success:focus,
+
+.btn-success:visited{
+  border-color: #4fb190;
+  background-color: #4fb190;
+  color: white;
+}
+
+.btn-outline-success {
+  border-color: #59daae;
+  color: #4fb190;
+}
+
+.btn-outline-success:hover,
+
+.btn-outline-success:focus,
+
+.btn-outline-success:visited{
+  border-color: #4fb190;
+  background-color: #4fb190;
+  color: white;
+}
+
+.text-success {
+  color: #59daae !important;
+}
+
+.border-success {
+  border-color: #59daae !important;
+}
+
+.link-success {
+  color: #59daae;
 }

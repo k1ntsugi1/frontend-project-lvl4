@@ -29,8 +29,8 @@ const ajaxStore = {
     handlerRequest: async (values, routPath, responseFunc, immerFunc) => {
         try {
           const response = await axios.post(routes[routPath](), {
-            username: values.username,
-            password: values.password
+            username: values.username.trim(),
+            password: values.password.trim()
           });
           responseFunc(response, immerFunc, 'valid')
         } catch (e) {

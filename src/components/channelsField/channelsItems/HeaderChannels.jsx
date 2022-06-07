@@ -37,7 +37,7 @@ const HeaderChannels = ({t}) => {
                   color: '#FFFFFF',
                   fontWeight: 400,
                   textAlign: 'center',
-                  backgroundColor: '#198754',
+                  backgroundColor: '#4fb190',
                   borderRadius: '10px',
                 }
                }
