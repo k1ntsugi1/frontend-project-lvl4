@@ -8,13 +8,12 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import React , { useState} from 'react';
 import * as ReactDOM from 'react-dom/client';
-import * as RollbarModule from '@rollbar/react';
 import i18n from "i18next";
 import { io } from "socket.io-client";
 import { BrowserRouter } from "react-router-dom";
 import { initReactI18next } from "react-i18next";
 import { Provider } from 'react-redux';
-import 'react-toastify/dist/ReactToastify.css'
+import { injectStyle } from "react-toastify/dist/inject-style";
 
 import store from './slices/index.js';
 
@@ -57,7 +56,7 @@ const socket = io();
 const ruBadWords = words.ru;
 filterBadWords.add(ruBadWords)
 
-//injectStyle();
+injectStyle();
 
 const AuthProvider = ({children}) => {
   const userId = JSON.parse(localStorage.getItem('userId')) ?? false;
@@ -93,38 +92,20 @@ const BadWordsProvider = ({filterBadWords, children}) => {
   )
 }
 
-const rollbarConfig = {
-  accessToken: 'c2ae4cb92bcb4d098630266cfd62c42d',
-  environment: 'production',
-};
 
-const ErrorDisplay = ({ error, resetError }) => {
-  console.log(error, resetError, 'Rollbar');
-  return (
-    <div className="d-flex flex-column justify-content-center h-100 my-4 pt-5 rounded shadow border border-warning bg-white">
-      <h3 className='text-danger pb-3'>Как-то накосячили программисты...</h3>
-      <p className='px-3'>Ошибка уже отправлена автору</p>
-      <p className='px-3 align-self-end fw-lighter'>Если ты делал эту страницу, то перейди в devTools, а потом в rollbar</p>
-    </div>
-  )
-};
 const container = ReactDOM.createRoot(document.querySelector('#chat'));
 container.render(
-  <RollbarModule.Provider config={rollbarConfig}>
-    <RollbarModule.ErrorBoundary fallbackUI={ErrorDisplay}>
-      <BrowserRouter>
-        <Provider store={store}>
-          <SocketProvider socket={socket}>
-            <BadWordsProvider filterBadWords={filterBadWords}>
-              <AuthProvider>
-                <App />
-              </AuthProvider>
-            </BadWordsProvider>
-          </SocketProvider>
-        </Provider>
-      </BrowserRouter>
-    </RollbarModule.ErrorBoundary>
-  </RollbarModule.Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <SocketProvider socket={socket}>
+          <BadWordsProvider filterBadWords={filterBadWords}>
+            <AuthProvider>
+              <App />
+            </AuthProvider>
+          </BadWordsProvider>
+        </SocketProvider>
+      </Provider>
+    </BrowserRouter>
 )
 
 
