@@ -5,10 +5,10 @@ import { Card } from 'react-bootstrap';
 const CardField = ({children}) => {
 
     return (
-        <div className='container-fluid h-100'>
+        <div className='container-fluid h-100 '>
           <div className='row justify-content-center align-content-center h-100'>
             <div className='col-12 col-md-8 col-xxl-7'>
-              <Card className='shadow-sm'>
+              <Card className='shadow-sm bg-light'>
                 {children}
               </Card>
             </div>        

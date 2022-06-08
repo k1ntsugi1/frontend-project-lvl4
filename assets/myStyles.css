@@ -39,21 +39,21 @@ body {
 .scrollbar2 {
     margin-right: 2px;
     float: left;
-    background: #f8f9fa;
+    background: #fff5ee;
     overflow-y: scroll;
     margin-bottom: 25px;
 }
 
 
 .scrollbar-success::-webkit-scrollbar-track {
-    background-color: #f8f9fa;
+    background-color: #fff5ee;
     border-radius: 10px;
     border: 0;
   }
   
   .scrollbar-success::-webkit-scrollbar {
     width: 8px;
-    background-color: #f8f9fa;
+    background-color: #fff5ee;
   }
   
   .scrollbar-success::-webkit-scrollbar-thumb {
@@ -62,7 +62,7 @@ body {
   }
   
   .scrollbar-success {
-    scrollbar-color: #f8f9fa #f8f9fa;
+    scrollbar-color: #fff5ee #fff5ee;
   }
 
 .h-90 {
@@ -121,6 +121,14 @@ body {
   background-color:#00bdbd !important;
 }
 
+.bg-light {
+  background-color: #fff5ee !important;
+}
+
 .popup-arrow {
   display: none;
+}
+
+footer {
+  background-color: #f8f0e8;
 }

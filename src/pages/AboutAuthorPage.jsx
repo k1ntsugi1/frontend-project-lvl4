@@ -19,7 +19,7 @@ const AboutAuthorPage = ({t}) => {
         dispatch(actionsUiNavBar.setNewActivePage({newActivePage: 'about'}))
     }, [])
     return (
-        <div className="d-flex flex-column h-100 my-4 pt-5 rounded shadow border border-info bg-white">
+        <div className="d-flex flex-column h-100 my-4 pt-5 rounded shadow border border-info bg-light">
             <div className="flex-grow-1">
                 <h3 className="text-center pb-4">
                     Привет! Меня зовут Булат и это мой заключительный проект на{' '} 
@@ -58,7 +58,7 @@ const AboutAuthorPage = ({t}) => {
                 </p>
             </div>
             
-            <footer className="bg-light border border-top">
+            <footer className="border border-top">
                 <h5 className="text-center">Контактная информация</h5>
                 <div className="d-flex flex-row justify-content-around pb-2">
                     <div className={classnamesContacts}>
@@ -79,7 +79,7 @@ const AboutAuthorPage = ({t}) => {
                         </span>
                     </div>
                     <div className="fw-bold pe-3">
-                        <img src="https://cdn.icon-icons.com/icons2/2406/PNG/512/github_git_icon_145985.png" width="20px"  alt="telegramImg"/>
+                        <img src="https://cdn.icon-icons.com/icons2/936/PNG/512/github-logo_icon-icons.com_73546.png" width="20px"  alt="GuthubImg"/>
                         <span className={classnamesSpan}>
                             Github:{' '}
                             <a className={classnamesLinks} 

@@ -42,7 +42,7 @@ export const ChannelsField = () => {
       <div className='col-4 col-md-2 pt-5 px-0 h-100 bg-light border-end border-info'>
 
         <HeaderChannels />
-      <div className='scrollbar2 scrollbar-success h-90 m-0 w-100' >
+      <div className='scrollbar2 scrollbar-success h-90 m-0 w-100 bg-light' >
         <Nav as="ul" variant="pills" className='flex-column px-2'>
           { unmutableChannels.map((channel) => {
               const variant = getVariant(channel.id, currentActiveChannelId,'success');
