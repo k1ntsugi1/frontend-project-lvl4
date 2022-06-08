@@ -13,7 +13,7 @@ import { io } from "socket.io-client";
 import { BrowserRouter } from "react-router-dom";
 import { initReactI18next } from "react-i18next";
 import { Provider } from 'react-redux';
-import { injectStyle } from "react-toastify/dist/inject-style";
+import 'react-toastify/dist/ReactToastify.css';
 
 import store from './slices/index.js';
 
@@ -56,7 +56,7 @@ const socket = io();
 const ruBadWords = words.ru;
 filterBadWords.add(ruBadWords)
 
-injectStyle();
+//injectStyle();
 
 const AuthProvider = ({children}) => {
   const userId = JSON.parse(localStorage.getItem('userId')) ?? false;
