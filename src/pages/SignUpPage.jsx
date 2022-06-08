@@ -53,7 +53,7 @@ const SignUpPage = ({t}) => {
 
     return (
       <CardField>
-        <CardBodyField imagePath="https://cdn.icon-icons.com/icons2/1532/PNG/512/3285299-orbit-orbital-satellite-shuttle-space-spaceship_106796.png">
+        <CardBodyField imagePath='null'>
           <FormSignUpField formik={formik} authError={authStore.authError}/>   
         </CardBodyField>
       </CardField>
