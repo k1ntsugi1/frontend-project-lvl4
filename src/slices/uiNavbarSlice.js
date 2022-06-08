@@ -2,7 +2,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const uiNavbarSlice = createSlice({
-    name: 'UiNavbar',
+    name: 'uiNavbar',
     initialState: ({ currentActivePage: 'signin' }),
     reducers: {
         setNewActivePage(state, { payload: { newActivePage } }) {
