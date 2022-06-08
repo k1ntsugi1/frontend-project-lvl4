@@ -132,3 +132,10 @@ body {
 footer {
   background-color: #f8f0e8;
 }
+
+
+.form-control:focus,
+.form-control:active {
+  box-shadow: 0 0 5px 5px #59daae;
+}
+

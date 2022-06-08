@@ -17,7 +17,7 @@ const HeaderMessageField = ({t}) => {
     if (currentActiveChannel) messagesCurrentChannel = getMessagesCurrentChannel(currentActiveChannelId, messages)
 
     return (
-        <div className="bg-light mb-3 p-3 shadow-sm small border border-bottom rounded-3">
+        <div className="bg-light mb-3 p-3 shadow-sm small border rounded-bottom">
             <h3># {currentActiveChannel && currentActiveChannel['name'] }</h3>
             <span>
             {

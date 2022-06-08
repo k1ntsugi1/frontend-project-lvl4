@@ -39,7 +39,7 @@ export const ChannelsField = () => {
   const { unmutableChannels, mutableChannels} = getChannelsByMutableState(channels);
 
     return (
-      <div className='col-4 col-md-2 pt-5 px-0 h-100 bg-light border-end border-info'>
+      <div className='col-4 col-md-2 pt-5 px-0 h-100 bg-light border-end border-success'>
 
         <HeaderChannels />
       <div className='scrollbar2 scrollbar-success h-90 m-0 w-100 bg-light' >

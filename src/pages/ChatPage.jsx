@@ -97,7 +97,7 @@ export const ChatPage = ({t}) => {
             </div>
             )
         : (
-            <div className="row h-100 my-4 overflow-hidden rounded shadow border border-info">
+            <div className="row h-100 my-4 overflow-hidden rounded shadow border border-success">
                 <ChannelsField />
                 <MessageField/>
                 <ToastContainer draggablePercent={30}/>
