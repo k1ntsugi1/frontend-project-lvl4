@@ -6,7 +6,9 @@ export const MessageItem = ({message}) => {
     const { body, username } = message;
     const userId = JSON.parse(localStorage.getItem('userId'));
     const currentUsername = userId.username;
-    const date = new Date();
+    let date = new Date();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
     const classNamesMessageField = cn(
         'rounded-pill',
         'px-3',
@@ -34,7 +36,7 @@ export const MessageItem = ({message}) => {
                 <span className={classNamesMessageField} style={ { 'maxWidth': '50%' } }>
                     { body }
                     <span className={classNamesDate}>
-                        { date.getHours() }:{date.getMinutes()}
+                        { hours }:{minutes}
                     </span>
                 </span>
             </span>

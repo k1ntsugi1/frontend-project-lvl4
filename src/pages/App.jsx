@@ -75,7 +75,7 @@ const SignUpBtn = ({t}) => {
 
 const App = ({t}) => {
   const currentActivePage = useSelector( (store) => store.uiNavBar.currentActivePage );
-
+  const auth = useAuth();
   return (
     <div className='d-flex flex-column h-100'>
       <Navbar bg="light" className='shadow-sm rounded-3'>
@@ -93,6 +93,18 @@ const App = ({t}) => {
             {(currentActivePage === 'signin' ) && <SignUpBtn t={t}/>}
             {(currentActivePage === 'signup') && <SignInBtn t={t}/>}
             {(currentActivePage === 'chat' ) && <LogOutBtn t={t}/>}
+            {
+              (currentActivePage === 'about') 
+              ? auth.loggedIn 
+                ? <LogOutBtn t={t}/> 
+                :(
+                  <>
+                    <SignInBtn t={t}/>
+                    <SignUpBtn t={t}/>
+                  </>
+                )
+              : null
+            }
           </Nav>
           
         </Container>
