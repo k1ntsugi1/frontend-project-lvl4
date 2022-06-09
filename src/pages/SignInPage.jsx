@@ -55,7 +55,7 @@ const SignInPage = ({t}) => {
 
     return (
     	<CardField>
-        <CardBodyField imagePath="https://cdn.icon-icons.com/icons2/1532/PNG/512/3285300-launch-rocket-space-spacecraft-spaceship-starship-startup_106797.png">
+        <CardBodyField typeOfImg="signIn">
           <FormSignInField formik={formik} authError={authStore.authError}/>   
         </CardBodyField>
         <CardFooterSignInField />

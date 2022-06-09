@@ -53,7 +53,7 @@ const SignUpPage = ({t}) => {
 
     return (
       <CardField>
-        <CardBodyField imagePath='null'>
+        <CardBodyField typeOfImg='signUp'>
           <FormSignUpField formik={formik} authError={authStore.authError}/>   
         </CardBodyField>
       </CardField>
