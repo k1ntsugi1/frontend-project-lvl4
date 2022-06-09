@@ -3,12 +3,9 @@ import React from 'react';
 import cn from 'classnames';
 
 export const MessageItem = ({message}) => {
-    const { body, username } = message;
+    const { body, username, time } = message;
     const userId = JSON.parse(localStorage.getItem('userId'));
     const currentUsername = userId.username;
-    let date = new Date();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
     const classNamesMessageField = cn(
         'rounded-pill',
         'px-3',
@@ -33,10 +30,10 @@ export const MessageItem = ({message}) => {
             <span className={classNamesFlexContainer}>
                 <b className='text-dark flex-shrink-0 align-self-end'>{username}</b>
                 <b className='flex-shrink-0 align-self-end px-1'> : </b>
-                <span className={classNamesMessageField} style={ { 'maxWidth': '50%' } }>
+                <span className={classNamesMessageField} style={ { 'maxWidth': '75%' } }>
                     { body }
                     <span className={classNamesDate}>
-                        { hours }:{minutes}
+                        { time.hours }:{ time.minutes > 9 ? time.minutes : `0${time.minutes}`}
                     </span>
                 </span>
             </span>

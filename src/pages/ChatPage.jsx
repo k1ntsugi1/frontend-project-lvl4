@@ -21,12 +21,13 @@ import { MessageField } from '../components/messageField/MessageField.jsx';
 const handlerSocketListeners = (dispatch, socket, t) => {
 
     socket.on('newMessage', (messageWithId) => {
-        const { id, body, channelId, username } = messageWithId;
+        const { id, body, channelId, username, time } = messageWithId;
         const newMessage = {
             body,
             channelId,
-            username, 
+            username,
             id,
+            time
         }
         dispatch(actionsMessages.addMessage(newMessage));
     });

@@ -21,10 +21,15 @@ const FooterMessageField = ({t}) => {
         },
         onSubmit: (values, actions) => {
             const filteredMessage = filterBadWords.clean(values.message)
+            const date = new Date();
+            const hours = date.getHours();
+            const minutes = date.getMinutes();
             if(filterBadWords.check(values.message)) toastes["badWord"](t)
             socket.emit('newMessage', { body: filteredMessage, 
                                         channelId: currentActiveChannelId,
-                                        username: JSON.parse(localStorage.getItem('userId')).username }, (response) => {
+                                        username: JSON.parse(localStorage.getItem('userId')).username,
+                                        time: { hours, minutes }
+                                    }, (response) => {
                     console.log(response)
                     if(response.status !== "ok") {
                     console.log('error', response)
