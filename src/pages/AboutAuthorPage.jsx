@@ -9,7 +9,9 @@ import PhoneImg from '../img/phone.png';
 import GithubImg from '../img/github.png';
 import TelegramImg from '../img/telegram.png';
 import MailImg from '../img/mail.png';
-
+import MeFirst from '../img/me1.jpg';
+import MeSecond from '../img/me2.jpg';
+import MeThird from '../img/me3.jpg';
 
 const AboutAuthorPage = ({t}) => {
     const classNamesP = cn('px-3', 'lh-base');
@@ -25,7 +27,7 @@ const AboutAuthorPage = ({t}) => {
         dispatch(actionsUiNavBar.setNewActivePage({newActivePage: 'about'}))
     }, [])
     return (
-        <div className="d-flex flex-column h-100 my-4 pt-5 rounded shadow border border-info bg-light">
+        <div className="d-flex flex-column h-100 scrollbar2 scrollbar-success my-4 pt-5 rounded shadow border border-info bg-light">
             <div className="flex-grow-1">
                 <h3 className="text-center pb-4">
                     Привет! Меня зовут Булат и это мой заключительный проект на{' '} 
@@ -39,6 +41,9 @@ const AboutAuthorPage = ({t}) => {
                 <p className={classNamesP}>
                     Цель данного проекта - написать real-time приложение (аналог Slack-чата) на React/Redux, 
                     используя AJAX, REST, websockets, React (с хуками) + Redux (@reduxjs/toolkit) + Formik.
+                </p>
+                <p className={classNamesP}>
+                    Дополнительно использовались следующие пакеты: react-toastify, reactjs-popup, react-dom-router, react-rollbar, react-spinner-loader, yup.
                 </p>
                 <p className={classNamesP}>
                     Для упрощения создания внешнего вида, в этом проекте используется библиотеки bootstrap и react-bootstrap.
@@ -60,8 +65,13 @@ const AboutAuthorPage = ({t}) => {
                     <p className="fst-italic text-left">- Какой-то дополнительный и нужный текст</p>
                 </div>
                 <p className='px-3 lh-base text-center'>
-                    Приятного времяпрепровождения!
+                    Наша великолепная команда
                 </p>
+                <div className="d-flex flex-row justify-content-around pb-2">
+                    <img src={MeSecond} className='img-fluid rounded-circle'/>
+                    <img src={MeFirst} className='img-fluid rounded-circle'/>
+                    <img src={MeThird} className='img-fluid rounded-circle'/>
+                </div>
             </div>
             
             <footer className="border border-top">
