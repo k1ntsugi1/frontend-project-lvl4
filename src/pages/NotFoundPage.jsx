@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 
 import { actionsUiNavBar } from "../slices/uiNavbarSlice.js";
 import NotFoundImg  from '../img/404page.png'
+
 export const NotFoundPage = ({t}) => {
 
     const dispatch = useDispatch()
@@ -20,7 +21,7 @@ export const NotFoundPage = ({t}) => {
                 <span>{t("undefindPage.suggestion")} <Link to='/'>{t("undefindPage.linkToMainPage")}</Link></span>
             </div>
             <div className='mt-5'>
-                <img src="NotFoundImg" className='img-fluid' alt="Страница не найдена"/>
+                <img src={NotFoundImg} className='img-fluid' alt="Страница не найдена"/>
             </div>
         </div>
     )

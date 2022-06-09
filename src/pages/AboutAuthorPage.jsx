@@ -17,7 +17,8 @@ const AboutAuthorPage = ({t}) => {
     const classNamesP = cn('px-3', 'lh-base');
     const classnamesSpan = cn('px-2');
     const classnamesContacts = cn('fw-bold');
-    const classnamesLinks = cn('text-decoration-none', 'link-success')
+    const classnamesLinks = cn('text-decoration-none', 'link-success');
+    const classnamesMyImg = cn('rounded-circle')
     const dispatch = useDispatch();
     const handlerOpening = (e,url) => {
         e.preventDefault();
@@ -64,13 +65,14 @@ const AboutAuthorPage = ({t}) => {
                     </p>
                     <p className="fst-italic text-left">- Какой-то дополнительный и нужный текст</p>
                 </div>
-                <p className='px-3 lh-base text-center'>
+                <hr/>
+                <h4 className='px-3 lh-base text-center'>
                     Наша великолепная команда
-                </p>
+                </h4>
                 <div className="d-flex flex-row justify-content-around pb-2">
-                    <img src={MeSecond} className='img-fluid rounded-circle'/>
-                    <img src={MeFirst} className='img-fluid rounded-circle'/>
-                    <img src={MeThird} className='img-fluid rounded-circle'/>
+                    <img src={MeSecond} className={classnamesMyImg} width="25%" alt="myPhoto"/>
+                    <img src={MeFirst} className={classnamesMyImg} width="25%" alt="myPhoto"/>
+                    <img src={MeThird} className={classnamesMyImg} width="25%" alt="myPhoto"/>
                 </div>
             </div>
             
