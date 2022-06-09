@@ -70,9 +70,9 @@ const AboutAuthorPage = ({t}) => {
                     Наша великолепная команда
                 </h4>
                 <div className="d-flex flex-row justify-content-around pb-2">
-                    <img src={MeSecond} className={classnamesMyImg} width="25%" alt="myPhoto"/>
-                    <img src={MeFirst} className={classnamesMyImg} width="25%" alt="myPhoto"/>
-                    <img src={MeThird} className={classnamesMyImg} width="25%" alt="myPhoto"/>
+                    <img src={MeSecond} className={classnamesMyImg} width="15%" alt="myPhoto"/>
+                    <img src={MeFirst} className={classnamesMyImg} width="15%" alt="myPhoto"/>
+                    <img src={MeThird} className={classnamesMyImg} width="15%" alt="myPhoto"/>
                 </div>
             </div>
             
