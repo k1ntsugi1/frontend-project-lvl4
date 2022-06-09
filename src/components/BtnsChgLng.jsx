@@ -3,6 +3,8 @@ import React from 'react'
 import Popup from 'reactjs-popup';
 import { withTranslation } from 'react-i18next';
 import { NavDropdown , Dropdown, Nav  } from 'react-bootstrap';
+import RuFlag from '../img/ruFlag.png'
+import UkFlag from '../img/ukFlag.png'
 
 const BtnsChgLng = ({t, i18n}) => {
 
@@ -14,11 +16,11 @@ const BtnsChgLng = ({t, i18n}) => {
         <Popup trigger={
             <NavDropdown  id="dropdownLangButtons" title={t("navBar.currentLang")} className="ms-2">
               <Dropdown.Item as="button"  onClick={ changeLang('ru') } className="text-start">
-                <img src="https://cdn.icon-icons.com/icons2/45/PNG/64/russiaflag_flags_rusi_9144.png" width="20px" alt="fl-ru"/>
+                <img src={RuFlag} width="20px" alt="RuFlag"/>
                 {' '}Русский
               </Dropdown.Item>
               <Dropdown.Item as="button" onClick={ changeLang('en') } className="text-start">
-              <img src="https://cdn.icon-icons.com/icons2/2087/PNG/512/united_kingdom_icon_127821.png" width="20px" alt="fl-en"/>
+              <img src={UkFlag} width="20px" alt="UkFlag"/>
                 {' '}English
               </Dropdown.Item>
             </NavDropdown >

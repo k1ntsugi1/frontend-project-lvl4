@@ -5,6 +5,12 @@ import { useDispatch} from "react-redux";
 import { actionsUiNavBar } from "../slices/uiNavbarSlice.js";
 import cn from 'classnames';
 
+import PhoneImg from '../img/phone.png';
+import GithubImg from '../img/github.png';
+import TelegramImg from '../img/telegram.png';
+import MailImg from '../img/mail.png';
+
+
 const AboutAuthorPage = ({t}) => {
     const classNamesP = cn('px-3', 'lh-base');
     const classnamesSpan = cn('px-2');
@@ -62,11 +68,11 @@ const AboutAuthorPage = ({t}) => {
                 <h5 className="text-center">Контактная информация</h5>
                 <div className="d-flex flex-row justify-content-around pb-2">
                     <div className={classnamesContacts}>
-                        <img src="https://cdn.icon-icons.com/icons2/858/PNG/512/letter_icon-icons.com_67753.png" width="20px"  alt="MailImg"/>
+                        <img src={MailImg} width="20px"  alt="MailImg"/>
                         <span className={classnamesSpan}>bmasalimov5@yandex.ru</span>
                     </div>
                     <div className="fw-bold pe-3">
-                        <img src="https://cdn.icon-icons.com/icons2/923/PNG/512/telegram_icon-icons.com_72055.png" width="20px"  alt="telegramImg"/>
+                        <img src={TelegramImg} width="20px"  alt="telegramImg"/>
                         <span className={classnamesSpan}>
                             Telegram:{' '}
                             <a className={classnamesLinks} 
@@ -79,7 +85,7 @@ const AboutAuthorPage = ({t}) => {
                         </span>
                     </div>
                     <div className="fw-bold pe-3">
-                        <img src="https://cdn.icon-icons.com/icons2/936/PNG/512/github-logo_icon-icons.com_73546.png" width="20px"  alt="GuthubImg"/>
+                        <img src={GithubImg} width="20px"  alt="GuthubImg"/>
                         <span className={classnamesSpan}>
                             Github:{' '}
                             <a className={classnamesLinks} 
@@ -92,7 +98,7 @@ const AboutAuthorPage = ({t}) => {
                         </span>
                     </div>
                     <div className={classnamesContacts}>
-                        <img src="https://cdn.icon-icons.com/icons2/1129/PNG/512/cellphone_79786.png" width="20px"  alt="phoneImg"/>
+                        <img src={PhoneImg} width="20px"  alt="phoneImg"/>
                          <span className={classnamesSpan}>+7(909)-745-62-88</span>
                     </div>
                 </div>
