@@ -70,7 +70,7 @@
         }
     },
     "modal": {
-        "headerAddChannel": "Добавить новый канал",
+        "headerAddChannel": "Имя канала",
         "headerRenameChannel": "Переименовать канал",
         "headerRemoveChannel": "Удалить канал",
         "removeBody": "Вы хотите удалить канал?",
