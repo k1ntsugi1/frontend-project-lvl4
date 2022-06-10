@@ -51,7 +51,7 @@ export const MutableChannel = ({dataChannel, variant, t}) => {
                 }
                }
           >
-           <span>+{messagesCounter}</span>             
+           {/*<span>+{messagesCounter}</span>*/}             
         </Popup>
 
             <Dropdown.Toggle split variant={variant} id="dropdown-split" className='rounded-end' />
