@@ -78,7 +78,7 @@ const DefaultModal = ({t, impact}) => {
                   id={type}
                   name={type}
                   placeholder=""
-                  aria-label={type}
+                  aria-label="Имя канала"//так требуют тесты)
                   value={inputValue}
                   ref={inputRef}
                   onChange={({target}) => setInputValue(target.value) }
