@@ -64,7 +64,7 @@ const FormSignUpField = ({t, formik, authError}) => {
                       	      isInvalid={!!errors.confirmPassword || !!authError}
                               className="rounded-3"
                 />
-                <Form.Label htmlFor="password">{ t("signUpForm.confirmPasswordField")}</Form.Label>
+                <Form.Label htmlFor="confirmPassword">{ t("signUpForm.confirmPasswordField")}</Form.Label>
                 <Form.Control.Feedback type="invalid" tooltip>
                     {errors.confirmPassword || t(`signUpForm.errorsValidating.${authError}`)}
                 </Form.Control.Feedback>
