@@ -7,13 +7,13 @@ export const MessageItem = ({message}) => {
     const userId = JSON.parse(localStorage.getItem('userId'));
     const currentUsername = userId.username;
     const classNamesMessageField = cn(
-        'rounded-pill',
         'px-3',
-        'text-white',
         'd-flex',
+        'rounded-pill',
+        'text-white',
         {
-            'green-light': username !== currentUsername,
             'flex-row-reverse': username !== currentUsername,
+            'green-light': username !== currentUsername,
             'bg-primary': username === currentUsername
         });
     const classNamesFlexContainer = cn(
@@ -26,10 +26,10 @@ export const MessageItem = ({message}) => {
         'pe-2': username !== currentUsername,
     });
     return (
-        <div className='text-break mb-2 justify-content-start'>
+        <div className='mb-2 text-break justify-content-start'>
             <span className={classNamesFlexContainer}>
-                <b className='text-dark flex-shrink-0 align-self-end'>{username}</b>
-                <b className='flex-shrink-0 align-self-end px-1'> : </b>
+                <b className='flex-shrink-0 align-self-end text-dark'>{username}</b>
+                <b className='px-1 flex-shrink-0 align-self-end'> : </b>
                 <span className={classNamesMessageField} style={ { 'maxWidth': '75%' } }>
                     { body }
                     <span className={classNamesDate}>

@@ -15,7 +15,7 @@ export const NotFoundPage = ({t}) => {
         dispatch(actionsUiNavBar.setNewActivePage({newActivePage: null}))
     }, [])
     return (
-        <div className='position-relative row justify-content-center h-100'>
+        <div className='h-100 position-relative row justify-content-center '>
             <div className='position-absolute top-0 text-muted text-center'>
                 <h2>{t("undefindPage.haveNotFindedPage")}</h2>
                 <span>{t("undefindPage.suggestion")} <Link to='/'>{t("undefindPage.linkToMainPage")}</Link></span>

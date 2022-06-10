@@ -74,19 +74,19 @@ const DefaultModal = ({t, impact}) => {
 
             <Modal.Body>
               <InputGroup >
-              <Form.Control
-                    id={type}
-                    name={type}
-                    placeholder=""
-                    aria-label={type}
-                    value={inputValue}
-                    ref={inputRef}
-                    onChange={({target}) => setInputValue(target.value) }
-                    isInvalid={errorStore.containError}
-              />
-              <Form.Control.Feedback type="invalid" tooltip>
-                        {errorStore.errorValue}
-              </Form.Control.Feedback>
+                <Form.Control
+                  id={type}
+                  name={type}
+                  placeholder=""
+                  aria-label={type}
+                  value={inputValue}
+                  ref={inputRef}
+                  onChange={({target}) => setInputValue(target.value) }
+                  isInvalid={errorStore.containError}
+                />
+                <Form.Control.Feedback type="invalid" tooltip>
+                  {errorStore.errorValue}
+                </Form.Control.Feedback>
               </InputGroup >
             </Modal.Body>
 
@@ -94,6 +94,7 @@ const DefaultModal = ({t, impact}) => {
               <Button variant="secondary" onClick={() => dispatch(actionsUiModal.removeModal({typeModal:type}))}>
                 {t("modal.cancel")}
               </Button>
+
               <Button variant="success"  onClick={validate}>
                 {t("modal.send")}
               </Button>

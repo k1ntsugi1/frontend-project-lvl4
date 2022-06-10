@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const SignInBtn = ({t}) => {
     return (
-        <Nav.Item className='btn btn-outline-success ms-4'>
+        <Nav.Item className='ms-4 btn btn-outline-success'>
           <Link to="login" className=' text-decoration-none text-reset'>{t("navBar.signInBtn")}</Link>
         </Nav.Item>
     )

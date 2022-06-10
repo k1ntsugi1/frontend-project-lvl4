@@ -46,7 +46,7 @@ const FooterMessageField = ({t}) => {
     })
 
     return (
-        <div className='mt-auto sticky-bottom px-5 py-3'>
+        <div className='px-5 py-3 mt-auto sticky-bottom'>
             <Form noValidate className='p-1 border border-success rounded-pill' onSubmit={formik.handleSubmit}>
             <InputGroup>
                 <Form.Control id="message"
@@ -58,7 +58,7 @@ const FooterMessageField = ({t}) => {
                               value={formik.values.message}
                               className="border-0 rounded-pill"
                  />
-                <Button className='border-0 rounded-pill btn-group-vertical text-success '
+                <Button className='btn-group-vertical border-0 rounded-pill text-success '
                         variant="" 
                         type="submit"
                         disabled={formik.values.message === '' || formik.isSubmitting}

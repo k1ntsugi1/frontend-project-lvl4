@@ -28,9 +28,9 @@ const AboutAuthorPage = ({t}) => {
         dispatch(actionsUiNavBar.setNewActivePage({newActivePage: 'about'}))
     }, [])
     return (
-        <div className="d-flex flex-column h-100 scrollbar2 scrollbar-success my-4 pt-5 rounded shadow border border-success bg-light">
+        <div className="my-4 pt-5 d-flex flex-column h-100 scrollbar2 scrollbar-success shadow border border-success rounded bg-light">
             <div className="flex-grow-1">
-                <h3 className="text-center pb-4">
+                <h3 className="pb-4 text-center">
                     Привет! Меня зовут Булат и это мой заключительный проект на{' '} 
                     <a className="link-success" 
                        href="#" 

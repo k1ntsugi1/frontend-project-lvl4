@@ -9,7 +9,7 @@ import FooterMessageField from './messageItems/FooterMessageField.jsx'
 export const MessageField = () => {
 
     return (
-        <div className='col p-0 h-100 bg-white'>
+        <div className='p-0 col h-100 bg-white'>
             <div className='d-flex flex-column h-100'>
                 <HeaderMessageField/>
                 <BodyMessageField/>

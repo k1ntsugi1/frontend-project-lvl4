@@ -34,6 +34,7 @@ export const RemoveModal = ({t, impact}) => {
                 <Button variant="secondary" onClick={() => dispatch(actionsUiModal.removeModal({typeModal:type}))}>
                   {t("modal.cancel")}
                 </Button>
+
                 <Button variant="danger" onClick={handlerRemovingChannel}>
                   {t("modal.remove")}
                 </Button>
