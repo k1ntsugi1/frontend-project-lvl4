@@ -90,5 +90,11 @@
         "sentancesRemovingEnd": "removed!",
         "errorNetwork": "Something wrong with network, wait ...",
         "badWord": "Don't swear!"
+    },
+    "mainError": {
+        "header": "Oops.. something went wrong",
+        "suggestion": "See if you can:",
+        "firstStep": "Reload page",
+        "secondStep": "Again login to your account"
     }
 }

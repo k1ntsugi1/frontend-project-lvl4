@@ -91,5 +91,11 @@
         "sentancesRemovingEnd": "удален",
         "errorNetwork": "Ошибка соединения",
         "badWord": "Не ругайся!"
+    },
+    "mainError": {
+        "header": "Мда.. что-то пошло не так",
+        "suggestion": "Попробуйте:",
+        "firstStep": "Перезагрузить страницу",
+        "secondStep": "Перезайти в свой аккаунт"
     }
 }
