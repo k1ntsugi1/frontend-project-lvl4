@@ -29,9 +29,8 @@ const toastes = {
         )
     },
     'newChannel': (t, name) => {
-        //${name}
         return (
-            toast(`⭐ ${t("toastText.sentancesStart")} ${t("toastText.sentancesAddingEnd")}!`, {
+            toast(`⭐ ${t("toastText.sentancesStart")} ${name} ${t("toastText.sentancesAddingEnd")}!`, {
                 position: "top-center",
                 autoClose: 1000,
                 hideProgressBar: false,
