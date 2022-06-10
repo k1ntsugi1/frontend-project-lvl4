@@ -2,8 +2,6 @@
 import { createSlice} from "@reduxjs/toolkit";
 import { fetchDataCurrentUserByUserId } from './dataChannelsSlice.js'
 
-
-
 const  uiSpinnerSlice = createSlice({
     name: 'messagesChannelsCurrentUser',
     initialState: {status: null},

@@ -28,7 +28,7 @@ const AboutAuthorPage = ({t}) => {
         dispatch(actionsUiNavBar.setNewActivePage({newActivePage: 'about'}))
     }, [])
     return (
-        <div className="d-flex flex-column h-100 scrollbar2 scrollbar-success my-4 pt-5 rounded shadow border border-info bg-light">
+        <div className="d-flex flex-column h-100 scrollbar2 scrollbar-success my-4 pt-5 rounded shadow border border-success bg-light">
             <div className="flex-grow-1">
                 <h3 className="text-center pb-4">
                     Привет! Меня зовут Булат и это мой заключительный проект на{' '} 
@@ -47,7 +47,7 @@ const AboutAuthorPage = ({t}) => {
                     Дополнительно использовались следующие пакеты: react-toastify, reactjs-popup, react-dom-router, react-rollbar, react-spinner-loader, yup.
                 </p>
                 <p className={classNamesP}>
-                    Для упрощения создания внешнего вида, в этом проекте используется библиотеки bootstrap и react-bootstrap.
+                    Для упрощения создания внешнего вида, в этом проекте применялись библиотеки bootstrap и react-bootstrap.
                 </p>
                 <p className={classNamesP}>
                     Код серверной части и первоначальная настройка плагинов и webpack предоставлены командой{' '}

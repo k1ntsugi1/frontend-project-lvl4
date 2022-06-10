@@ -56,4 +56,3 @@ export const selectorsChannels = adapterChannels.getSelectors((state) => state.d
 export const actionsChannels = channelsSlice.actions;
 
 export default channelsSlice.reducer;
-/////
