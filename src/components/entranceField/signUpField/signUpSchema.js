@@ -21,6 +21,7 @@ export const getSignUpSchema = (t) => {
         confirmPassword: Yup
                          .string()
                          .oneOf([Yup.ref('password')], t("signUpForm.errorsValidating.confirmPassword"))
+                         .required(),
       })
 
     return signUpSchema;
