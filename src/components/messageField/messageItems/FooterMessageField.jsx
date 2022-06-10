@@ -57,6 +57,7 @@ const FooterMessageField = ({t}) => {
                               onChange={formik.handleChange}
                               value={formik.values.message}
                               className="border-0 rounded-pill"
+                              aria-label="Новое сообщение"//так требуют тесты)
                  />
                 <Button className='btn-group-vertical border-0 rounded-pill text-success '
                         variant="" 
