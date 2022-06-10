@@ -30,8 +30,7 @@ export const MutableChannel = ({dataChannel, variant, t}) => {
                     className='ps-3 w-100 rounded-start text-start text-truncate'
                     onClick={handlerNewActiveChannel(channel.id, dispatch)}
             >
-              <span className='m-auto'>#</span>{' '}
-              {channel.name}
+              <span className='m-auto'># {channel.name}</span>
             </Button>        
             }
                 position='left'
