@@ -11,8 +11,7 @@ import { AuthProvider } from "./Providers/AuthProvider";
 import { BadWordsProvider } from "./Providers/BadWordsProvider";
 import { useDispatch, batch} from "react-redux";
 
-import translationRU from './i18n/locales/ru.json';
-import translationEN from './i18n/locales/en.json';
+import { resources } from "./myAssets/i18n/resources.js";
 
 import { actionsChannels } from './slices/dataChannelsSlice.js';
 import { actionsMessages } from './slices/dataMessagesSlice.js';
@@ -23,14 +22,7 @@ import filterBadWords from "leo-profanity";
 import words from "naughty-words";
 
 
-const resources = {
-  en: {
-    translation: translationEN
-  },
-  ru: {
-    translation: translationRU
-  }
-}
+
   
 i18n.use(initReactI18next)
   .init({

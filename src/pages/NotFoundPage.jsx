@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 
 import { actionsUiNavBar } from "../slices/uiNavbarSlice.js";
-import NotFoundImg  from '../img/404page.png'
+import NotFoundImg  from '../myAssets/img/404page.png';
 
 export const NotFoundPage = ({t}) => {
 

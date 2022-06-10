@@ -5,13 +5,13 @@ import { useDispatch} from "react-redux";
 import { actionsUiNavBar } from "../slices/uiNavbarSlice.js";
 import cn from 'classnames';
 
-import PhoneImg from '../img/phone.png';
-import GithubImg from '../img/github.png';
-import TelegramImg from '../img/telegram.png';
-import MailImg from '../img/mail.png';
-import MeFirst from '../img/me1.jpg';
-import MeSecond from '../img/me2.jpg';
-import MeThird from '../img/me3.jpg';
+import PhoneImg from '../myAssets/img/phone.png';
+import GithubImg from '../myAssets/img/github.png';
+import TelegramImg from '../myAssets/img/telegram.png';
+import MailImg from '../myAssets/img/mail.png';
+import MeFirst from '../myAssets/img/me1.jpg';
+import MeSecond from '../myAssets/img/me2.jpg';
+import MeThird from '../myAssets/img/me3.jpg';
 
 const AboutAuthorPage = ({t}) => {
     const classNamesP = cn('px-3', 'lh-base');

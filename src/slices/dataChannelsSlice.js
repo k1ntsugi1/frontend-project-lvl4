@@ -2,6 +2,7 @@
 import { createSlice, createEntityAdapter, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import routes from "../routes.js";
+import 'regenerator-runtime/runtime.js';
 
 export const fetchDataCurrentUserByUserId = createAsyncThunk(
     'currentUser/fetchCurrentUserByUserId', 

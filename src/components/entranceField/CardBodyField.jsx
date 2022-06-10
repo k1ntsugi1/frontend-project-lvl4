@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import SignUpImg from '../../img/satelline.png'
-import SignInImg from '../../img/rocket.png'; 
+import SignUpImg from '../../myAssets/img/satelline.png'
+import SignInImg from '../../myAssets/img/rocket.png'; 
 
 const CardBodyField = ({children, typeOfImg}) => {
     const currentImg = typeOfImg === 'signUp' ? SignUpImg : SignInImg;

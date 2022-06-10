@@ -3,8 +3,8 @@ import React from 'react'
 import Popup from 'reactjs-popup';
 import { withTranslation } from 'react-i18next';
 import { NavDropdown , Dropdown  } from 'react-bootstrap';
-import RuFlag from '../../img/ruFlag.png'
-import UkFlag from '../../img/ukFlag.png'
+import RuFlag from '../../myAssets/img/ruFlag.png'
+import UkFlag from '../../myAssets/img/ukFlag.png'
 
 const BtnsChgLng = ({t, i18n}) => {
 

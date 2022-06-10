@@ -12,7 +12,7 @@ import 'core-js/stable/index.js';
 import 'regenerator-runtime/runtime.js';
 
 import '../assets/application.scss';
-import '../assets/myStyles.css'
+import './myAssets/styles/myStyles.css'
 import 'react-toastify/dist/ReactToastify.css';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
