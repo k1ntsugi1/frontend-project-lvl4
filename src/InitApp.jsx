@@ -20,10 +20,9 @@ import ErrorDisplay from "./components/ErrorField/ErrorDisplay.jsx";
 
 import filterBadWords from "leo-profanity";
 import words from "naughty-words";
+import { useEffect } from "react";
 
 
-
-  
 i18n.use(initReactI18next)
   .init({
     debug: true,
@@ -32,53 +31,13 @@ i18n.use(initReactI18next)
     interpolation: {
     escapeValue: false,
   },
-})
+});
+
+const socket = io();
 
 const InitApp = ({t, children}) => {
   const dispatch = useDispatch()
-  const socket = io();
 
-  socket.on('newMessage', (messageWithId) => {
-    const { id, body, channelId, username, time } = messageWithId;
-    const newMessage = {
-      body,
-      channelId,
-      username,
-      id,
-      time
-    };
-    dispatch(actionsMessages.addMessage(newMessage));
-  });
-
-  socket.on('newChannel', (channelWithId) => {
-    const { id, removable, name  } = channelWithId;
-    const newChannel = {
-      id, 
-      name,
-      removable
-    };
-    batch( ()=> {
-      dispatch(actionsChannels.addNewChannel(newChannel)); 
-      dispatch(actionsChannels.setNewActiveChannelId({ newId: newChannel.id, typePreviousAct: 'addChannel' })); 
-    })     
-    toastes['newChannel'](t, name);
-  });
-
-  socket.on('renameChannel', (channelWithId) => {
-    const { id, name  } = channelWithId;
-    dispatch(actionsChannels.updateNameOfChannel({id, changes: {name} }));
-    toastes['renameChannel'](t, name);
-  });
-
-  socket.on('removeChannel', (channelWithId) => {
-    const { id } = channelWithId;
-    batch( () => {
-      dispatch(actionsChannels.removeChannel( id ));
-      dispatch(actionsChannels.setNewActiveChannelId( { newId: id, typePreviousAct: 'removeChannel' } ));
-    })   
-    toastes['removeChannel'](t);
-  })
-    
   const ruBadWords = words.ru;
   filterBadWords.add(ruBadWords)
 
@@ -86,6 +45,53 @@ const InitApp = ({t, children}) => {
     accessToken: 'c2ae4cb92bcb4d098630266cfd62c42d',
     environment: 'production',
   };
+
+  useEffect(() => {
+
+    socket.removeAllListeners();
+
+    socket.on('newMessage', (messageWithId) => {
+      const { id, body, channelId, username, time } = messageWithId;
+      const newMessage = {
+        body,
+        channelId,
+        username,
+        id,
+        time
+      };
+      dispatch(actionsMessages.addMessage(newMessage));
+    });
+  
+    socket.on('newChannel', (channelWithId) => {
+      const { id, removable, name  } = channelWithId;
+      const newChannel = {
+        id, 
+        name,
+        removable
+      };
+      batch( ()=> {
+        dispatch(actionsChannels.addNewChannel(newChannel)); 
+        dispatch(actionsChannels.setNewActiveChannelId({ newId: newChannel.id, typePreviousAct: 'addChannel' })); 
+      })     
+      toastes['newChannel'](t, name);
+    });
+  
+    socket.on('renameChannel', (channelWithId) => {
+      const { id, name  } = channelWithId;
+      dispatch(actionsChannels.updateNameOfChannel({id, changes: {name} }));
+      toastes['renameChannel'](t, name);
+    });
+  
+    socket.on('removeChannel', (channelWithId) => {
+      const { id } = channelWithId;
+      batch( () => {
+        dispatch(actionsChannels.removeChannel( id ));
+        dispatch(actionsChannels.setNewActiveChannelId( { newId: id, typePreviousAct: 'removeChannel' } ));
+      })   
+      toastes['removeChannel'](t);
+    });
+
+  })
 
   return (
     <RollbarProvider config={rollbarConfig}>
