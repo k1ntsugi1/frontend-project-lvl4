@@ -8,18 +8,17 @@ import Popup from 'reactjs-popup';
 import DefaultModal from '../../modals/DefaultModal.jsx';
 import { actionsUiModal } from '../../../slices/uiModalSlice.js';
 
-
 const HeaderChannels = ({t}) => {
-    const stateModal = useSelector( (store) => store.uiModal)
-    const dispatch = useDispatch()
+    const stateModal = useSelector( (store) => store.uiModal);
+    const dispatch = useDispatch();
     
     return (
       <>
-        <div className='d-flex justify-content-between mb-3 ps-4 pe-2'>
+        <div className='mb-3 ps-4 pe-2 d-flex justify-content-between '>
           <span>{ t("chatPage.channelsField.channelsHeader") }</span>
           <Popup trigger={
                   <Button variant="" 
-                          className="btn-group-vertical p-0 border-0 text-success" 
+                          className="p-0 btn-group-vertical border-0 text-success" 
                           onClick={() => dispatch(actionsUiModal.setModal({typeModal:'addChannelModal'}))}
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="currentColor">

@@ -28,7 +28,8 @@ const AboutAuthorPage = ({t}) => {
         dispatch(actionsUiNavBar.setNewActivePage({newActivePage: 'about'}))
     }, [])
     return (
-        <div className="my-4 pt-5 d-flex flex-column h-100 scrollbar2 scrollbar-success shadow border border-success rounded bg-light">
+        <div className="my-4 pt-5 d-flex flex-column h-100 shadow border border-success rounded bg-light">
+            <div className="scrollbar2 scrollbar-success">
             <div className="flex-grow-1">
                 <h3 className="pb-4 text-center">
                     Привет! Меня зовут Булат и это мой заключительный проект на{' '} 
@@ -75,6 +76,8 @@ const AboutAuthorPage = ({t}) => {
                     <img src={MeThird} className={classnamesMyImg} width="15%" alt="myPhoto"/>
                 </div>
             </div>
+            </div>
+            
             
             <footer className="border border-top">
                 <h5 className="text-center">Контактная информация</h5>
