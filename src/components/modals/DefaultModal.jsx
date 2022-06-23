@@ -47,7 +47,8 @@ const DefaultModal = ({t, impact}) => {
     })
   };
 
- const validate = () => {
+ const validate = (e) => {
+  e.preventDefault();
   if ( inputValue === '' ) return handleErrorValue(t("modal.errors.required"));
  
   //if ( inputValue.length > 10 ) return handleErrorValue(t("modal.errors.tooLong"));
@@ -72,35 +73,34 @@ const DefaultModal = ({t, impact}) => {
         <Modal.Title>{t(mappingTitle[type]())}</Modal.Title>
       </Modal.Header>
 
-            <Modal.Body>
-              <InputGroup >
-                <Form.Control
-                  id={type}
-                  name={type}
-                  placeholder=""
-                  aria-label="Имя канала"//так требуют тесты)
-                  value={inputValue}
-                  ref={inputRef}
-                  onChange={({target}) => setInputValue(target.value) }
-                  isInvalid={errorStore.containError}
-                />
-                <Form.Control.Feedback type="invalid" tooltip>
-                  {errorStore.errorValue}
-                </Form.Control.Feedback>
-              </InputGroup >
-            </Modal.Body>
+        <Form onSubmit={(e)=>validate(e)}>
+          <Modal.Body>
+            <Form.Control
+              id={type}
+              name={type}
+              placeholder=""
+              aria-label="Имя канала"//так требуют тесты)
+              value={inputValue}
+              ref={inputRef}
+              onChange={({target}) => setInputValue(target.value) }
+              isInvalid={errorStore.containError}
+            />
+            <Form.Control.Feedback type="invalid" tooltip>
+              {errorStore.errorValue}
+            </Form.Control.Feedback>
+          </Modal.Body>
 
-            <Modal.Footer className="p-0">
-              <Button variant="secondary" onClick={() => dispatch(actionsUiModal.removeModal({typeModal:type}))}>
-                {t("modal.cancel")}
-              </Button>
+          <Modal.Footer className="p-0">
+            <Button variant="secondary" onClick={() => dispatch(actionsUiModal.removeModal({typeModal:type}))}>
+              {t("modal.cancel")}
+            </Button>
 
-              <Button variant="success"  onClick={validate}>
-                {t("modal.send")}
-              </Button>
-            </Modal.Footer>
-
-       </Modal>
+            <Button type="submit" variant="success">
+              {t("modal.send")}
+            </Button>
+          </Modal.Footer>
+        </Form>
+    </Modal>
         )
 }
 
