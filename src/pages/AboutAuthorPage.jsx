@@ -28,7 +28,7 @@ const AboutAuthorPage = ({t}) => {
         dispatch(actionsUiNavBar.setNewActivePage({newActivePage: 'about'}))
     }, [])
     return (
-        <div className="my-4 pt-3 d-flex flex-column h-100 shadow border border-success rounded bg-light">
+        <div className="my-4 pt-3 h-90 d-flex flex-column shadow border border-success rounded bg-light">
             <div className="mb-0 flex-grow-1 scrollbar2 scrollbar-success">
                     <h3 className="pb-4 text-center">
                         Привет! Меня зовут Булат и это мой заключительный проект на{' '} 
