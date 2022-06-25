@@ -29,7 +29,6 @@ export const ChatPage = ({t}) => {
         dispatch(actionsUiNavBar.setNewActivePage({newActivePage: 'chat'}))
     }, [])
 
-
     return (
         spinnerStatus === "pending" 
         ? (

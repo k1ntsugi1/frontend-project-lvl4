@@ -2,7 +2,7 @@
     "navBar": {
         "changeLang": "Сменить язык",
         "signedInAs": "Вошли как:",
-        "aboutAuthor": "Об авторе",
+        "aboutProject": "О проекте",
         "currentLang": "Русский",
         "signInBtn": "Войти",
         "signUpBtn": "Регистрация",
@@ -93,9 +93,22 @@
         "badWord": "Не ругайся!"
     },
     "mainError": {
-        "header": "Мда.. что-то пошло не так",
+        "header": "Уупс... что-то пошло не так",
         "suggestion": "Попробуйте:",
-        "firstStep": "Перезагрузить страницу",
-        "secondStep": "Перезайти в свой аккаунт"
+        "firstStep": "Проверить интернет-соединение",
+        "secondStep": "Перезагрузить страницу",
+        "thirdStep": "Перезайти в свой аккаунт"
+    },
+    "aboutProjectPage": {
+        "greeting": "Привет! Меня зовут Булат и это мой заключительный проект на",
+        "aimOfProject": "Цель данного проекта - написать real-time приложение (аналог Slack-чата) на React/Redux, используя AJAX, REST, websockets, React (с хуками) + Redux (@reduxjs/toolkit) + Formik.",
+        "additionalPackets": " Дополнительно использовались следующие пакеты: react-toastify, reactjs-popup, react-dom-router, react-rollbar, react-spinner-loader, yup.",
+        "viewOfProject": "Для упрощения создания внешнего вида, в этом проекте применялись библиотеки bootstrap и react-bootstrap.",
+        "serverCode": "Код серверной части и первоначальная настройка плагинов и webpack предоставлены командой",
+        "clarificationOfMyCode": " За мной же стоит вся фронтенд часть.",
+        "firstBadJoke": "- Какой-то дополнительный и нужный текст",
+        "promise": "Здесь будут красивые ссылки-карточки на мои проекты ",
+        "secondBadJoke": "Наша великолепная команда",
+        "contactInformation": "Контактная информация"
     }
 }

@@ -2,7 +2,7 @@
     "navBar": {
         "changeLang": "Change the language",
         "signedInAs": "Logget in as:",
-        "aboutAuthor": "About Author",
+        "aboutProject": "About project",
         "currentLang": "English",
         "signInBtn": "Log in",
         "signUpBtn": "Sign Up",
@@ -18,7 +18,7 @@
             "password": "Enter password"
         },
         "footer": {
-            "hrefToSignUp": "Registration",
+            "hrefToSignUp": "Sign Up",
             "labelSignUp": "Don't have account?"
         },
         "errorsValidating": {
@@ -94,7 +94,20 @@
     "mainError": {
         "header": "Oops.. something went wrong",
         "suggestion": "See if you can:",
-        "firstStep": "Reload page",
-        "secondStep": "Again login to your account"
+        "firstStep": "Check network",
+        "secondStep": "Reload page",
+        "thirdStep": "Again login to your account"
+    },
+    "aboutProjectPage": {
+        "greeting": "Hi! My name is Bulat and this is my final project on",
+        "aimOfProject": "The goal of this project is to write a real-time application (analog of Slack chat) on React/Redux using AJAX, REST, websockets, React (with hooks) + Redux (@reduxjs/toolkit) + Formik.",
+        "additionalPackets": "The following additional packages were used: react-toastify, reactjs-popup, react-dom-router, react-rollbar, react-spinner-loader, yup.",
+        "viewOfProject": "This project used bootstrap and react-bootstrap libraries to simplify the creating of the visual appearance.",
+        "serverCode": "The server side code and initial configuration of plugins and webpack provided by Hexlet team.",
+        "clarificationOfMyCode": " I'm in charge of the entire frontend.",
+        "firstBadJoke": "- Some additional and desired text",
+        "promise": "here will be beautiful cards on my other projects",
+        "secondBadJoke": "Our amazing team",
+        "contactInformation": "Contact information"
     }
 }

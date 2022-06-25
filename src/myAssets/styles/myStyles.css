@@ -81,9 +81,7 @@ body {
 }
 
 .btn-success:hover,
-
 .btn-success:focus,
-
 .btn-success:visited{
   border-color: #4fb190;
   background-color: #4fb190;
@@ -96,9 +94,7 @@ body {
 }
 
 .btn-outline-success:hover,
-
 .btn-outline-success:focus,
-
 .btn-outline-success:visited{
   border-color: #4fb190;
   background-color: #4fb190;
@@ -139,3 +135,6 @@ footer {
   box-shadow: 0 0 5px 5px #59daae;
 }
 
+.shadow-danger {
+  box-shadow: 0 0 5px 5px #f00;
+}

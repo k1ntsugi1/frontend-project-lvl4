@@ -6,9 +6,9 @@ import i18n from "i18next";
 import { initReactI18next, withTranslation } from "react-i18next";
 import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react'
 
-import { SocketProvider } from "./Providers/SocketProvider";
-import { AuthProvider } from "./Providers/AuthProvider";
-import { BadWordsProvider } from "./Providers/BadWordsProvider";
+import { SocketProvider } from "./providers/SocketProvider";
+import { AuthProvider } from "./providers/AuthProvider";
+import { BadWordsProvider } from "./providers/BadWordsProvider";
 import { useDispatch, batch} from "react-redux";
 
 import { resources } from "./myAssets/i18n/resources.js";

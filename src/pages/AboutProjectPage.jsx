@@ -26,59 +26,58 @@ const AboutAuthorPage = ({t}) => {
     }
     useEffect( () => {
         dispatch(actionsUiNavBar.setNewActivePage({newActivePage: 'about'}))
-    }, [])
+    }, []);
+    
     return (
         <div className="my-4 pt-3 h-90 d-flex flex-column shadow border border-success rounded bg-light">
             <div className="mb-0 flex-grow-1 scrollbar2 scrollbar-success">
-                    <h3 className="pb-4 text-center">
-                        Привет! Меня зовут Булат и это мой заключительный проект на{' '} 
-                        <a  className="link-success" 
-                            href="#" 
-                            onClick={(e) => handlerOpening(e,"https://ru.hexlet.io/")}
-                        >
-                            Hexlet
-                        </a>.
-                    </h3>
-                    <p className={classNamesP}>
-                        Цель данного проекта - написать real-time приложение (аналог Slack-чата) на React/Redux, 
-                        используя AJAX, REST, websockets, React (с хуками) + Redux (@reduxjs/toolkit) + Formik.
+                <h3 className="pb-4 text-center">
+                    {t("aboutProjectPage.greeting")}{' '} 
+                    <a  className="link-success" 
+                        href="#" 
+                        onClick={(e) => handlerOpening(e,"https://ru.hexlet.io/")}
+                    >
+                        Hexlet
+                    </a>.
+                </h3>
+                <p className={classNamesP}>
+                    {t("aboutProjectPage.aimOfProject")}
+                </p>
+                <p className={classNamesP}>
+                    {t("aboutProjectPage.additionalPackets")}
+                </p>
+                <p className={classNamesP}>
+                    {t("aboutProjectPage.viewOfProject")}
+                </p>
+                <p className={classNamesP}>
+                    {t("aboutProjectPage.serverCode")}{' '}
+                    <a  className="link-success" 
+                        href="#" 
+                        onClick={(e) => handlerOpening(e,"https://ru.hexlet.io/")}
+                    >
+                        Hexlet
+                    </a>.
+                    {t("aboutProjectPage.clarificationOfMyCode")}
+                </p>
+                <div className="text-center">
+                    <p>
+                        {t("aboutProjectPage.promise")}
                     </p>
-                    <p className={classNamesP}>
-                        Дополнительно использовались следующие пакеты: react-toastify, reactjs-popup, react-dom-router, react-rollbar, react-spinner-loader, yup.
-                    </p>
-                    <p className={classNamesP}>
-                        Для упрощения создания внешнего вида, в этом проекте применялись библиотеки bootstrap и react-bootstrap.
-                    </p>
-                    <p className={classNamesP}>
-                        Код серверной части и первоначальная настройка плагинов и webpack предоставлены командой{' '}
-                        <a  className="link-success" 
-                            href="#" 
-                            onClick={(e) => handlerOpening(e,"https://ru.hexlet.io/")}
-                        >
-                            Hexlet
-                        </a>.
-                        За мной же стоит вся фронтенд часть.
-                    </p>
-                    <div className="text-center">
-                        <p>
-                            Здесь будут красивые ссылки-карточки на мои проекты 
-                        </p>
-                        <p className="fst-italic text-left">- Какой-то дополнительный и нужный текст</p>
-                    </div>
-                    <hr/>
-                    <h4 className='px-3 lh-base text-center'>
-                        Наша великолепная команда
-                    </h4>
-                    <div className="d-flex flex-row justify-content-around pb-2">
-                        <img src={MeSecond} className={classnamesMyImg} width="15%" alt="myPhoto"/>
-                        <img src={MeFirst} className={classnamesMyImg} width="15%" alt="myPhoto"/>
-                        <img src={MeThird} className={classnamesMyImg} width="15%" alt="myPhoto"/>
-                    </div>
+                    <p className="fst-italic text-left">{t("aboutProjectPage.firstBadJoke")}</p>
+                </div>
+                <hr/>
+                <h4 className='px-3 lh-base text-center'>
+                    {t("aboutProjectPage.secondBadJoke")}
+                </h4>
+                <div className="d-flex flex-row justify-content-around pb-2">
+                    <img src={MeSecond} className={classnamesMyImg} width="15%" alt="myPhoto"/>
+                    <img src={MeFirst} className={classnamesMyImg} width="15%" alt="myPhoto"/>
+                    <img src={MeThird} className={classnamesMyImg} width="15%" alt="myPhoto"/>
+                </div>
             </div>
             
-            
             <footer className="border border-top">
-                <h5 className="text-center">Контактная информация</h5>
+                <h5 className="text-center">{t("aboutProjectPage.contactInformation")}</h5>
                 <div className="d-flex flex-row justify-content-around pb-2">
                     <div className={classnamesContacts}>
                         <img src={MailImg} width="20px"  alt="MailImg"/>

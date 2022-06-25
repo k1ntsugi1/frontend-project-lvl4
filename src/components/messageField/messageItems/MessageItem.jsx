@@ -9,7 +9,7 @@ export const MessageItem = ({message}) => {
     const classNamesMessageField = cn(
         'px-3',
         'd-flex',
-        'rounded-pill',
+        'rounded-3',
         'text-white',
         {
             'flex-row-reverse': username !== currentUsername,

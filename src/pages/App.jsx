@@ -17,7 +17,7 @@ import SignInPage  from './SignInPage.jsx';
 import SignUpPage from './SignUpPage.jsx';
 import ChatPage from './ChatPage.jsx';
 import NotFoundPage from './NotFoundPage.jsx';
-import AboutAuthorPage from './AboutAuthorPage.jsx';
+import AboutProjectPage from './AboutProjectPage.jsx';
 
 import SignUpBtn from '../components/navField/SignUpBtn.jsx';
 import SignInBtn from '../components/navField/SignInBtn.jsx';
@@ -48,7 +48,7 @@ const App = ({t}) => {
           <Navbar.Brand as={Link} to="/">Hexlet Chat</Navbar.Brand>
 
           <Nav className="me-auto">
-            <Link to="about" className='d-flex align-self-center text-decoration-none text-reset'>{t("navBar.aboutAuthor")}</Link>
+            <Link to="about" className='d-flex align-self-center text-decoration-none text-reset'>{t("navBar.aboutProject")}</Link>
             <BtnsChgLng/>
           </Nav>
 
@@ -83,7 +83,7 @@ const App = ({t}) => {
         )}/>
         <Route path="login" element={ <SignInPage /> }/>
         <Route path="signup" element={ <SignUpPage /> }/>
-        <Route path="about" element={ <AboutAuthorPage /> }/>
+        <Route path="about" element={ <AboutProjectPage /> }/>
         <Route path="*" element={ <NotFoundPage /> }/>
       </Routes>
     </div >
