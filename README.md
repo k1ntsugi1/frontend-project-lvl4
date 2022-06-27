@@ -3,7 +3,7 @@
  
 [**Heroku**](https://tranquil-crag-78667.herokuapp.com/)
 
-Данный проект - real-time приложение (аналог Slack-чата) на React/Redux, используя AJAX, REST, websockets, React (с хуками) + Redux (@reduxjs/toolkit) + Formik.
+Данный проект - real-time приложение (аналог Slack-чата) на React/Redux, используя AJAX, REST, JWT-токены, websockets, React (с хуками) + Redux (@reduxjs/toolkit) + Formik.
 
 Дополнительно использовались следующие пакеты: react-toastify, reactjs-popup, react-dom-router, react-rollbar, react-spinner-loader, yup.
 
